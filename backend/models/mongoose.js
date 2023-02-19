@@ -8,6 +8,7 @@ const password = process.env.pass
 
 mongoose.connect(atlasDB, {
     useNewUrlParser: true,
+    UseCreateIndexes: true,
     useUnifiedTopology: true
   })
     .then(() => console.log('DB is connected ...'))
