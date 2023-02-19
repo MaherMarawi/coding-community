@@ -15,7 +15,7 @@ const server = http.createServer(app)
 
 // Connect to DB
 const dotenv = require('dotenv')
-dotenv.config({path:__dirname+'/.env'});
+dotenv.config({path:'./.env'});
 // require('dotenv').config()
 require('./models/mongoose')
 
