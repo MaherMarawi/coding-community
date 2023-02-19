@@ -6,7 +6,6 @@ const Comment = require('../models/commentSchema')
 const AllQuestions = (req, res) => {
     Question.find().sort({ createdAt: -1 })
         .then(questions => {
-            console.log(questions)
             res.json(questions)
         })
         .catch(err => res.send(err))
@@ -47,7 +46,6 @@ const DeleteQuestion = (req, res) => {
 const ChangeQuestion = (req, res) => {
         Question.findByIdAndUpdate(req.params.id, req.body, {useFindAndModify:false})
             .then(result => res.send(result))
-            
             .catch(err => res.send(err))
     
 }

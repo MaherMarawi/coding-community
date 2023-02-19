@@ -14,8 +14,9 @@ const mailRouter = require('./config/mailRouter')
 const server = http.createServer(app)
 
 // Connect to DB
-
-require('dotenv').config()
+const dotenv = require('dotenv')
+dotenv.config({path:__dirname+'/.env'});
+// require('dotenv').config()
 require('./models/mongoose')
 
 // Middelware
