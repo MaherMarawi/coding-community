@@ -1,0 +1,114 @@
+@import "../../style.scss";
+
+
+.rightbar {
+    @include themify($themes) {
+        flex: 3;
+        position: sticky;
+        top: 70px;
+        height: calc(100vh - 50px);
+        overflow: scroll;
+
+
+        @include mobile {
+            display: none;
+        }
+
+        @include tablet {
+            display: none;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        background-color: themed("bgSoft");
+
+        .container {
+            padding: 20px;
+
+            .item {
+                -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+                -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+                box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+
+                padding: 20px;
+                margin-bottom: 20px;
+                background-color: themed("bg");
+
+                span {
+                    color: themed("textColorSoft");
+                }
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 20px 0px;
+
+                    .userInfo {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        position: relative;
+
+                        img {
+
+                            width: 30px;
+                            height: 30px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                        }
+
+                        p {
+                            color: themed("textColorSoft");
+                            font-size: 10px;
+
+                            span {
+                                font-size: 15px;
+                                color: themed("textColor");
+                            }
+                        }
+
+                        .online {
+                            width: 10px;
+                            height: 10px;
+                            background-color: limegreen;
+                            border-radius: 50%;
+                            position: absolute;
+                            top: 0;
+                            left: 20px;
+                        }
+
+                        span {
+                            font-weight: 500;
+                        }
+
+                    }
+
+                    .buttons {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        button {
+                            border: none;
+                            color: themed("textColor");
+                            cursor: pointer;
+                            padding: 5px;
+                        }
+
+                        :first-child {
+                            background-color: blue;
+                        }
+
+                        :last-child {
+                            background-color: red;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

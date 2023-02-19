@@ -1,0 +1,21 @@
+@import "../../style.scss";
+.loading{
+    text-align: center;
+}
+.posts {
+
+    @include themify($themes) {
+
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        @include tablet {
+            gap: 20px;
+        }
+
+
+
+
+    }
+}

@@ -1,0 +1,38 @@
+@import "../../../style.scss";
+
+.code-block {
+    @include themify($themes) {
+        margin: 10px 0;
+        border-radius: 5px;
+        overflow: hidden;
+        box-sizing: border-box;
+        max-height: 300px;
+        overflow-y: scroll;
+        font-size: 12px;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        @include mobile {
+            &::-webkit-scrollbar {
+                width: 3px;
+            }
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: themed("bgSoft");
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: themed("border");
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: themed('textColor');
+        }
+    }
+}
