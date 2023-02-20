@@ -1,6 +1,6 @@
 import "./navBar.scss"
 import { Link } from "react-router-dom"
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import logo from "../../assets/7.png"
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined';
@@ -11,12 +11,15 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import FmdBadOutlinedIcon from '@mui/icons-material/FmdBadOutlined';
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AuthContext } from "../../context/authContext";
+import { useQueryClient } from "@tanstack/react-query";
+import Loader from "../microcomponents/loader/Loader";
 
 const NavBar = () => {
-
+  const queryClient = useQueryClient()
   const { darkMode, toggle } = useContext(DarkModeContext)
 
   const { currentUser } = useContext(AuthContext)
+  // const loadQuestions = queryClient.getQueryState(["questions"]).status
 
   return (
     <div className="navbar">
@@ -24,7 +27,8 @@ const NavBar = () => {
         <Link to="/" style={{ textDecoration: "none" }}>
           <span>coding community</span>
         </Link>
-        <ForumOutlinedIcon />
+        {/* {loadQuestions} */}
+        {/* { loadQuestions == "loading" ? <div className="posts"><div className="loading"><Loader /></div></div> : <div></div>} */}
         {
           
             darkMode
@@ -44,8 +48,9 @@ const NavBar = () => {
         <EmailOutlinedIcon />
         <FmdBadOutlinedIcon />
         <div className="user">
-          <img src={currentUser.profilePic && currentUser.profilePic} />
-          <span>{currentUser.name}</span>
+          {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
+          {currentUser?.username ? currentUser.username : <button><Link to="/login">login</Link></button>}
+          <span>{currentUser?.name}</span>
         </div>
       </div>
     </div>

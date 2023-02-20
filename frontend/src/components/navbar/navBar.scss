@@ -2,8 +2,6 @@
 
 
 
-
-
 .navbar {
     @include themify($themes) {
         display: flex;
@@ -12,17 +10,19 @@
         border-bottom: 1px solid themed("border");
         position: sticky;
         top: 0;
-        height: 50px;
+        height: 70px;
         padding: 10px 20px;
         background-color: themed("bg");
         color: themed("textColor");
         z-index: 10;
+        box-sizing: border-box;
 
         .left {
             display: flex;
             align-items: center;
             gap: 30px;
-            .darkMode{
+
+            .darkMode {
                 cursor: pointer;
             }
 
@@ -30,6 +30,10 @@
                 font-weight: bold;
                 font-size: 20px;
                 color: themed("logo");
+
+                @include mobile {
+                    font-size: 16px;
+                }
             }
 
             .search {
@@ -46,13 +50,13 @@
                     color: themed("textColor");
                     background-color: themed("bg");
 
-                    @include mobile{
+                    @include mobile {
                         display: none;
-                      }
-            
-                      @include tablet{
+                    }
+
+                    @include tablet {
                         width: 200px;
-                      }
+                    }
                 }
             }
         }
@@ -63,19 +67,33 @@
             display: flex;
             gap: 20px;
             align-items: center;
-            
-            @include mobile{
+
+            @include mobile {
                 display: none;
-              }
+            }
+
+            button {
+                border: none;
+                background-color: #5271ff;
+                color: white;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 3px;
+                // width: 15%;
+                a{
+                    text-decoration: none;
+                    color: whitesmoke;
+                }
+            }
 
             .user {
                 display: flex;
                 gap: 10px;
                 align-items: center;
 
-                @include tablet{
+                @include tablet {
                     display: none;
-                  }
+                }
 
                 img {
                     width: 30px;

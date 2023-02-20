@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/authContext"
 const LeftBar = () => {
 
 
-  const {currentUser} = useContext(AuthContext)
+  const {currentUser, logout} = useContext(AuthContext)
 
 
   return (
@@ -14,8 +14,8 @@ const LeftBar = () => {
       <div className="container">
         <div className="menu">
           <div className="user">
-            <img src={currentUser.profilePic && currentUser.profilePic} />
-            <span>{currentUser.name}</span>
+            {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
+            <span>{currentUser?.name}</span>
           </div>
           <div className="item">
             <img src={image} />
@@ -26,8 +26,7 @@ const LeftBar = () => {
             <span>Jhon Doe</span>
           </div>
           <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
+            <button onClick={() => logout()}>logout</button>
           </div>
         </div>
         <hr />

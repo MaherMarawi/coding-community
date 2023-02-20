@@ -29,7 +29,7 @@ function Comments({ question }) {
         <div className="comment" key={comment._id}>
           <div className="info">
             <span>{comment.user_name ? comment.user_name : "unknown"}</span>
-            <label><Time>{comment.createdAt}</Time></label>
+            <label><Time time={comment.createdAt} /></label>
           </div>
           <div className="content">
             <p>{comment.comment}</p>

@@ -8,18 +8,33 @@ import Loader from "../microcomponents/loader/Loader";
 const AddQuestion = () => {
 
     const queryClient = useQueryClient()
-    const [newQuestion, setNewQuestion] = useState()
     const { currentUser } = useContext(AuthContext)
+    const [newQuestion, setNewQuestion] = useState({
+        title: "",
+        description: "",
+        userCode: ""
+    })
     const addQuestionMutation = useMutation({
         mutationFn: question => addQuestion(question),
         onSuccess: (data) => {
             queryClient.setQueryData(["questions"], prevData => [data, ...prevData])
+            setNewQuestion(({
+                title: "",
+                description: "",
+                userCode: ""
+            }))
         }
     })
     const handleChange = (e) => {
         setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value })
     }
     const handleClick = () => {
+        const domiQuestion = newQuestion
+        if(currentUser) {
+            domiQuestion.user_id = currentUser.id
+            domiQuestion.user_name = currentUser.username
+        }
+        setNewQuestion(domiQuestion)
         addQuestionMutation.mutate(newQuestion)
     }
 
@@ -27,12 +42,12 @@ const AddQuestion = () => {
         <div className="add-question">
             <div className="container">
                 <div className="title-button">
-                    <input onChange={handleChange} name="title" placeholder="Title" />
+                    <input value={newQuestion?.title} onChange={handleChange} name="title" placeholder="Title" />
                     <button onClick={() => handleClick()} disabled={addQuestionMutation.isLoading} >{addQuestionMutation.isLoading ? <Loader /> : "Ask"}</button>
                 </div>
                 <div className="desc-code">
-                    <input onChange={handleChange} name="description" placeholder="Description" />
-                    <textarea type="textarea" className="textarea" onChange={handleChange} name="userCode" placeholder="Code" />
+                    <input value={newQuestion?.description} onChange={handleChange} name="description" placeholder="Description" />
+                    <textarea value={newQuestion?.userCode} type="textarea" className="textarea" onChange={handleChange} name="userCode" placeholder="Code" />
                 </div>
             </div>
         </div>

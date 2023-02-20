@@ -9,7 +9,7 @@
         max-height: 300px;
         overflow-y: scroll;
         font-size: 12px;
-
+        background-color: themed("bgSoft") !important;
         &::-webkit-scrollbar {
             width: 8px;
         }

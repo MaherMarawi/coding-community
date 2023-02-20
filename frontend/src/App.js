@@ -15,26 +15,21 @@ import Profile from "./pages/profile/Profile"
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 function App() {
-  const queryClient = new QueryClient({
-    defaultOptions: { queries: { staleTime: 1000 * 60 * 5 } }
-  })
-  const { currentUser } = useContext(AuthContext)
+  
+  // const { currentUser } = useContext(AuthContext)
   const { darkMode } = useContext(DarkModeContext);
 
-  const ProtectedRoute = ({ children }) => {
-    if (!currentUser) {
-      return <Navigate to="/login" />;
-    }
+  // const ProtectedRoute = ({ children }) => {
+  //   if (!currentUser) {
+  //     return <Navigate to="/login" />;
+  //   }
 
-    return children;
-  };
+  //   return children;
+  // };
 
   const Layout = () => {
     return (
-      <QueryClientProvider client={queryClient}>
         <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
           <NavBar />
           <div style={{ display: "flex" }}>
@@ -45,8 +40,6 @@ function App() {
             <RightBar />
           </div>
         </div>
-        <ReactQueryDevtools />
-      </QueryClientProvider>
     )
   }
 
@@ -54,9 +47,9 @@ function App() {
     {
       path: "/",
       element: (
-        <ProtectedRoute>
+        // <ProtectedRoute>
           <Layout />
-        </ProtectedRoute>
+        // </ProtectedRoute>
       ),
       children: [
         {

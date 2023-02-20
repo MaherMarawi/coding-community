@@ -9,49 +9,51 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteQuestion from "./DeleteQuestion";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlinedOutlinedIcon from '@mui/icons-material/StarOutlined';
-
+import moment from 'moment';
 function Post({ post }) {
   const [commentOpen, setCommentOpen] = useState()
   const [liked, setLiked] = useState()
   const handleClick = (id) => {
-    if(commentOpen == id) setCommentOpen("")
+    if (commentOpen == id) setCommentOpen("")
     else setCommentOpen(id)
   }
   return (
     <div className="post">
       <div className="container">
-        <span>{post.user_name ? post.user_name : "unknown"}</span>
-        <div className="question">
         <div className="title">
-          <span>{post.title}</span>
-          <label><Time>{post.createdAt}</Time></label>
+          <span>{post.user_name ? post.user_name : "unknown"}</span>
+          <label>
+            <Time time={post.createdAt} />
+          </label>
         </div>
-        <div className="content">
-          <p>{post.description}</p>
-          {post.userCode 
-          ?
-          <CodeBlock>
-            {post.userCode}
-          </CodeBlock>
-          :
-          ""
-          }
-        </div>
-        <hr />
-        <div className="info">
-          <div className="item">
-            {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
-            {post.rate?.length}
+        <span>{post.title}</span>
+        <div className="question">
+          <div className="content">
+            <p>{post.description}</p>
+            {post.userCode
+              ?
+              <CodeBlock>
+                {post.userCode}
+              </CodeBlock>
+              :
+              ""
+            }
           </div>
-          <div className="item" onClick={() => handleClick(post._id)}>
-            <TextsmsOutlinedIcon className="icons" />
-            {post.comments_count}
+          <hr />
+          <div className="info">
+            <div className="item">
+              {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
+              {post.rate?.length}
+            </div>
+            <div className="item" onClick={() => handleClick(post._id)}>
+              <TextsmsOutlinedIcon className="icons" />
+              {post.comments_count}
+            </div>
+            <div className="item">
+              <DeleteQuestion id={post._id} />
+            </div>
           </div>
-          <div className="item">
-            <DeleteQuestion id={post._id} />
-          </div>
-        </div>
-        {commentOpen == post._id ? <Comments question={post} /> : ""}
+          {commentOpen == post._id ? <Comments question={post} /> : ""}
         </div>
       </div>
     </div>

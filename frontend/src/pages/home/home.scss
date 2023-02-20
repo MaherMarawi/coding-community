@@ -4,7 +4,16 @@
   @include themify($themes) {
     padding: 20px 70px;
     background-color: themed("bgSoft");
-
+    min-height: 100vh;
+    button {
+      border: none;
+      background-color: #5271ff;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      // width: 15%;
+    }
     @include mobile {
       padding: 10px;
     }

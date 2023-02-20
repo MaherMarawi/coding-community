@@ -1,13 +1,13 @@
 import React from 'react'
-import Moment from 'react-moment';
+import moment from 'moment';
 // import 'moment-timezone';
 
-function Time({children}) {
+function Time({time}) {
+    let date = new Date()
+    let h = date.getHours()
     return (
         <div>
-            <Moment format="YYYY/MM/DD">
-                {children}
-            </Moment>
+            {moment(time).startOf(h).fromNow()}
         </div>
     )
 }

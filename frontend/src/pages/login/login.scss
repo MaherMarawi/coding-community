@@ -7,8 +7,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: .3s;
 
-
+    .err {
+        background-color: rgba(220, 20, 60, 0.525);
+        padding: 20px;
+        color: whitesmoke;
+    }
 
     .card {
         width: 50%;
@@ -23,9 +28,10 @@
         }
 
         .left {
+            display: none !important;
             flex: 1;
-            background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-                url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
+            // background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+            //     url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
             background-size: cover;
             padding: 50px;
             display: flex;

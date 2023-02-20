@@ -12,12 +12,18 @@ const AddComment = ({ question }) => {
     const { currentUser } = useContext(AuthContext)
     
     // some code
-    const [newComment, setNewComment] = useState("")
+    const [newComment, setNewComment] = useState({
+        comment: "",
+        userCode: ""
+    })
     const addCommentMutation = useMutation({
         mutationFn: (comment) => addComment(comment.question_id, comment),
         onSuccess: data => {
             queryClient.setQueryData(["comments", question._id], old => [data, ...old])
-            setNewComment("")
+            setNewComment({
+                comment: "",
+                userCode: ""
+            })
         }
     })
     const handleChange = (e) => {
@@ -25,8 +31,9 @@ const AddComment = ({ question }) => {
     }
     const handleClick = (question) => {
         const domiComment = newComment
-        if (currentUser) domiComment.user_name = currentUser._id
+        if (currentUser) domiComment.user_id = currentUser.id
         domiComment.question_id = question._id
+        if(currentUser.name) domiComment.user_name = currentUser.name
         setNewComment(domiComment)
         addCommentMutation.mutate(newComment)
     }

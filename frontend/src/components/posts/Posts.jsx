@@ -28,11 +28,14 @@ export default function Posts() {
   ];
 const questions = useQuery({
   queryKey: ["questions"],
-  queryFn: () => getQuestions()
+  staleTime: 10 * (60 * 1000), // 10 mins 
+  cacheTime: 15 * (60 * 1000), // 15 mins
+  queryFn: () => getQuestions(),
 })
-if(questions.isFetching || questions.isLoading) return <div className="posts"> <div className="loading"><Loader /></div></div>
+// if(questions.isFetching || questions.isLoading) return <div className="posts"> <div className="loading"><Loader /></div></div>
   return (
     <div className="posts">
+      { (questions.isFetching || questions.isLoading) ? <div className="posts"> <div className="loading"><Loader /></div></div> : ""}
       {questions && questions.data?.map(post => (
         <Post post={post} key={post._id}/>
       ))}
