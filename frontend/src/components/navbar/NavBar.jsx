@@ -49,7 +49,7 @@ const NavBar = () => {
         <FmdBadOutlinedIcon />
         <div className="user">
           {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
-          {currentUser?.username ? currentUser.username : <button><Link to="/login">login</Link></button>}
+          {currentUser?.username ? currentUser.username : <button><Link to="/auth/login">login</Link></button>}
           <span>{currentUser?.name}</span>
         </div>
       </div>

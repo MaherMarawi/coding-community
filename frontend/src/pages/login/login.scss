@@ -1,102 +1,58 @@
 @import "../../style.scss";
 
 .login {
-
-    height: 100vh;
-    background-color: rgb(193, 190, 255);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .3s;
-
-    .err {
-        background-color: rgba(220, 20, 60, 0.525);
-        padding: 20px;
-        color: whitesmoke;
-    }
-
-    .card {
-        width: 50%;
+    @include themify($themes) {
+        height: 100vh;
+        background-color: themed("bgSoft");
         display: flex;
-        background-color: white;
-        border-radius: 10px;
-        min-height: 600px;
-        overflow: hidden;
-
-        @include mobile {
-            width: 80%;
-        }
-
-        .left {
-            display: none !important;
-            flex: 1;
-            // background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
-            //     url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600") center;
-            background-size: cover;
-            padding: 50px;
+        align-items: center;
+        justify-content: center;
+        .container {
+            width: 30%;
+            box-sizing: border-box;
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 10px;
+            background-color: themed("bg");
+            color: themed("textColor");
             display: flex;
+            justify-content: space-between;
             flex-direction: column;
-            gap: 30px;
-            color: white;
-
+            gap: 35px;
+            margin: 20px 0px;
+            padding: 20px;
+            a{
+                text-decoration: none;
+                color: themed("textColor");
+            }
             @include mobile {
-                display: none;
-            }
-
-            h1 {
-                font-size: 100px;
-                line-height: 100px;
-            }
-
-            p {}
-
-            span {
-                font-size: 14px;
+                width: 80%;
             }
 
             button {
-                width: 50%;
+                border: none;
+                background-color: #5271ff;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 3px;
+                width: 15%;
+            }
+
+            input {
+                border-radius: 3px;
+                flex: 5;
                 padding: 10px;
                 border: none;
-                background-color: white;
-                color: rebeccapurple;
-                font-weight: bold;
-                cursor: pointer;
+                // width: 65%;
+                background-color: themed("bgSoft");
+                color: themed("textColor");
             }
-        }
-
-        .right {
-            flex: 1;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-            justify-content: center;
-
-            h1 {
-                color: #555;
-            }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-
-                input {
-                    border: none;
-                    border-bottom: 1px solid lightgray;
-                    padding: 20px 10px;
-                }
-
-                button {
-                    width: 50%;
-                    padding: 10px;
-                    border: none;
-                    background-color: #938eef;
-                    color: white;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
+            .err {
+                background-color: themed("bgSoft");
+                padding: 10px;
+                color: crimson;
             }
         }
     }

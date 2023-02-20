@@ -26,7 +26,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser())
 app.use(bodyParser.json())
-app.use(cors({origin: 'http://localhost:3000',
+app.use(cors({origin: '*',
               methods:[ "GET", "POST", "DELETE", "PUT"]}))
 app.use(feedRouter)
 app.use(userRouter)

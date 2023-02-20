@@ -16,7 +16,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
 function App() {
-  
+
   // const { currentUser } = useContext(AuthContext)
   const { darkMode } = useContext(DarkModeContext);
 
@@ -30,16 +30,23 @@ function App() {
 
   const Layout = () => {
     return (
-        <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
-          <NavBar />
-          <div style={{ display: "flex" }}>
-            <LeftBar />
-            <div style={{ flex: "6" }}>
-              <Outlet />
-            </div>
-            <RightBar />
+      <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
+        <NavBar />
+        <div style={{ display: "flex" }}>
+          <LeftBar />
+          <div style={{ flex: "6" }}>
+            <Outlet />
           </div>
+          <RightBar />
         </div>
+      </div>
+    )
+  }
+  const AuthLayout = () => {
+    return (
+      <div className={`theme-${darkMode ? 'dark' : 'light'}`}>
+        <Outlet />
+      </div>
     )
   }
 
@@ -48,7 +55,7 @@ function App() {
       path: "/",
       element: (
         // <ProtectedRoute>
-          <Layout />
+        <Layout />
         // </ProtectedRoute>
       ),
       children: [
@@ -60,16 +67,27 @@ function App() {
           path: "/profile/:id",
           element: <Profile />,
         },
+
       ],
     },
     {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
+      path: "/auth",
+      element: (
+        <AuthLayout />
+      ),
+      children: [
+        {
+          path: "/auth/login",
+          element: <Login />,
+        },
+        {
+          path: "/auth/register",
+          element: <Register />,
+        },
+      ]
+    }
+
+
   ]);
 
 
