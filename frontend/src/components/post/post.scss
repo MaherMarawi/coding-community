@@ -3,6 +3,7 @@
 .post {
     @include themify($themes) {
         width: 100%;
+
         .container {
             padding: 5px 20px;
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -11,7 +12,7 @@
             border-radius: 10px;
             background-color: themed("bg");
             color: themed("textColor");
-            
+
             display: flex;
             // justify-content: center;
             // align-items: center;
@@ -59,7 +60,7 @@
                 }
 
                 .content {
-                    p{
+                    p {
 
                         font-size: 13px;
                     }
@@ -72,17 +73,26 @@
                 .info {
                     display: flex;
                     align-items: center;
+                    justify-content: space-between;
                     gap: 20px;
 
-                    .item {
+                    .items {
                         display: flex;
                         align-items: center;
                         gap: 10px;
                         cursor: pointer;
                         font-size: 10px;
 
-                        .icons {
-                            width: 15px;
+                        .item {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            cursor: pointer;
+                            font-size: 10px;
+
+                            .icons {
+                                width: 15px;
+                            }
                         }
                     }
                 }

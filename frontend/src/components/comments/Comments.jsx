@@ -41,11 +41,24 @@ function Comments({ question }) {
               :
               ""
             }
-            <div className="item">
-              {liked ? <ThumbUpIcon className="icons" /> : <ThumbUpOutlinedIcon className="icons" />}
-              
-              <label>{comment.like?.length}</label>
-              <DeleteComment commentId={comment._id} questionId={question._id} />
+            <div className="items">
+              <div className="item">
+
+                {liked ? <ThumbUpIcon className="icons" /> : <ThumbUpOutlinedIcon className="icons" />}
+
+                <label>{comment.like?.length}</label>
+              </div>
+              <div className="item">
+
+                {currentUser?.role && currentUser.role == "admin"
+                  ?
+                  <div className="item delete-question-btn">
+                    <DeleteComment commentId={comment._id} questionId={question._id} />
+                  </div>
+                  :
+                  ""
+                }
+              </div>
             </div>
           </div>
         </div>

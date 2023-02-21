@@ -49,15 +49,20 @@
     }
 
     .content {
-      .item {
+      .items{
         display: flex;
         align-items: center;
-        gap: 5px;
-        cursor: pointer;
-        font-size: 12px;
-
-        .icons {
-          width: 15px;
+        justify-content: space-between;
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          cursor: pointer;
+          font-size: 12px;
+          
+          .icons {
+            width: 15px;
+          }
         }
       }
     }

@@ -61,7 +61,9 @@ const SignIn = async (req, res) => {
         try {
             const user = await User.login(email, password)
             const token = createjwt(user._id)
-            res.status(200).send({message: 'Logged In', accessToken: token, user: { id: user._id, username: user.username } })
+            let role = ""
+            if(user.role && user.role == "admin") { role = user.role;}
+            res.status(200).send({message: 'Logged In', accessToken: token, user: { id: user._id, username: user.username, role: role } })
         } catch (error) {
             const errors = handelErrors(error)
             res.status(404).send( {errors} )

@@ -18,7 +18,7 @@ const NavBar = () => {
   const queryClient = useQueryClient()
   const { darkMode, toggle } = useContext(DarkModeContext)
 
-  const { currentUser } = useContext(AuthContext)
+  const { currentUser, logout } = useContext(AuthContext)
   // const loadQuestions = queryClient.getQueryState(["questions"]).status
 
   return (
@@ -27,8 +27,6 @@ const NavBar = () => {
         <Link to="/" style={{ textDecoration: "none" }}>
           <span>coding community</span>
         </Link>
-        {/* {loadQuestions} */}
-        {/* { loadQuestions == "loading" ? <div className="posts"><div className="loading"><Loader /></div></div> : <div></div>} */}
         {
           
             darkMode
@@ -42,6 +40,11 @@ const NavBar = () => {
           <SearchOutlinedIcon />
           <input placeholder="Search..."></input>
         </div>
+        <div className="user">
+        {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
+        {currentUser && <button onClick={() => logout()}>logout</button>}
+          <span>{currentUser?.username}</span>
+        </div>
       </div>
       <div className="right">
         <Person2OutlinedIcon />
@@ -49,8 +52,8 @@ const NavBar = () => {
         <FmdBadOutlinedIcon />
         <div className="user">
           {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
-          {currentUser?.username ? currentUser.username : <button><Link to="/auth/login">login</Link></button>}
-          <span>{currentUser?.name}</span>
+          {/* {currentUser?.username ? currentUser.username : <button><Link to="/auth/login">login</Link></button>}
+          <span>{currentUser?.name}</span> */}
         </div>
       </div>
     </div>

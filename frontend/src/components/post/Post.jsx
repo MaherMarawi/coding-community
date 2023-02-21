@@ -1,5 +1,5 @@
 import "./post.scss"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import Comments from "../comments/Comments"
 import CodeBlock from "../microcomponents/codeblock/CodeBlock";
@@ -10,7 +10,9 @@ import DeleteQuestion from "./DeleteQuestion";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlinedOutlinedIcon from '@mui/icons-material/StarOutlined';
 import moment from 'moment';
+import { AuthContext } from "../../context/authContext";
 function Post({ post }) {
+  const { currentUser } = useContext(AuthContext)
   const [commentOpen, setCommentOpen] = useState()
   const [liked, setLiked] = useState()
   const handleClick = (id) => {
@@ -32,7 +34,7 @@ function Post({ post }) {
             <p>{post.description}</p>
             {post.userCode
               ?
-              <CodeBlock>
+              <CodeBlock >
                 {post.userCode}
               </CodeBlock>
               :
@@ -41,17 +43,25 @@ function Post({ post }) {
           </div>
           <hr />
           <div className="info">
-            <div className="item">
-              {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
-              {post.rate?.length}
+            <div className="items">
+              <div className="item">
+                {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
+                {post.rate?.length}
+              </div>
+              <div className="item" onClick={() => handleClick(post._id)}>
+                <TextsmsOutlinedIcon className="icons" />
+                {post.comments_count}
+              </div>
             </div>
-            <div className="item" onClick={() => handleClick(post._id)}>
-              <TextsmsOutlinedIcon className="icons" />
-              {post.comments_count}
-            </div>
-            <div className="item">
+            {currentUser?.role && currentUser.role == "admin" 
+            ? 
+            <div className="item delete-question-btn">
               <DeleteQuestion id={post._id} />
             </div>
+            : 
+            ""  
+            }
+            
           </div>
           {commentOpen == post._id ? <Comments question={post} /> : ""}
         </div>
