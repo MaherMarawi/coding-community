@@ -1,6 +1,6 @@
-import { deleteQuestion } from "../../api/questionsApi"
+import { deleteQuestion } from "../../../api/questionsApi"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import Loader from "../microcomponents/loader/Loader"
+import Loader from "../../microcomponents/loader/Loader"
 
 const DeleteQuestion = ({id}) => {
     const queryClient = useQueryClient()

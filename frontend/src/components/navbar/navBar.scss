@@ -59,21 +59,47 @@
                     }
                 }
             }
-            .user{
+
+            .user {
                 display: flex;
-                flex-direction: column-reverse;
+                flex-direction: row-reverse;
                 gap: 5px;
                 align-items: center;
-                span{
-                    font-weight: bold ;
+                position: relative;
+
+                @include mobile {
+                    flex-direction: column-reverse;
+                }
+
+                span {
+                    font-weight: bold;
                     color: themed("textColorSoft");
                 }
-                .login-button{
-                    a{
+
+                button {
+                    border: none;
+                    background-color: #5271ff;
+                    color: white;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-radius: 3px;
+                }
+
+                .login-button {
+                    a {
                         text-decoration: none;
-                        color: themed("textColor");
+                        color: whitesmoke;
                     }
+
                     font-size: 16px;
+                }
+
+                .admin-sign {
+                    font-size: 8px;
+                    position: absolute;
+                    left: 1px;
+                    color: themed("unlogo");
+                    top: -5px;
                 }
             }
         }
@@ -96,8 +122,9 @@
                 padding: 5px 10px;
                 cursor: pointer;
                 border-radius: 3px;
+
                 // width: 15%;
-                a{
+                a {
                     text-decoration: none;
                     color: whitesmoke;
                 }

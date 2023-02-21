@@ -1,12 +1,12 @@
-import AddQuestion from "../../components/addquestion/AddQuestion"
-import Posts from "../../components/posts/Posts"
+import AddQuestion from "../../components/question/addquestion/AddQuestion"
+import Questions from "../../components/questions/Questions"
 import "./home.scss"
 
 const Home = () => {
   return (
     <div className="home">
       <AddQuestion />
-      <Posts />
+      <Questions />
     </div>
   )
 }

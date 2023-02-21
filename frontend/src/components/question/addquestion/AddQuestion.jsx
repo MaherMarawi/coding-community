@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import "./addQuestion.scss"
-import { AuthContext } from "../../context/authContext"
-import { addQuestion } from "../../api/questionsApi";
+import { AuthContext } from "../../../context/authContext"
+import { addQuestion } from "../../../api/questionsApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Loader from "../microcomponents/loader/Loader";
+import Loader from "../../microcomponents/loader/Loader";
 
 const AddQuestion = () => {
 

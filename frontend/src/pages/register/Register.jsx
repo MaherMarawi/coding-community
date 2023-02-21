@@ -1,17 +1,20 @@
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import Loader from "../../components/microcomponents/loader/Loader";
 import { AuthContext } from "../../context/authContext";
 import "./register.scss";
 
 const Register = () => {
-  const { error, currentUser, register } = useContext(AuthContext)
+  const { error, currentUser, registerMutation } = useContext(AuthContext)
   const [cred, setCred] = useState()
+
   const handleClick = () => {
-    register(cred)
+    registerMutation.mutate(cred)
   }
   const handleChange = (e) => {
     setCred({ ...cred, [e.target.name]: e.target.value })
   }
+
   return (
     <div className="register">
       <div className="container">
@@ -23,7 +26,7 @@ const Register = () => {
         <input onChange={handleChange} name="email" type="email" placeholder="Email" />
         <input onChange={handleChange} name="password" type="password" placeholder="Password" />
         <input onChange={handleChange} name="repassword" type="password" placeholder="Repassword" />
-        <button onClick={() => handleClick()}>Register</button>
+        <button disabled={registerMutation.isLoading} onClick={() => handleClick()}>{registerMutation.isLoading ? <Loader /> :  "Register"}</button>
         {error && <p className="err">error</p>}
         {currentUser && <Navigate to="/" replace={true} />}
 

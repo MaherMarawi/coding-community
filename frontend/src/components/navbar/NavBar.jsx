@@ -28,32 +28,27 @@ const NavBar = () => {
           <span>coding community</span>
         </Link>
         {
-          
-            darkMode
+
+          darkMode
             ?
             <div className="darkMode"><WbSunnyOutlinedIcon onClick={toggle} /></div>
             :
             <div className="darkMode"><DarkModeOutlinedIcon onClick={toggle} /></div>
-          
+
         }
         <div className="search">
           <SearchOutlinedIcon />
           <input placeholder="Search..."></input>
         </div>
         <div className="user">
-        {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
-        {currentUser && <button onClick={() => logout()}>logout</button>}
+          {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
+          {currentUser &&
+            <div>
+              {currentUser?.role == "admin" ? <div className="admin-sign">admin</div> : ""}
+              
+              <button onClick={() => logout()}>logout</button>
+            </div>}
           <span>{currentUser?.username}</span>
-        </div>
-      </div>
-      <div className="right">
-        <Person2OutlinedIcon />
-        <EmailOutlinedIcon />
-        <FmdBadOutlinedIcon />
-        <div className="user">
-          {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
-          {/* {currentUser?.username ? currentUser.username : <button><Link to="/auth/login">login</Link></button>}
-          <span>{currentUser?.name}</span> */}
         </div>
       </div>
     </div>

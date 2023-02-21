@@ -8,12 +8,12 @@ export const AuthContextProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
     const [error, setError] = useState("")
-    const login = (cred) => {
-        loginMutation.mutate(cred)
-    }
-    const register = (cred) => {
-        registerMutation.mutate(cred)
-    }
+    // const login = ( cred ) => {
+    //     loginMutation.mutate(cred)
+    // }
+    // const register = (cred) => {
+    //     registerMutation.mutate(cred)
+    // }
     const logout = () => {
         logoutMutation.mutate()
     }
@@ -64,7 +64,7 @@ export const AuthContextProvider = ({ children }) => {
     // }, [currentUser]);
 
     return (
-        <AuthContext.Provider value={{ currentUser, error, login, register, logout }}>
+        <AuthContext.Provider value={{ currentUser, error, loginMutation, registerMutation, logout }}>
             {children}
         </AuthContext.Provider>
     )

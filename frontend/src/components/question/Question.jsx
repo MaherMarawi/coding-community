@@ -1,17 +1,15 @@
-import "./post.scss"
+import "./question.scss"
 import { useContext, useState } from "react"
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import Comments from "../comments/Comments"
 import CodeBlock from "../microcomponents/codeblock/CodeBlock";
 import Time from "../microcomponents/time/Time"
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import DeleteQuestion from "./DeleteQuestion";
+import DeleteQuestion from "./deletequestion/DeleteQuestion";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlinedOutlinedIcon from '@mui/icons-material/StarOutlined';
-import moment from 'moment';
 import { AuthContext } from "../../context/authContext";
-function Post({ post }) {
+
+function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
   const [commentOpen, setCommentOpen] = useState()
   const [liked, setLiked] = useState()
@@ -20,22 +18,22 @@ function Post({ post }) {
     else setCommentOpen(id)
   }
   return (
-    <div className="post">
+    <div className="question">
       <div className="container">
         <div className="title">
-          <span>{post.user_name ? post.user_name : "unknown"}</span>
+          <span>{question.user_name ? question.user_name : "unknown"}</span>
           <label>
-            <Time time={post.createdAt} />
+            <Time time={question.createdAt} />
           </label>
         </div>
-        <span>{post.title}</span>
+        <span>{question.title}</span>
         <div className="question">
           <div className="content">
-            <p>{post.description}</p>
-            {post.userCode
+            <p>{question.description}</p>
+            {question.userCode
               ?
               <CodeBlock >
-                {post.userCode}
+                {question.userCode}
               </CodeBlock>
               :
               ""
@@ -46,28 +44,28 @@ function Post({ post }) {
             <div className="items">
               <div className="item">
                 {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
-                {post.rate?.length}
+                {question.rate?.length}
               </div>
-              <div className="item" onClick={() => handleClick(post._id)}>
+              <div className="item" onClick={() => handleClick(question._id)}>
                 <TextsmsOutlinedIcon className="icons" />
-                {post.comments_count}
+                {question.comments_count}
               </div>
             </div>
             {currentUser?.role && currentUser.role == "admin" 
             ? 
             <div className="item delete-question-btn">
-              <DeleteQuestion id={post._id} />
+              <DeleteQuestion id={question._id} />
             </div>
             : 
             ""  
             }
             
           </div>
-          {commentOpen == post._id ? <Comments question={post} /> : ""}
+          {commentOpen == question._id ? <Comments question={question} /> : ""}
         </div>
       </div>
     </div>
   )
 }
 
-export default Post
+export default Question

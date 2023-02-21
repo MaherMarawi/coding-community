@@ -1,4 +1,4 @@
-const url = "http://localhost:5000/api";
+const url = "https://coding-community-backend.onrender.com/api";
 // "https://coding-community-backend.onrender.com/api"
 
 export default url

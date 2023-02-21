@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import Loader from "../../components/microcomponents/loader/Loader";
 import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 
 const Login = () => {
-  const { login, currentUser, error } = useContext(AuthContext);
+  const { loginMutation, currentUser, error } = useContext(AuthContext);
   const [cred, setCred] = useState()
 
   const handleLogin = () => {
-    login(cred);
+    loginMutation.mutate(cred)
   };
 
   const handleChange = (e) => {
@@ -24,7 +25,7 @@ const Login = () => {
         </Link>
         <input type="text" onChange={handleChange} placeholder="Email" name="email" />
         <input type="password" onChange={handleChange} placeholder="Password" name="password" />
-        <button onClick={() => handleLogin()}>Login</button>
+        <button disabled={loginMutation.isLoading} onClick={() => handleLogin()}>{loginMutation.isLoading ? <Loader /> : "Login"}</button>
         {error && <p className="err">{error}</p>}
         {currentUser && <Navigate to="/" replace={true} />}
       </div>
