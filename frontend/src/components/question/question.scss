@@ -3,7 +3,7 @@
 .question {
     @include themify($themes) {
         width: 100%;
-
+        // line-height: 15px;
         .container {
             padding: 5px 20px;
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -35,7 +35,7 @@
 
                 span {
                     color: themed("textColorSoft");
-                    font-size: 12px;
+                    font-size: 10px;
                 }
 
                 label {

@@ -1,21 +1,28 @@
 @import "../../../style.scss";
 
-.code-block {
+.code-block-container {
     @include themify($themes) {
         margin: 5px 0;
         border-radius: 5px;
-        box-sizing: border-box !important;
+        // box-sizing: border-box !important;
         max-height: 300px;
         overflow-y: scroll;
         
-        font-size: 12px;
-        background-color: themed("bgSoft") !important;
+        .code-block {
+            // max-width: 600px;
+            font-size: 12px !important;
+            background-color: themed("bgSoft") !important;
+            color: themed("textColor") !important;
+            
+        }
+
         &::-webkit-scrollbar {
             width: 8px;
         }
 
         @include mobile {
             width: 310px;
+
             &::-webkit-scrollbar {
                 width: 3px;
             }
