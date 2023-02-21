@@ -33,7 +33,10 @@ const userSchema = new Schema({
     },
     accounts: {
         type: Array
-    }
+    },
+    role: {
+        type: String
+    },
 
 }, { timestamps: true })
 
