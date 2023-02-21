@@ -1,14 +1,19 @@
 @import "../../style.scss";
-.loading{
-    text-align: center;
-}
-.posts {
 
+
+
+.posts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0px;
     @include themify($themes) {
 
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
+        .loading {
+            text-align: center;
+        }
 
         @include tablet {
             gap: 20px;

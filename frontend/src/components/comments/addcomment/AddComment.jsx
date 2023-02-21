@@ -29,11 +29,13 @@ const AddComment = ({ question }) => {
     const handleChange = (e) => {
         setNewComment({ ...newComment, [e.target.name]: e.target.value })
     }
-    const handleClick = (question) => {
+    const handleClick = () => {
         const domiComment = newComment
-        if (currentUser) domiComment.user_id = currentUser.id
+        if (currentUser) {
+            domiComment.user_name = currentUser.username
+            domiComment.user_id = currentUser.id
+        }
         domiComment.question_id = question._id
-        if(currentUser.name) domiComment.user_name = currentUser.name
         setNewComment(domiComment)
         addCommentMutation.mutate(newComment)
     }

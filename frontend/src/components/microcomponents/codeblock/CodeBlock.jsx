@@ -10,9 +10,12 @@ const CodeBlock = ({ children }) => {
   const darkMode = useContext(DarkModeContext)
 
   return (
-    <SyntaxHighlighter language="javascript" className="code-block" showLineNumbers="true" wrapLongLines={true} style={prism}>
+    <div className="code-block">
+
+    <SyntaxHighlighter language="javascript"  showLineNumbers="true" wrapLongLines={true} style={docco}>
       {children}
     </SyntaxHighlighter>
+    </div>
   );
 };
 

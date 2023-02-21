@@ -2,24 +2,24 @@
 
 .post {
     @include themify($themes) {
-        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        border-radius: 10px;
-        background-color: themed("bg");
-        color: themed("textColor");
-
-
+        width: 100%;
         .container {
             padding: 5px 20px;
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 10px;
+            background-color: themed("bg");
+            color: themed("textColor");
+            
+            display: flex;
+            // justify-content: center;
+            // align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            box-sizing: border-box;
 
-            hr {
-                margin: 0px 0px;
-                // margin-top: 20px;
-                background-color: themed("border");
-                border: none;
-                height: 0.5px;
-            }
+
 
             span {
                 font-size: 16px;
@@ -48,10 +48,21 @@
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
+                box-sizing: border-box;
                 gap: 10px;
 
+                hr {
+                    margin: 10px 0px;
+                    background-color: themed("border");
+                    border: none;
+                    height: 0.5px;
+                }
+
                 .content {
-                    font-size: 12px;
+                    p{
+
+                        font-size: 13px;
+                    }
                 }
 
                 span {
