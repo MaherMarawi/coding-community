@@ -38,15 +38,24 @@
 
                 span {
                     color: themed("textColorSoft");
+                    a{
+                        text-decoration: none !important;
+                    }
                 }
+                // .title{
+                //     // text-decoration: none;
+                //     a{
+                //         text-decoration: none !important;
+                //     }
+                // }
 
-                .user {
+                .question {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                     margin: 20px 0px;
 
-                    .userInfo {
+                    .questionInfo {
                         display: flex;
                         align-items: center;
                         gap: 20px;
@@ -70,15 +79,15 @@
                             }
                         }
 
-                        .online {
-                            width: 10px;
-                            height: 10px;
-                            background-color: limegreen;
-                            border-radius: 50%;
-                            position: absolute;
-                            top: 0;
-                            left: 20px;
-                        }
+                        // .online {
+                        //     width: 10px;
+                        //     height: 10px;
+                        //     background-color: limegreen;
+                        //     border-radius: 50%;
+                        //     position: absolute;
+                        //     top: 0;
+                        //     left: 20px;
+                        // }
 
                         span {
                             font-weight: 500;
@@ -86,25 +95,29 @@
 
                     }
 
-                    .buttons {
+                    .result {
                         display: flex;
                         align-items: center;
                         gap: 10px;
 
-                        button {
-                            border: none;
-                            color: themed("textColor");
-                            cursor: pointer;
-                            padding: 5px;
+                        // button {
+                        //     border: none;
+                        //     color: themed("textColor");
+                        //     cursor: pointer;
+                        //     padding: 5px;
+                        // }
+
+                        .solved {
+                            background-color: themed("unlogo");
+                            color: themed("logo");
                         }
 
-                        :first-child {
-                            background-color: blue;
+                        .not-solved {
+                            color: themed("textColorSoft");
                         }
-
-                        :last-child {
-                            background-color: red;
-                        }
+                    }
+                    .time-solved{
+                        font-size: 10px;
                     }
                 }
             }

@@ -109,43 +109,46 @@
             gap: 20px;
             align-items: center;
 
-            @include mobile {
-                display: none;
-            }
-
-            button {
-                border: none;
-                background-color: #5271ff;
-                color: white;
-                padding: 5px 10px;
-                cursor: pointer;
-                border-radius: 3px;
-
-                // width: 15%;
-                a {
-                    text-decoration: none;
-                    color: whitesmoke;
-                }
-            }
-
             .user {
                 display: flex;
-                gap: 10px;
+                flex-direction: row-reverse;
+                gap: 5px;
                 align-items: center;
-
-                @include tablet {
-                    display: none;
-                }
-
-                img {
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 50%;
-                    object-fit: cover;
+                position: relative;
+                @include mobile {
+                    flex-direction: column-reverse;
+                    gap: 0px;
                 }
 
                 span {
                     font-weight: bold;
+                    color: themed("textColorSoft");
+                }
+
+                button {
+                    border: none;
+                    background-color: #5271ff;
+                    color: white;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    border-radius: 3px;
+                }
+
+                .login-button {
+                    a {
+                        text-decoration: none;
+                        color: whitesmoke;
+                    }
+
+                    font-size: 16px;
+                }
+
+                .admin-sign {
+                    font-size: 8px;
+                    position: absolute;
+                    left: 1px;
+                    color: themed("unlogo");
+                    top: -5px;
                 }
             }
         }

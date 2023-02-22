@@ -18,19 +18,19 @@ const LeftBar = () => {
             <span>{currentUser?.name}</span>
           </div>
           <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
+            {/* <img src={image} /> */}
+            <span>Contact</span>
           </div>
           <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
+            {/* <img src={image} /> */}
+            <span>About us</span>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <button onClick={() => logout()}>logout</button>
-          </div>
+          </div> */}
         </div>
         <hr />
-        <div className="menu">
+        {/* <div className="menu">
           <span>Shortcuts</span>
           <div className="item">
             <img src={image} />
@@ -65,7 +65,7 @@ const LeftBar = () => {
             <img src={image} />
             <span>Jhon Doe</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

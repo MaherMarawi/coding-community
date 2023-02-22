@@ -27,7 +27,7 @@ const Register = () => {
         <input onChange={handleChange} name="password" type="password" placeholder="Password" />
         <input onChange={handleChange} name="repassword" type="password" placeholder="Repassword" />
         <button disabled={registerMutation.isLoading} onClick={() => handleClick()}>{registerMutation.isLoading ? <Loader /> :  "Register"}</button>
-        {error && <p className="err">error</p>}
+        {error && <p className="err">{error}</p>}
         {currentUser && <Navigate to="/" replace={true} />}
 
       </div>

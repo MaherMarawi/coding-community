@@ -8,22 +8,14 @@ export const AuthContextProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
     const [error, setError] = useState("")
-    // const login = ( cred ) => {
-    //     loginMutation.mutate(cred)
-    // }
-    // const register = (cred) => {
-    //     registerMutation.mutate(cred)
-    // }
-    const logout = () => {
-        logoutMutation.mutate()
-    }
+    
     const loginMutation = useMutation({
         mutationFn: (cred) => authLogin(cred),
         onSuccess: data => {
             dataSet(data)
         },
         onError: err => {
-            errorSet(err)
+            errorSet(err.response.data.errors)
         }
     })
     const registerMutation = useMutation({
@@ -32,7 +24,15 @@ export const AuthContextProvider = ({ children }) => {
             dataSet(data)
         },
         onError: err => {
-            errorSet(err)
+            errorSet(err.response.data.errors)
+        }
+    })
+    const logoutMutation = useMutation({
+        mutationFn: () => authLogout(),
+        onSuccess: () => {
+            setCurrentUser()
+            localStorage.removeItem("token")
+            localStorage.removeItem("user")
         }
     })
     const dataSet = (data) => {
@@ -43,28 +43,15 @@ export const AuthContextProvider = ({ children }) => {
     }
     const errorSet = (err) => {
         let er = ""
-        if (err.response.data.errors.email) er = setError(err.response.data.errors.email)
-        else setError(err.response.data.errors.password)
+        if (err.email) er = setError(err.email)
+        else setError(err.password)
         setTimeout(() => {
             setError("")
         }, 3000);
     }
-    const logoutMutation = useMutation({
-        mutationFn: () => authLogout(),
-        onSuccess: () => {
-            setCurrentUser()
-            localStorage.removeItem("token")
-            localStorage.removeItem("user")
-        }
-    })
-
-    // useEffect(() => {
-    //     // localStorage.setItem("user", JSON.stringify(currentUser))
-    //     console.log(localStorage.getItem("user"))
-    // }, [currentUser]);
-
+    
     return (
-        <AuthContext.Provider value={{ currentUser, error, loginMutation, registerMutation, logout }}>
+        <AuthContext.Provider value={{ currentUser, error, loginMutation, registerMutation, logoutMutation }}>
             {children}
         </AuthContext.Provider>
     )

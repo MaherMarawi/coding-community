@@ -18,7 +18,7 @@ const NavBar = () => {
   const queryClient = useQueryClient()
   const { darkMode, toggle } = useContext(DarkModeContext)
 
-  const { currentUser, logout } = useContext(AuthContext)
+  const { currentUser, logoutMutation } = useContext(AuthContext)
   // const loadQuestions = queryClient.getQueryState(["questions"]).status
 
   return (
@@ -40,13 +40,16 @@ const NavBar = () => {
           <SearchOutlinedIcon />
           <input placeholder="Search..."></input>
         </div>
+      </div>
+      <div className="right">
+
         <div className="user">
           {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
           {currentUser &&
             <div>
               {currentUser?.role == "admin" ? <div className="admin-sign">admin</div> : ""}
-              
-              <button onClick={() => logout()}>logout</button>
+
+              <button disabled={logoutMutation.isLoading} onClick={() => logoutMutation.mutate()}>{logoutMutation.isLoading ? <Loader /> : "logout"}</button>
             </div>}
           <span>{currentUser?.username}</span>
         </div>
