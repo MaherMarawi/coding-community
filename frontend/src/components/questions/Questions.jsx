@@ -1,5 +1,5 @@
 import "./questions.scss"
-import Question from "../question/Question"
+import Question from "../question/question/Question"
 import { getQuestions } from "../../api/questionsApi";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../microcomponents/loader/Loader";

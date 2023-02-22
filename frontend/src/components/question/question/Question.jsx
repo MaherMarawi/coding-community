@@ -1,13 +1,13 @@
 import "./question.scss"
 import { useContext, useState } from "react"
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
-import Comments from "../comments/Comments"
-import CodeBlock from "../microcomponents/codeblock/CodeBlock";
-import Time from "../microcomponents/time/Time"
-import DeleteQuestion from "./deletequestion/DeleteQuestion";
+import Comments from "../../comments/Comments"
+import CodeBlock from "../../microcomponents/codeblock/CodeBlock";
+import Time from "../../microcomponents/time/Time"
+import DeleteQuestion from "../deletequestion/DeleteQuestion";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarOutlinedOutlinedIcon from '@mui/icons-material/StarOutlined';
-import { AuthContext } from "../../context/authContext";
+import { AuthContext } from "../../../context/authContext";
 
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
