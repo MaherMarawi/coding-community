@@ -8,18 +8,20 @@ import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AuthContext } from "../../context/authContext";
 import Loader from "../microcomponents/loader/Loader";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-
+import { useQueryClient } from "@tanstack/react-query";
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 
 const NavBar = () => {
 
+  const queryClient = useQueryClient()
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
+  console.log(queryClient.getQueryData(["questions"])) 
 
   const toggleMenuMobile = () => {
     setMenuMobilePosition(menuMobilePosition === -300 ? 70 : -300)
   }
-
   return (
     <div className="navbar">
       <div className="left">

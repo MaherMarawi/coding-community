@@ -4,6 +4,8 @@ import { AuthContext } from "../../../context/authContext"
 import { addQuestion } from "../../../api/questionsApi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Loader from "../../microcomponents/loader/Loader";
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 
 const AddQuestion = () => {
 
@@ -30,7 +32,7 @@ const AddQuestion = () => {
     }
     const handleClick = () => {
         const domiQuestion = newQuestion
-        if(currentUser) {
+        if (currentUser) {
             domiQuestion.user_id = currentUser.id
             domiQuestion.user_name = currentUser.username
         }
@@ -43,7 +45,9 @@ const AddQuestion = () => {
             <div className="container">
                 <div className="title-button">
                     <input value={newQuestion?.title} onChange={handleChange} name="title" placeholder="Title" />
-                    <button onClick={() => handleClick()} disabled={addQuestionMutation.isLoading} >{addQuestionMutation.isLoading ? <Loader /> : "Ask"}</button>
+                    <div onClick={() => handleClick()} disabled={addQuestionMutation.isLoading} >{addQuestionMutation.isLoading ? <Loader /> : <Tooltip describeChild title="Does not add if it already exists.">
+                        <Button>Add</Button>
+                    </Tooltip>}</div>
                 </div>
                 <div className="desc-code">
                     <input value={newQuestion?.description} onChange={handleChange} name="description" placeholder="Description" />

@@ -17,7 +17,7 @@
             background-color: themed("bg");
             color: themed("textColor");
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             flex-direction: column;
             gap: 35px;
             margin: 20px 0px;
@@ -50,9 +50,9 @@
                 color: themed("textColor");
             }
             .err {
-                background-color: themed("bgSoft");
+                background-color: #D84646;
                 padding: 10px;
-                color: crimson;
+                color: whitesmoke;
                 text-align: center;
                 font-size: 10px;
             }

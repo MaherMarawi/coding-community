@@ -14,19 +14,19 @@ const handelErrors = (err) => {
         return errors
     }
     if (err.code == 11000) {
-        errors.email = 'that email is already registerd'
+        errors.email = 'That email is already registerd'
         return errors
     }
     if (err.message == 'email is incorrect') {
-        errors.email = 'this email is not registerd'
+        errors.email = 'This email is not registerd'
         return errors
     }
     if (err.message == 'password is incorrect') {
-        errors.password = 'password is incorrect'
+        errors.password = 'Password is incorrect'
         return errors
     }
     if (err.message == 'please enter your email') {
-        errors.email = 'please enter your email'
+        errors.email = 'Please enter your email'
         return errors
     }
 }

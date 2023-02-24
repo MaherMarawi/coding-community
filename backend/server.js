@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express()
-const path = require('path')
+// const path = require('path')
 const cookieParser = require('cookie-parser')
 const feedRouter = require('./config/questionRouter')
 const userRouter = require('./config/userRouter')

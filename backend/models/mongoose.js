@@ -2,11 +2,9 @@
 
 const mongoose = require('mongoose')
 
-const Db_URL = process.env.Db_URL
-const userName = process.env.userName
-const password = process.env.pass
+const uri = process.env.uri
 
-mongoose.connect(Db_URL, {
+mongoose.connect(uri, {
     useNewUrlParser: true,
     UseCreateIndexes: true,
     useUnifiedTopology: true

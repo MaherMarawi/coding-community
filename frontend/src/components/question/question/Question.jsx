@@ -1,7 +1,7 @@
 import "./question.scss"
 import { useContext, useState } from "react"
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
-import Comments from "../../comments/Comments"
+import Comments from "../../comments/comment/Comments"
 import CodeBlock from "../../microcomponents/codeblock/CodeBlock";
 import Time from "../../microcomponents/time/Time"
 import DeleteQuestion from "../deletequestion/DeleteQuestion";
@@ -12,7 +12,7 @@ import { AuthContext } from "../../../context/authContext";
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
   const [commentOpen, setCommentOpen] = useState()
-  const [liked, setLiked] = useState()
+  const [rated, setRated] = useState()
   const handleClick = (id) => {
     if (commentOpen == id) setCommentOpen("")
     else setCommentOpen(id)
@@ -30,20 +30,13 @@ function Question({ question }) {
         <div className="question">
           <div className="content">
             <p>{question.description}</p>
-            {question.userCode
-              ?
-              <CodeBlock >
-                {question.userCode}
-              </CodeBlock>
-              :
-              ""
-            }
+            {question?.userCode && <CodeBlock >{question.userCode}</CodeBlock>}
           </div>
           <hr />
           <div className="info">
             <div className="items">
               <div className="item">
-                {liked ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
+                {rated ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
                 {question.rate?.length}
               </div>
               <div className="item" onClick={() => handleClick(question._id)}>
@@ -51,17 +44,14 @@ function Question({ question }) {
                 {question.comments_count}
               </div>
             </div>
-            {currentUser?.role && currentUser.role == "admin" 
-            ? 
-            <div className="item delete-question-btn">
+            {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id == question.user_id)
+              ?
               <DeleteQuestion id={question._id} />
-            </div>
-            : 
-            ""  
+              :
+              ""
             }
-            
           </div>
-          {commentOpen == question._id ? <Comments question={question} /> : ""}
+          {commentOpen === question._id ? <Comments question={question} /> : ""}
         </div>
       </div>
     </div>

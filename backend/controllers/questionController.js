@@ -47,7 +47,6 @@ const ChangeQuestion = (req, res) => {
         Question.findByIdAndUpdate(req.params.id, req.body, {useFindAndModify:false})
             .then(result => res.send(result))
             .catch(err => res.send(err))
-    
 }
 
 module.exports = {

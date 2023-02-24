@@ -35,19 +35,19 @@ const RightBar = () => {
           <span>Recent solved questions</span>
           <div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <p><span>nodejs</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
           </div><div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <p><span>react</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
           </div><div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <p><span>java</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
@@ -57,17 +57,17 @@ const RightBar = () => {
           <span>Active users</span>
           <div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div><div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div><div className="question">
             <div className="questionInfo">
-              <img src={image} />
+              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div>

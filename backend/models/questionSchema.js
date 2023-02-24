@@ -1,7 +1,9 @@
 
 
 const mongoose = require('mongoose');
+
 const User = require('./userSchema');
+
 const Schema = mongoose.Schema;
 
 const questionSchema = new Schema({
@@ -28,6 +30,9 @@ const questionSchema = new Schema({
         ref: User
     },
     userCode: {
+        type: String
+    },
+    comment_id: {
         type: String
     },
 }, { timestamps: true })
