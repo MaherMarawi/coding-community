@@ -14,7 +14,7 @@ const RightBar = () => {
               <span>jsx syntax</span>
             </div>
             <div className="result">
-              <span className="not-solved">not solved</span>
+              <span className="not-solved">rate 113</span>
               {/* <button>follow</button>
               <button>dismis</button> */}
             </div>
@@ -25,7 +25,7 @@ const RightBar = () => {
               <span>textarea resize</span>
             </div>
             <div className="result">
-              <span className="solved">solved</span>
+              <span className="solved">rate 9</span>
               {/* <button>follow</button>
               <button>dismis</button> */}
             </div>
