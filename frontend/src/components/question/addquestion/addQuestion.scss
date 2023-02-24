@@ -27,6 +27,7 @@
           flex: 5;
           padding: 10px;
           border: none;
+          border: 1px solid themed("border");
           width: 65%;
           background-color: themed("bgSoft");
           color: themed("textColor");
@@ -42,7 +43,7 @@
           border-radius: 3px;
           flex: 5;
           padding: 10px;
-          border: none;
+          border: 1px solid themed("border");
           background-color: themed("bgSoft");
           color: themed("textColor");
           // width: 100%;
@@ -52,8 +53,8 @@
           padding: 10px;
           height: 55px;
           overflow-y: scroll;
+          border: 1px solid themed("border");
           resize: none;
-          border: none;
           background-color: themed("bgSoft");
           color: themed("textColor");
 
