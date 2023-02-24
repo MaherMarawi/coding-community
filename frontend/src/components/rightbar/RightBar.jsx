@@ -1,53 +1,37 @@
 import "./rightBar.scss"
 import image from "../../assets/7.png"
 import { Link } from "react-router-dom"
+import RatedQuestions from "./ratedquestions/RatedQuestions"
+import { useQuery } from "@tanstack/react-query"
+import { getQuestions } from "../../api/questionsApi"
 
 const RightBar = () => {
+
+  const questions = useQuery({
+    queryKey: ["questions"],
+    staleTime: 10 * (60 * 1000), // 10 mins 
+    cacheTime: 15 * (60 * 1000), // 15 mins
+    queryFn: () => getQuestions(),
+  })
+console.log(questions.data)
   return (
     <div className="rightbar">
       <div className="container">
-        <div className="item">
-            <span className="title">Most rated questions</span>
-          <div className="question">
-            <div className="questionInfo">
-              {/* <img src={image} /> */}
-              <span>jsx syntax</span>
-            </div>
-            <div className="result">
-              <span className="not-solved">rate 113</span>
-              {/* <button>follow</button>
-              <button>dismis</button> */}
-            </div>
-          </div>
-          <div className="question">
-            <div className="questionInfo">
-              {/* <img src={image} /> */}
-              <span>textarea resize</span>
-            </div>
-            <div className="result">
-              <span className="solved">rate 9</span>
-              {/* <button>follow</button>
-              <button>dismis</button> */}
-            </div>
-          </div>
-        </div>
+          <RatedQuestions questions={questions.data} />
         <div className="item">
           <span>Recent solved questions</span>
           <div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <p><span>nodejs</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
           </div><div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <p><span>react</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
           </div><div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <p><span>java</span> has been solved</p>
             </div>
             <span className="time-solved">1 min ago</span>
@@ -57,17 +41,14 @@ const RightBar = () => {
           <span>Active users</span>
           <div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div><div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div><div className="question">
             <div className="questionInfo">
-              {/* <img src={image} /> */}
               <span>Jhon Doe</span>
             </div>
           </div>

@@ -35,6 +35,10 @@ const questionSchema = new Schema({
     comment_id: {
         type: String
     },
+    rate: {
+        type: Array,
+        default: []
+    }
 }, { timestamps: true })
 
 const Question = mongoose.model('Question', questionSchema)

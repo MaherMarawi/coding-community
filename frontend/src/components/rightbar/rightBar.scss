@@ -36,18 +36,11 @@
                 margin-bottom: 20px;
                 background-color: themed("bg");
 
-                span {
+                .title {
                     color: themed("textColorSoft");
-                    a{
-                        text-decoration: none !important;
-                    }
+                    font-weight: 550;
+
                 }
-                // .title{
-                //     // text-decoration: none;
-                //     a{
-                //         text-decoration: none !important;
-                //     }
-                // }
 
                 .question {
                     display: flex;
@@ -68,30 +61,21 @@
                             object-fit: cover;
                             border-radius: 50%;
                         }
-
+                        span {
+                            font-size: 13px;
+                            color: themed("textColor");
+                        }
                         p {
                             color: themed("textColorSoft");
                             font-size: 10px;
 
                             span {
-                                font-size: 15px;
+                                font-size: 13px;
                                 color: themed("textColor");
                             }
                         }
 
-                        // .online {
-                        //     width: 10px;
-                        //     height: 10px;
-                        //     background-color: limegreen;
-                        //     border-radius: 50%;
-                        //     position: absolute;
-                        //     top: 0;
-                        //     left: 20px;
-                        // }
-
-                        span {
-                            font-weight: 500;
-                        }
+                        
 
                     }
 
@@ -100,23 +84,13 @@
                         align-items: center;
                         gap: 10px;
 
-                        // button {
-                        //     border: none;
-                        //     color: themed("textColor");
-                        //     cursor: pointer;
-                        //     padding: 5px;
-                        // }
 
-                        .solved {
-                            background-color: themed("unlogo");
-                            color: themed("logo");
-                        }
-
-                        .not-solved {
+                        .rate {
                             color: themed("textColorSoft");
                         }
                     }
-                    .time-solved{
+
+                    .time-solved {
                         font-size: 10px;
                     }
                 }

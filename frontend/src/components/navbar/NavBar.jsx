@@ -17,7 +17,7 @@ const NavBar = () => {
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
-  console.log(queryClient.getQueryData(["questions"])) 
+  // console.log(queryClient.getQueryData(["questions"])) 
 
   const toggleMenuMobile = () => {
     setMenuMobilePosition(menuMobilePosition === -300 ? 70 : -300)

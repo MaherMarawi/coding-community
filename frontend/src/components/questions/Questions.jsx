@@ -15,6 +15,7 @@ export default function Questions() {
     cacheTime: 15 * (60 * 1000), // 15 mins
     queryFn: () => getQuestions(),
   })
+  
   if (questions.isLoading)
     return <Box className="linear-loader">
       <LinearProgress />

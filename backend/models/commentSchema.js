@@ -24,6 +24,10 @@ const commentSchema = new Schema({
     },
     userCode: {
         type: String
+    },
+    rate: {
+        type: Array,
+        default: []
     }
 }, { timestamps: true })
 const Comment = mongoose.model('Comment', commentSchema)
