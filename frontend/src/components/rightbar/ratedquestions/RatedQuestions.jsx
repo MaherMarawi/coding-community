@@ -3,11 +3,7 @@ import { useEffect, useState } from "react";
 import "./ratedQuestions.scss"
 
 const RatedQuestions = ({ questions }) => {
-
-    const clientQuery = useQueryClient();
-
     let [values, setValues] = useState([])
-
     const mostRatedQuestions = (arr) => {
         return arr.sort(
             (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1

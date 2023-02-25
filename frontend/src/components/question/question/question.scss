@@ -60,12 +60,13 @@
                 }
 
                 .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
                     p {
-
                         font-size: 13px;
                     }
                 }
-
                 span {
                     font-size: 12px;
                 }

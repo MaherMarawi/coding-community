@@ -11,7 +11,6 @@ const AddComment = ({ question }) => {
 
     const { currentUser } = useContext(AuthContext)
     
-    // some code
     const [newComment, setNewComment] = useState({
         comment: "",
         userCode: ""
@@ -20,6 +19,7 @@ const AddComment = ({ question }) => {
         mutationFn: (comment) => addComment(comment.question_id, comment),
         onSuccess: data => {
             queryClient.setQueryData(["comments", question._id], old => [data, ...old])
+            question.comments_count = question.comments_count + 1;
             setNewComment({
                 comment: "",
                 userCode: ""

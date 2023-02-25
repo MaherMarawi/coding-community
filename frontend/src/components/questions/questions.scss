@@ -7,6 +7,9 @@
     width: 100%;
     left: 0;
     z-index: 9;
+    @include mobile{
+        top: 37px;
+    }
 }
 .questions {
     display: flex;

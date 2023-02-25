@@ -15,5 +15,5 @@ export const deleteQuestion = async (id) => {
     return await makeRequest.delete(`/deleteQuestion/${id}`).then(res => res.data)
 } 
 export const updateQuestion = async (id, question) => {
-    return await makeRequest.update(`/updateQuestion/${id}`, question).then(res => res.data)
+    return await makeRequest.put(`/updateQuestion/${id}`, question).then(res => res.data)
 } 

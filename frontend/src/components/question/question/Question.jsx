@@ -5,14 +5,12 @@ import Comments from "../../comments/comment/Comments"
 import CodeBlock from "../../microcomponents/codeblock/CodeBlock";
 import Time from "../../microcomponents/time/Time"
 import DeleteQuestion from "../deletequestion/DeleteQuestion";
-import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
-import StarOutlinedOutlinedIcon from '@mui/icons-material/StarOutlined';
 import { AuthContext } from "../../../context/authContext";
+import RateQuestion from "../ratequestion/RateQuestion";
 
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
   const [commentOpen, setCommentOpen] = useState()
-  const [rated, setRated] = useState()
   const handleClick = (id) => {
     if (commentOpen == id) setCommentOpen("")
     else setCommentOpen(id)
@@ -35,10 +33,7 @@ function Question({ question }) {
           <hr />
           <div className="info">
             <div className="items">
-              <div className="item">
-                {rated ? <StarOutlinedIcon className="icons" /> : <StarOutlinedOutlinedIcon className="icons" />}
-                {question.rate?.length}
-              </div>
+              <RateQuestion question={question} />
               <div className="item" onClick={() => handleClick(question._id)}>
                 <TextsmsOutlinedIcon className="icons" />
                 {question.comments_count}

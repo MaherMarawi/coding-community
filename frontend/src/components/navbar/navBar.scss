@@ -16,6 +16,9 @@
         color: themed("textColor");
         z-index: 10;
         box-sizing: border-box;
+        @include mobile {
+            height: 40px;
+        }
 
         .left {
             display: flex;
@@ -29,9 +32,10 @@
                 font-weight: bold;
                 font-size: 20px;
                 color: themed("logo");
-
+                letter-spacing: -2px;
                 @include mobile {
-                    font-size: 16px;
+                    font-size: 18px;
+                    letter-spacing: -2px;
                 }
             }
 
@@ -169,7 +173,7 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 5px 0 0 5px;
             gap: 20px;
             background-color: themed("logo");
             position: absolute;

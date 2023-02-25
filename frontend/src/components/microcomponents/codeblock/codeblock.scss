@@ -4,12 +4,10 @@
     @include themify($themes) {
         margin: 5px 0;
         border-radius: 5px;
-        // box-sizing: border-box !important;
         max-height: 300px;
         overflow-y: scroll;
         
         .code-block {
-            // max-width: 600px;
             font-size: 12px !important;
             background-color: themed("bgSoft") !important;
             color: themed("textColor") !important;

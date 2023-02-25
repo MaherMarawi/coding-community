@@ -8,19 +8,16 @@ import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AuthContext } from "../../context/authContext";
 import Loader from "../microcomponents/loader/Loader";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import { useQueryClient } from "@tanstack/react-query";
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import MobileMenu from "./MobileMenu";
 
 const NavBar = () => {
 
-  const queryClient = useQueryClient()
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
-  // console.log(queryClient.getQueryData(["questions"])) 
 
   const toggleMenuMobile = () => {
-    setMenuMobilePosition(menuMobilePosition === -300 ? 70 : -300)
+    setMenuMobilePosition(menuMobilePosition === -300 ? 40 : -300)
   }
   return (
     <div className="navbar">
@@ -52,22 +49,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="mobile-menu" onClick={toggleMenuMobile}><MenuOutlinedIcon /></div>
-      <div className="navbar-items-mobile" style={{ top: menuMobilePosition }}>
-        <a onClick={toggleMenuMobile} href='#About' >Contact</a>
-        <a onClick={toggleMenuMobile} href='#Experience'>About</a>
-        <a onClick={toggleMenuMobile} href='#Projects'>Most rated questions</a>
-        <a onClick={toggleMenuMobile} href='#Education'>Recent solved questions</a>
-        <a onClick={toggleMenuMobile} href='#Contact'>Active users</a>
-        <div className="user">
-          {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
-          {currentUser &&
-            <div>
-              {currentUser?.role == "admin" ? <div className="admin-sign">admin</div> : ""}
-              <button disabled={logoutMutation.isLoading} onClick={() => logoutMutation.mutate()}>{logoutMutation.isLoading ? <Loader /> : "logout"}</button>
-            </div>}
-          <span>{currentUser?.username}</span>
-        </div>
-      </div>
+      <MobileMenu toggleMenuMobile={toggleMenuMobile} menuMobilePosition={menuMobilePosition} />
     </div>
   )
 }
