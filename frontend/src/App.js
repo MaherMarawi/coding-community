@@ -11,7 +11,7 @@ import NavBar from './components/navbar/NavBar';
 import RightBar from './components/rightbar/RightBar';
 import LeftBar from './components/leftbar/LeftBar';
 import Home from "./pages/home/Home"
-import Profile from "./pages/profile/Profile"
+import Custom from "./pages/custom/Custom"
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
@@ -64,8 +64,8 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/profile/:id",
-          element: <Profile />,
+          path: "/custom",
+          element: <Custom />,
         },
 
       ],

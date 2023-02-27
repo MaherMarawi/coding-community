@@ -46,7 +46,7 @@ const DeleteComment = (req, res) => {
 }
 
 const ChangeComment = (req, res) => {
-    Comment.findByIdAndUpdate(req.params.id, req.body, { useFindAndModify: false })
+    Comment.findByIdAndUpdate(req.params.id, req.body, {new: true})
         .then((result) => {
             res.status(200).send(result)
         })

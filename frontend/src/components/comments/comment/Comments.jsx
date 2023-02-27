@@ -10,6 +10,8 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AddComment from "../addcomment/AddComment";
 import DeleteComment from "../deletecomment/DeleteComment";
+import RateComment from "../ratecomment/RateComment";
+import SolveComment from "../solvecomment/SolveComment";
 
 function Comments({ question }) {
 
@@ -38,11 +40,11 @@ function Comments({ question }) {
             {comment?.userCode && <CodeBlock>{comment.userCode}</CodeBlock>}
             <div className="items">
               <div className="item">
-                {liked ? <ThumbUpIcon className="icons" /> : <ThumbUpOutlinedIcon className="icons" />}
-                <label>{comment.like?.length}</label>
+              <RateComment comment={comment} />
+              <SolveComment question={question} id={comment._id} />
               </div>
               <div className="item">
-                {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id == comment.user_id)
+                {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id && currentUser?.id == comment.user_id)
                   ?
                   <DeleteComment commentId={comment._id} questionId={question._id} />
                   :

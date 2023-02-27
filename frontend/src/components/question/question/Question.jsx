@@ -7,6 +7,7 @@ import Time from "../../microcomponents/time/Time"
 import DeleteQuestion from "../deletequestion/DeleteQuestion";
 import { AuthContext } from "../../../context/authContext";
 import RateQuestion from "../ratequestion/RateQuestion";
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
@@ -24,7 +25,7 @@ function Question({ question }) {
             <Time time={question.createdAt} />
           </label>
         </div>
-        <span>{question.title}</span>
+        <span>{question.title}{question.comment_id ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : ""}</span>
         <div className="question">
           <div className="content">
             <p>{question.description}</p>
@@ -39,7 +40,7 @@ function Question({ question }) {
                 {question.comments_count}
               </div>
             </div>
-            {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id == question.user_id)
+            {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id && currentUser?.id == question.user_id)
               ?
               <DeleteQuestion id={question._id} />
               :
