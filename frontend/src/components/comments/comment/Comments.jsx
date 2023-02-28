@@ -6,21 +6,18 @@ import Time from "../../microcomponents/time/Time";
 import { getComments } from "../../../api/commentsApi"
 import CodeBlock from "../../microcomponents/codeblock/CodeBlock";
 import Loader from "../../microcomponents/loader/Loader";
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AddComment from "../addcomment/AddComment";
 import DeleteComment from "../deletecomment/DeleteComment";
 import RateComment from "../ratecomment/RateComment";
 import SolveComment from "../solvecomment/SolveComment";
 
-function Comments({ question }) {
+function Comments({ question, setCommentOpen }) {
 
   const { currentUser } = useContext(AuthContext);
-  const [liked, setLiked] = useState()
+
   const comments = useQuery({
     queryKey: ["comments", question._id],
-    staleTime: 5 * (60 * 1000), // 10 mins 
-    cacheTime: 10 * (60 * 1000), // 15 mins
+    
     queryFn: () => getComments(question._id)
   })
 
@@ -41,7 +38,7 @@ function Comments({ question }) {
             <div className="items">
               <div className="item">
               <RateComment comment={comment} />
-              <SolveComment question={question} id={comment._id} />
+              <SolveComment setCommentOpen={setCommentOpen} question={question} id={comment._id} />
               </div>
               <div className="item">
                 {(currentUser?.role && currentUser.role == "admin") || (currentUser?.id && currentUser?.id == comment.user_id)

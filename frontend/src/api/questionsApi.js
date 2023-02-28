@@ -17,3 +17,6 @@ export const deleteQuestion = async (id) => {
 export const updateQuestion = async (id, question) => {
     return await makeRequest.put(`/updateQuestion/${id}`, question).then(res => res.data)
 } 
+export const rateQuestion = async (id, question) => {
+    return await makeRequest.put(`/rateQuestion/${id}`, question).then(res => res.data)
+} 

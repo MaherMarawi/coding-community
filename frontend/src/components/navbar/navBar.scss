@@ -155,67 +155,8 @@
                 }
             }
         }
-        .mobile-menu {
-            display: none;
-
-            @include mobile {
-                display: block;
-                // z-index: 100000;
-            }
-            @include tablet {
-                display: block;
-                // z-index: 100000;
-            }
-
-        }
-        .navbar-items-mobile{
-            // display: none;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            border-radius: 5px 0 0 5px;
-            gap: 20px;
-            background-color: themed("logo");
-            position: absolute;
-            top: -300px;
-            right: 0px;
-            width: 150px;
-            // color: themed("border");
-            font-weight: 600;
-            transition: .3s;
-            z-index: -1000; 
-
-            a {
-                text-decoration: none;
-                font-size: 12px;
-                cursor: pointer;
-                color: themed("border");
-            }
-            .user{
-                color: themed("border");
-                display: flex;
-                justify-content: space-between;
-                flex-direction: row-reverse;
-                gap: 5px;
-                // align-items: center;
-                position: relative;
-                .admin-sign {
-                    font-size: 8px;
-                    position: absolute;
-                    left: 0;
-                    color: themed("unlogo");
-                    top: -5px;
-                }
-                button {
-                    border: none;
-                    background-color: #5271ff;
-                    color: white;
-                    padding: 5px 10px;
-                    cursor: pointer;
-                    border-radius: 3px;
-                }
-            }
-        }
+        
+        
 
 
     }

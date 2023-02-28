@@ -47,7 +47,7 @@ function Question({ question }) {
               ""
             }
           </div>
-          {commentOpen === question._id ? <Comments question={question} /> : ""}
+          {commentOpen === question._id ? <Comments setCommentOpen={setCommentOpen} question={question} /> : ""}
         </div>
       </div>
     </div>

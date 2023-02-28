@@ -48,8 +48,6 @@ const NavBar = () => {
           <span>{currentUser?.username}</span>
         </div>
       </div>
-      <div className="mobile-menu" onClick={toggleMenuMobile}><MenuOutlinedIcon /></div>
-      <MobileMenu toggleMenuMobile={toggleMenuMobile} menuMobilePosition={menuMobilePosition} />
     </div>
   )
 }

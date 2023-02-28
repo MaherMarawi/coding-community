@@ -49,10 +49,17 @@ const ChangeQuestion = (req, res) => {
             .catch(err => res.send(err))
 }
 
+const rateQuestion = (req, res) => {
+    Question.findByIdAndUpdate(req.params.id, req.body, {new: true, timestamps: false})
+        .then(result => {res.send(result)})
+        .catch(err => res.send(err))
+}
+
 module.exports = {
     AllQuestions,
     OneQuestion,
     NewQuestion,
     DeleteQuestion,
-    ChangeQuestion
+    ChangeQuestion,
+    rateQuestion
 }

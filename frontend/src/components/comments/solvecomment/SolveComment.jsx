@@ -1,12 +1,13 @@
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { updateQuestion } from "../../../api/questionsApi"
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import "./solvecomment.scss"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/authContext";
 
-const SolveComment = ({ question, id }) => {
+const SolveComment = ({ question, id, setCommentOpen }) => {
 
+  const queryClient = useQueryClient()
   const { currentUser } = useContext(AuthContext)
   const [color, setColor] = useState()
 
@@ -15,12 +16,14 @@ const SolveComment = ({ question, id }) => {
     onSuccess: data => {
       question = data
       setColor("")
+      setCommentOpen(question._id)
     }
   })
 
   const handleClick = () => {
     setColor("green")
     question.comment_id = id
+    setCommentOpen("")
     solveCommentMutation.mutate(question)
   }
 

@@ -13,7 +13,7 @@ const DeleteQuestion = ({ id }) => {
   const deleteQuestionMutation = useMutation({
     mutationFn: id => deleteQuestion(id),
     onSuccess: data => {
-      queryClient.setQueryData(['questions'], old => old.filter((t) => t._id !== data._id))
+      queryClient.setQueriesData(['questions'], old => old.filter((t) => t._id !== data._id))
     }
   })
   const handleClick = (id) => {

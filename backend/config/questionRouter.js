@@ -18,6 +18,7 @@ router.delete('/api/deleteQuestion/:id', controller.DeleteQuestion)
 
 //put
 router.put('/api/updateQuestion/:id',  controller.ChangeQuestion)
+router.put('/api/rateQuestion/:id',  controller.rateQuestion)
 
 
 module.exports = router

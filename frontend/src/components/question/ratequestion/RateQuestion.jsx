@@ -1,7 +1,7 @@
 import "./rateQuestion.scss"
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../../context/authContext"
-import { updateQuestion } from "../../../api/questionsApi"
+import { rateQuestion } from "../../../api/questionsApi"
 import { useMutation } from "@tanstack/react-query"
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
@@ -16,7 +16,7 @@ const RateQuestion = ({ question }) => {
     }, [currentUser]);
 
     const rateQuestionMutation = useMutation({
-        mutationFn: question => updateQuestion(question._id, question)
+        mutationFn: question => rateQuestion(question._id, question)
     })
 
     const handleClick = () => {
