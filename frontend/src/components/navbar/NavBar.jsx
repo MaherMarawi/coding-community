@@ -7,8 +7,6 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AuthContext } from "../../context/authContext";
 import Loader from "../microcomponents/loader/Loader";
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import MobileMenu from "./MobileMenu";
 
 const NavBar = () => {
 

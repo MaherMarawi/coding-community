@@ -2,9 +2,15 @@ import "./custom.scss";
 import RatedQuestions from "../../components/rightbar/ratedquestions/RatedQuestions";
 import { useLocation } from "react-router-dom";
 import Question from "../../components/question/question/Question"
-const Custom = (props) => {
+import { useEffect, useState } from "react";
+
+const Custom = () => {
+
   let { state } = useLocation()
-  console.log(state)
+
+  useEffect(() => {
+  }, [state.questions]);
+
   return (
     <div className="custom">
 
