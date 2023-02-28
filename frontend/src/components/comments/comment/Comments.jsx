@@ -10,6 +10,7 @@ import AddComment from "../addcomment/AddComment";
 import DeleteComment from "../deletecomment/DeleteComment";
 import RateComment from "../ratecomment/RateComment";
 import SolveComment from "../solvecomment/SolveComment";
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 function Comments({ question, setCommentOpen }) {
 
