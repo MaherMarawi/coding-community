@@ -33,7 +33,7 @@ function Comments({ question, setCommentOpen }) {
             <label><Time time={comment.createdAt} /></label>
           </div>
           <div className="content">
-            <p>{comment.comment}</p>
+            <p>{comment.comment} {question.comment_id ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : ""}</p>
             {comment?.userCode && <CodeBlock>{comment.userCode}</CodeBlock>}
             <div className="items">
               <div className="item">

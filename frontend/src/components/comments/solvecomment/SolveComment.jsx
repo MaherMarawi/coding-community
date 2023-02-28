@@ -27,7 +27,7 @@ const SolveComment = ({ question, id, setCommentOpen }) => {
     solveCommentMutation.mutate(question)
   }
 
-  if (question.comment_id == id) return <TaskAltIcon sx={{ color: "green", width: "15px" }} />
+  if (question.comment_id == id) return ""
   return (
     <>
       {question.comment_id ? "" :
