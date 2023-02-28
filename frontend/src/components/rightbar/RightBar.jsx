@@ -14,7 +14,7 @@ const RightBar = () => {
   const [solvedQuestions, setSolvedQuestions] = useState()
   const [menuMobilePosition, setMenuMobilePosition] = useState(-180)
   const toggleMenuMobile = () => {
-    setMenuMobilePosition(menuMobilePosition === -300 ? 40 : -300)
+    setMenuMobilePosition(menuMobilePosition === -180 ? 40 : -180)
   }
   const questions = useQuery({
     queryKey: ["questions"],
