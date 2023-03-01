@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 const Custom = () => {
 
   let { state } = useLocation()
-
-  useEffect(() => {
-  }, [state.questions]);
+console.log(state)
+  // useEffect(() => {
+  // }, [state.questions]);
 
   return (
     <div className="custom">

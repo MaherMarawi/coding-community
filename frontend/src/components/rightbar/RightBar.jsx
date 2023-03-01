@@ -41,8 +41,7 @@ const RightBar = () => {
       <MobileMenu
         toggleMenuMobile={toggleMenuMobile}
         menuMobilePosition={menuMobilePosition}
-        ratedQuestions={ratedQuestions}
-        solvedQuestions={solvedQuestions}
+        questions={questions.data}
         isLoading={questions.isLoading}
       />
       <div className="rightbar">

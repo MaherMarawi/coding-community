@@ -15,6 +15,8 @@ import Custom from "./pages/custom/Custom"
 import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
+import Contact from './pages/contact/Contact';
+import About from './pages/about/About';
 function App() {
 
   // const { currentUser } = useContext(AuthContext)
@@ -66,6 +68,14 @@ function App() {
         {
           path: "/custom",
           element: <Custom />,
+        },
+        {
+          path: "/contact",
+          element: <Contact />,
+        },
+        {
+          path: "/about",
+          element: <About />,
         },
 
       ],

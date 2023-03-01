@@ -2,11 +2,12 @@ import "./leftBar.scss"
 import image from "../../assets/7.png"
 import { useContext } from "react"
 import { AuthContext } from "../../context/authContext"
+import { Link } from "react-router-dom"
 
 const LeftBar = () => {
 
 
-  const {currentUser, logout} = useContext(AuthContext)
+  const { currentUser, logout } = useContext(AuthContext)
 
 
   return (
@@ -14,58 +15,20 @@ const LeftBar = () => {
       <div className="container">
         <div className="menu">
           <div className="user">
-            {/* <img src={currentUser.profilePic && currentUser.profilePic} /> */}
             <span>{currentUser?.name}</span>
           </div>
           <div className="item">
-            {/* <img src={image} /> */}
-            <span>Contact</span>
+            <Link to="/contact" >
+              <span>Contact</span>
+            </Link>
           </div>
           <div className="item">
-            {/* <img src={image} /> */}
-            <span>About us</span>
+            <Link to="/about" >
+              <span>About</span>
+            </Link>
           </div>
-          {/* <div className="item">
-            <button onClick={() => logout()}>logout</button>
-          </div> */}
         </div>
         <hr />
-        {/* <div className="menu">
-          <span>Shortcuts</span>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div><div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div><div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div><div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-          <div className="item">
-            <img src={image} />
-            <span>Jhon Doe</span>
-          </div>
-        </div> */}
       </div>
     </div>
   )
