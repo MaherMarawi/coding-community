@@ -1,22 +1,42 @@
 import "./navBar.scss"
 import { Link } from "react-router-dom"
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import { AuthContext } from "../../context/authContext";
 import Loader from "../microcomponents/loader/Loader";
+import { SearchContext } from "../../context/searchContext";
+import { useNavigate } from 'react-router-dom'
+import SearchMobile from "./searchmobile/SearchMobile";
 
 const NavBar = () => {
 
+  const navigate = useNavigate();
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
+  const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
   const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
+  const [sv, setSv] = useState()
 
   const toggleMenuMobile = () => {
     setMenuMobilePosition(menuMobilePosition === -300 ? 40 : -300)
   }
+  const handleChange = (e) => {
+    setSv(e.target.value)
+  }
+  const handleKey = (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      handleSubmit(sv)
+      navigate(`/custom/search`);
+      setSv("")
+    }
+  }
+  const onclick = () => {
+    setIsOpen(isOpen == -90 ? 44 : -90)
+  }
+  
   return (
     <div className="navbar">
       <div className="left">
@@ -32,8 +52,9 @@ const NavBar = () => {
         }
         <div className="search">
           <SearchOutlinedIcon />
-          <input placeholder="Search..."></input>
+          <input value={sv} onChange={handleChange} onKeyUp={handleKey} placeholder="Search..."></input>
         </div>
+        <SearchOutlinedIcon onClick={() => onclick()} className="search-button" />
       </div>
       <div className="right">
         <div className="user">
@@ -46,6 +67,7 @@ const NavBar = () => {
           <span>{currentUser?.username}</span>
         </div>
       </div>
+      <SearchMobile />
     </div>
   )
 }

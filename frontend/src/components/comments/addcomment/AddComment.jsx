@@ -37,7 +37,8 @@ const AddComment = ({ question }) => {
         }
         domiComment.question_id = question._id
         setNewComment(domiComment)
-        addCommentMutation.mutate(newComment)
+        if(newComment.comment !== "") addCommentMutation.mutate(newComment)
+        else alert("please write a comment")
     }
     return (
         <div className="write">

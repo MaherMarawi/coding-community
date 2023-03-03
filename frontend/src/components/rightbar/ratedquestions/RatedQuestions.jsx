@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { DarkModeContext } from "../../../context/darkModeContext"
 import Loader from "../../microcomponents/loader/Loader"
 import { useGetQueryQuestions } from "../../microcomponents/useGetQueryQuestions"
 import LinearLoader from "../../microcomponents/linearloader/LinearLoader"

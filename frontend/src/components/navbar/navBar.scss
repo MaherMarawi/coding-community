@@ -109,7 +109,9 @@
                 padding: 5px;
                 @include mobile {
                     border: none;
+                    display: none;
                 }
+                
                 input {
                     border: none;
                     width: 500px;
@@ -125,7 +127,12 @@
                     }
                 }
             }
-
+            .search-button{
+                display: none;
+                @include mobile {
+                    display: block;
+                }
+            }
             .user {
                 display: flex;
                 flex-direction: row-reverse;
@@ -165,6 +172,7 @@
                     left: 1px;
                     color: themed("logo");
                     top: -5px;
+                    font-weight: bold;
                 }
             }
         }

@@ -1,28 +1,16 @@
 import "./questions.scss"
 import Question from "../question/question/Question"
-// import { getQuestions } from "../../api/questionsApi";
-// import { useQuery } from "@tanstack/react-query";
-import Loader from "../microcomponents/loader/Loader";
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import AddQuestion from "../question/addquestion/AddQuestion";
-// import { allQuestions } from "../microcomponents/SetGetFetchQuery"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useGetQueryQuestions } from "../microcomponents/useGetQueryQuestions";
+import { SearchContext } from "../../context/searchContext";
 
 export default function Questions() {
-  // const questions = useQuery({
-  //   queryKey: ["questions"],
-  //   staleTime: 10 * (60 * 1000), // 10 mins 
-  //   cacheTime: 15 * (60 * 1000), // 15 mins
-  //   queryFn: () => getQuestions(),
-  // })
 
-  // const [ questions, setQuestions ] = useState()
+  const { value } = useContext(SearchContext)
   const questions = useGetQueryQuestions()
-  // useEffect(() => {
-  //   setQuestions(useFilteredProfiles())
-  // }, []);
 
   if (questions.isLoading)
     return <Box className="linear-loader">
@@ -30,7 +18,6 @@ export default function Questions() {
     </Box>
   return (
     <div className="questions">
-      {/* <span>{questions.data.length}</span> */}
       <AddQuestion />
       {questions && questions.data?.map(question => (
         <Question question={question} key={question._id} />

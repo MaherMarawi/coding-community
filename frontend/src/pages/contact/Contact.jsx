@@ -7,7 +7,7 @@ import Loader from "../../components/microcomponents/loader/Loader";
 const Contact = () => {
 
   const [message, setMessage] = useState(null)
-  const [check, setCheck] = useState('I always like to hear a suggestion')
+  const [check, setCheck] = useState('We always like to hear a suggestion')
   const [colorStyle, setColorStyle] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -26,7 +26,7 @@ const Contact = () => {
       setCheck('We always like to hear a suggestion')
       setColorStyle('')
       if (message?.name && message?.email && message?.message) {
-          emailjs.send('service_xw8s8dg', 'template_4c8yo5m', message, 'yv_FvhoXwy3tl2ezl')
+          emailjs.send('service_xw8s8dg', 'template_0wi4w7l', message, 'yv_FvhoXwy3tl2ezl')
               .then((result) => {
                   setCheck('Your message has been sent')
                   setColorStyle('limegreen')

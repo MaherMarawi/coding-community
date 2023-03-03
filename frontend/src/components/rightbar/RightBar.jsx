@@ -1,14 +1,11 @@
 import "./rightBar.scss"
 import image from "../../assets/7.png"
 import RatedQuestions from "./ratedquestions/RatedQuestions"
-import { useQuery } from "@tanstack/react-query"
-import { getQuestions } from "../../api/questionsApi"
 import SolvedQuestions from "./solvedquestions/SolvedQuestions"
 import ActiveUsers from "./activeusers/ActiveUsers"
 import { useState, useEffect, useContext } from "react"
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MobileMenu from "../navbar/MobileMenu"
-// import { DarkModeContext } from "../../context/darkModeContext"
 
 const RightBar = () => {
 
@@ -42,8 +39,8 @@ const RightBar = () => {
       />
       <div className="rightbar">
         <div className="container">
-          <RatedQuestions  />
-          <SolvedQuestions  />
+          <RatedQuestions />
+          <SolvedQuestions />
           {/* <ActiveUsers /> */}
         </div>
       </div>

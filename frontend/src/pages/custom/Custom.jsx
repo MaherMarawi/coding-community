@@ -1,14 +1,16 @@
 import "./custom.scss";
 import { useLocation, useParams } from "react-router-dom";
 import Question from "../../components/question/question/Question"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useGetQueryQuestions } from "../../components/microcomponents/useGetQueryQuestions";
 import LinearLoader from "../../components/microcomponents/linearloader/LinearLoader";
+import { SearchContext } from "../../context/searchContext";
 
 const Custom = () => {
 
   const questions = useGetQueryQuestions()
   const [results, setResults] = useState()
+  const { value, handleSubmit } = useContext(SearchContext)
   const { key } = useParams();
 
   useEffect(() => {
@@ -23,8 +25,11 @@ const Custom = () => {
       const sq = questions?.data?.filter(q => q.comment_id)
       setResults(sq)
     }
-  }, [questions]);
-
+    if (key == "search") {
+      const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))))
+      setResults(seq)
+    }
+  }, [questions.data, value, key]);
 
   return (
     <div className="custom">
