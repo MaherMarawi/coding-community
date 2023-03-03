@@ -12,28 +12,26 @@ import MobileMenu from "../navbar/MobileMenu"
 
 const RightBar = () => {
 
-  const [ratedQuestions, setRatedQuestions] = useState()
-  const [solvedQuestions, setSolvedQuestions] = useState()
   const [menuMobilePosition, setMenuMobilePosition] = useState(-280)
   const toggleMenuMobile = () => {
     setMenuMobilePosition(menuMobilePosition === -280 ? 40 : -280)
   }
 
-  const questions = useQuery({
-    queryKey: ["questions"],
-    queryFn: () => getQuestions(),
-    staleTime: 3 * (60 * 1000), // 10 mins 
-    cacheTime: 5 * (60 * 1000), // 15 mins
-    onSuccess: data => {
-      const rq = data.sort(
-        (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-          : (q1.rate?.length > q2.rate?.length) ? -1
-            : 0)
-      setRatedQuestions(rq)
-      const sq = data.filter(q => q.comment_id)
-      setSolvedQuestions(sq)
-    }
-  })
+  // const questions = useQuery({
+  //   queryKey: ["questions"],
+  //   queryFn: () => getQuestions(),
+  //   staleTime: 3 * (60 * 1000), // 10 mins 
+  //   cacheTime: 5 * (60 * 1000), // 15 mins
+  //   onSuccess: data => {
+  //     const rq = data.sort(
+  //       (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
+  //         : (q1.rate?.length > q2.rate?.length) ? -1
+  //           : 0)
+  //     setRatedQuestions(rq)
+  //     const sq = data.filter(q => q.comment_id)
+  //     setSolvedQuestions(sq)
+  //   }
+  // })
 
   return (
     <>
@@ -41,13 +39,11 @@ const RightBar = () => {
       <MobileMenu
         toggleMenuMobile={toggleMenuMobile}
         menuMobilePosition={menuMobilePosition}
-        questions={questions.data}
-        isLoading={questions.isLoading}
       />
       <div className="rightbar">
         <div className="container">
-          <RatedQuestions questions={questions.data} isLoading={questions.isLoading} />
-          <SolvedQuestions questions={questions.data} isLoading={questions.isLoading} />
+          <RatedQuestions  />
+          <SolvedQuestions  />
           {/* <ActiveUsers /> */}
         </div>
       </div>

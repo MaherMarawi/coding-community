@@ -2,16 +2,21 @@ import Loader from "../../microcomponents/loader/Loader"
 import Time from "../../microcomponents/time/Time"
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
+import { useGetQueryQuestions } from "../../microcomponents/useGetQueryQuestions"
+import LinearLoader from "../../microcomponents/linearloader/LinearLoader"
+const SolvedQuestions = () => {
 
-const SolvedQuestions = ({ questions, isLoading }) => {
-  const[ solvedQuestions, setSolvedQuestions ] = useState()
+  const questions = useGetQueryQuestions()
+  const [solvedQuestions, setSolvedQuestions] = useState()
+
   useEffect(() => {
-    if(questions?.length > 0) {
-      const sq = questions.filter(q => q.comment_id)
+    if (questions?.data?.length > 0) {
+      const sq = questions.data.filter(q => q.comment_id)
       setSolvedQuestions(sq)
     }
-  }, [questions]);
-  if (isLoading) return (
+  }, [questions.data]);
+
+  if (questions?.isLoading) return (
     <div className="item">
       <Loader />
     </div>
@@ -40,7 +45,7 @@ const SolvedQuestions = ({ questions, isLoading }) => {
         <div className="question">
           <div className="questionInfo">
             <span>
-              <Link to="/custom" state={{ questions: solvedQuestions }} >
+              <Link to="/custom/solvedQuestions" >
                 see more
               </Link>
             </span>
@@ -50,7 +55,7 @@ const SolvedQuestions = ({ questions, isLoading }) => {
         :
         <div className="question">
           <div className="questionInfo">
-            no data
+            <LinearLoader />
           </div>
         </div>
       }

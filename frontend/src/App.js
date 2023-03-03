@@ -66,7 +66,7 @@ function App() {
           element: <Home />,
         },
         {
-          path: "/custom",
+          path: "/custom/:key",
           element: <Custom />,
         },
         {

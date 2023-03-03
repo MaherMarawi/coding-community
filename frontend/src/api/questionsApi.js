@@ -9,7 +9,7 @@ export const getQuestions = async () => {
     return await makeRequest.get("/getQuestions").then(res => res.data)
 } 
 export const addQuestion = async (question) => {
-    return await makeRequest.post("/postQuestion", question).then(res => res.data)
+    return await makeRequest.post("/postQuestion", question).then(res => res.data).catch(err => err)
 } 
 export const deleteQuestion = async (id) => {
     return await makeRequest.delete(`/deleteQuestion/${id}`).then(res => res.data)

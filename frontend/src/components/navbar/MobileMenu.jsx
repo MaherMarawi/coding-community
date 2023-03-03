@@ -12,8 +12,7 @@ import { getQuestions } from "../../api/questionsApi"
 
 const MobileMenu = ({
   menuMobilePosition,
-  toggleMenuMobile,
-  isLoading
+  toggleMenuMobile
 }) => {
   // const queryClient = useQueryClient()
   const [ratedQuestions, setRatedQuestions] = useState()
@@ -46,16 +45,12 @@ const MobileMenu = ({
       <Link to="/contact">
         <a onClick={toggleMenuMobile} >Contact</a>
       </Link>
-      {
-        isLoading ? <Loader /> : <>
-          <Link to="/custom" state={{ questions: ratedQuestions }}>
-            <a onClick={toggleMenuMobile}  >Most rated questions</a>
-          </Link>
-          <Link to="/custom" state={{ questions: solvedQuestions }}>
-            <a onClick={toggleMenuMobile}  >Recent solved questions</a>
-          </Link>
-        </>
-      }
+      <Link to="/custom/ratedQuestions" state={{ questions: ratedQuestions }}>
+        <a onClick={toggleMenuMobile}  >Most rated questions</a>
+      </Link>
+      <Link to="/custom/solvedQuestions" state={{ questions: solvedQuestions }}>
+        <a onClick={toggleMenuMobile}  >Recent solved questions</a>
+      </Link>
       <div className="user">
         {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
         {currentUser &&

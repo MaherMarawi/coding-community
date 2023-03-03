@@ -25,6 +25,9 @@ const AddQuestion = () => {
                 description: "",
                 userCode: ""
             }))
+        },
+        onError: err => {
+            console.log("err")
         }
     })
     const handleChange = (e) => {
@@ -37,7 +40,9 @@ const AddQuestion = () => {
             domiQuestion.user_name = currentUser.username
         }
         setNewQuestion(domiQuestion)
-        addQuestionMutation.mutate(newQuestion)
+        if(newQuestion.title && newQuestion.description) addQuestionMutation.mutate(newQuestion)
+        else alert("please write a title and description")
+        
     }
 
     return (

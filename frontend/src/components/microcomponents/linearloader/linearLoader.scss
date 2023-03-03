@@ -1,0 +1,14 @@
+@import "../../../style.scss";
+
+.linear-loader{
+    @include themify($themes) {
+        position: absolute;
+        top: 67px;
+        width: 100%;
+        left: 0;
+        z-index: 9;
+        @include mobile{
+            top: 37px;
+        }
+    }
+}

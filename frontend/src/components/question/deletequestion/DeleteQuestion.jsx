@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { DarkModeContext } from "../../../context/darkModeContext";
 
 const DeleteQuestion = ({ id }) => {
+  
   const queryClient = useQueryClient()
   const { darkMode } = useContext(DarkModeContext)
   const deleteQuestionMutation = useMutation({

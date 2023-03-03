@@ -2,22 +2,24 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { DarkModeContext } from "../../../context/darkModeContext"
 import Loader from "../../microcomponents/loader/Loader"
+import { useGetQueryQuestions } from "../../microcomponents/useGetQueryQuestions"
+import LinearLoader from "../../microcomponents/linearloader/LinearLoader"
 
-const RatedQuestions = ({ questions, isLoading }) => {
-
-    const [ ratedQuestions, setRatedQuestions ] = useState()
+const RatedQuestions = () => {
+    const questions = useGetQueryQuestions()
+    const [ratedQuestions, setRatedQuestions] = useState()
 
     useEffect(() => {
-        if(questions?.length > 0) {
-            const rq = questions.sort(
+        if (questions?.data?.length > 0) {
+            const rq = questions.data.sort(
                 (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-                  : (q1.rate?.length > q2.rate?.length) ? -1
-                    : 0)
+                    : (q1.rate?.length > q2.rate?.length) ? -1
+                        : 0)
             setRatedQuestions(rq)
         }
-    }, [questions]);
+    }, [questions.data]);
 
-    if (isLoading) return (
+    if (questions?.isLoading) return (
         <div className="item">
             <Loader />
         </div>
@@ -47,7 +49,7 @@ const RatedQuestions = ({ questions, isLoading }) => {
                     <div className="question">
                         <div className="questionInfo">
                             <span>
-                                <Link to="/custom" state={{ questions: ratedQuestions }} >
+                                <Link to="/custom/ratedQuestions" >
                                     see more
                                 </Link>
                             </span>
@@ -57,7 +59,7 @@ const RatedQuestions = ({ questions, isLoading }) => {
                 :
                 <div className="question">
                     <div className="questionInfo">
-                        no data
+                        <LinearLoader />
                     </div>
                 </div>
             }

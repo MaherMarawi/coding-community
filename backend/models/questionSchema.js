@@ -9,12 +9,12 @@ const Schema = mongoose.Schema;
 const questionSchema = new Schema({
     title: {
         type: String,
-        required: [true, 'Please enter a question'],
+        required: [true, 'Please write a title'],
         minlength: 1
     },
     description: {
         type: String,
-        required: [true, 'Please enter a description'],
+        required: [true, 'Please write a description'],
         minlength: 1
     },
     comments_count: {

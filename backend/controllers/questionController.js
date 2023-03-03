@@ -1,6 +1,28 @@
 const Question = require('../models/questionSchema')
 const Comment = require('../models/commentSchema')
+const handelErrors = (err) => {
+    //console.log(err.message, err.code)
 
+    let errors = { title: '', description: '' }
+
+    
+    if (err.errors.title.properties.path == "title") {
+        errors.title = err.errors.title.properties.message
+        return errors
+    }
+    if (err.errors.title.properties.path == "description") {
+        errors.description = err.errors.title.properties.message
+        return errors
+    }
+    // if (err.message == 'password is incorrect') {
+    //     errors.password = 'Password is incorrect'
+    //     return errors
+    // }
+    // if (err.message == 'please enter your email') {
+    //     errors.email = 'Please enter your email'
+    //     return errors
+    // }
+}
 // get  questions
 
 const AllQuestions = (req, res) => {
@@ -28,7 +50,8 @@ const NewQuestion = (req, res) => {
                 res.json(question)
             })
             .catch(err => {
-                res.send(err)
+                const errors = handelErrors(err)
+                res.send({errors})
             })
 }
 
