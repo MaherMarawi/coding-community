@@ -14,22 +14,6 @@ const RightBar = () => {
     setMenuMobilePosition(menuMobilePosition === -280 ? 40 : -280)
   }
 
-  // const questions = useQuery({
-  //   queryKey: ["questions"],
-  //   queryFn: () => getQuestions(),
-  //   staleTime: 3 * (60 * 1000), // 10 mins 
-  //   cacheTime: 5 * (60 * 1000), // 15 mins
-  //   onSuccess: data => {
-  //     const rq = data.sort(
-  //       (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-  //         : (q1.rate?.length > q2.rate?.length) ? -1
-  //           : 0)
-  //     setRatedQuestions(rq)
-  //     const sq = data.filter(q => q.comment_id)
-  //     setSolvedQuestions(sq)
-  //   }
-  // })
-
   return (
     <>
       <div className="mobile-menu" onClick={toggleMenuMobile}><MenuOutlinedIcon /></div>

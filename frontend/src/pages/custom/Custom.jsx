@@ -23,10 +23,16 @@ const Custom = () => {
     }
     if (key == "solvedQuestions") {
       const sq = questions?.data?.filter(q => q.comment_id)
-      setResults(sq)
+      const rsq = sq.sort(
+        (q1, q2) => (q1.updatedAt < q2.updatedAt) ? 1
+          : (q1.updatedAt > q2.updatedAt) ? -1
+            : 0)
+      setResults(rsq)
     }
     if (key == "search") {
-      const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))))
+      const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))
+      || (q.userCode.toLowerCase().includes(value.toLowerCase()))
+      ))
       setResults(seq)
     }
   }, [questions.data, value, key]);
