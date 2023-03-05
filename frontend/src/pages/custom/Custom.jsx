@@ -14,27 +14,30 @@ const Custom = () => {
   const { key } = useParams();
 
   useEffect(() => {
-    if (key == "ratedQuestions") {
-      const rq = questions?.data?.sort(
-        (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-          : (q1.rate?.length > q2.rate?.length) ? -1
-            : 0)
-      setResults(rq)
+    if (questions?.data) {
+      if (key == "ratedQuestions") {
+        const rq = questions?.data?.sort(
+          (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
+            : (q1.rate?.length > q2.rate?.length) ? -1
+              : 0)
+        setResults(rq)
+      }
+      if (key == "solvedQuestions") {
+        const sq = questions?.data?.filter(q => q.comment_id)
+        const rsq = sq.sort(
+          (q1, q2) => (q1.updatedAt < q2.updatedAt) ? 1
+            : (q1.updatedAt > q2.updatedAt) ? -1
+              : 0)
+        setResults(rsq)
+      }
+      if (key == "search") {
+        const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))
+          || (q.userCode.toLowerCase().includes(value.toLowerCase()))
+        ))
+        setResults(seq)
+      }
     }
-    if (key == "solvedQuestions") {
-      const sq = questions?.data?.filter(q => q.comment_id)
-      const rsq = sq.sort(
-        (q1, q2) => (q1.updatedAt < q2.updatedAt) ? 1
-          : (q1.updatedAt > q2.updatedAt) ? -1
-            : 0)
-      setResults(rsq)
-    }
-    if (key == "search") {
-      const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))
-      || (q.userCode.toLowerCase().includes(value.toLowerCase()))
-      ))
-      setResults(seq)
-    }
+    else return <LinearLoader />
   }, [questions.data, value, key]);
 
   return (
