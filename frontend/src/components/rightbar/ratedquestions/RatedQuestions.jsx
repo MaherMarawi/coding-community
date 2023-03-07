@@ -29,7 +29,7 @@ const RatedQuestions = () => {
             <span className="title">Most rated</span>
             {ratedQuestions?.length > 0 ?
                 <>
-                    <div className="question">
+                    <div className="rated-question">
                         <div className="questionInfo">
                             <span>{ratedQuestions[0]?.title}</span>
                         </div>
@@ -37,7 +37,7 @@ const RatedQuestions = () => {
                             <span className="rate">{ratedQuestions[0]?.rate.length}</span>
                         </div>
                     </div>
-                    <div className="question">
+                    <div className="rated-question">
                         <div className="questionInfo">
                             <span>{ratedQuestions[1]?.title}</span>
                         </div>
@@ -45,7 +45,7 @@ const RatedQuestions = () => {
                             <span className="rate">{ratedQuestions[1]?.rate.length}</span>
                         </div>
                     </div>
-                    <div className="question">
+                    <div className="rated-question">
                         <div className="questionInfo">
                             <span>
                                 <Link to="/custom/ratedQuestions" >

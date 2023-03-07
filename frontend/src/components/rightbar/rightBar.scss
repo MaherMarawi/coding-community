@@ -5,20 +5,21 @@
 
         display: none;
         color: themed("textColor");
+
         @include mobile {
             display: block;
             position: fixed;
-            top: 8px ;
+            top: 8px;
             // height: 10px;
             right: 25px;
             z-index: 100000;
         }
-        
+
         @include tablet {
             display: block;
             // z-index: 100000;
         }
-        
+
     }
 }
 
@@ -66,7 +67,7 @@
 
                 }
 
-                .question {
+                .rated-question {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
@@ -78,13 +79,6 @@
                         gap: 20px;
                         position: relative;
 
-                        img {
-
-                            width: 30px;
-                            height: 30px;
-                            object-fit: cover;
-                            border-radius: 50%;
-                        }
 
                         span {
                             font-size: 13px;
@@ -116,9 +110,49 @@
                         }
                     }
 
+                }
+
+                .solved-question {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    margin: 20px 0px;
+                    flex-direction: column;
+
+                    .questionInfo {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+                        position: relative;
+
+
+                        span {
+                            font-size: 13px;
+                            color: themed("textColor");
+                        }
+
+                        p {
+                            color: themed("textColorSoft");
+                            font-size: 10px;
+
+                            span {
+                                font-size: 13px;
+                                color: themed("textColor");
+                            }
+                        }
+
+
+
+                    }
+
+
                     .time-solved {
                         color: themed("textColorSoft");
                         font-size: 10px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-end;
                     }
                 }
             }

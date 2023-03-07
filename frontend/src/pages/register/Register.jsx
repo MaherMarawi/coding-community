@@ -1,18 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Loader from "../../components/microcomponents/loader/Loader";
 import { AuthContext } from "../../context/authContext";
 import "./register.scss";
 
 const Register = () => {
-  const { error, currentUser, registerMutation } = useContext(AuthContext)
-  const [cred, setCred] = useState()
+  const { emailError, passwordError, currentUser, registerMutation } = useContext(AuthContext)
+
+  const usernameRef = useRef()
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const rePasswordRef = useRef()
 
   const handleClick = () => {
+    const cred = {username: usernameRef.current.value, email: emailRef.current.value, password: passwordRef.current.value, rePassword: rePasswordRef.current.value}
     registerMutation.mutate(cred)
-  }
-  const handleChange = (e) => {
-    setCred({ ...cred, [e.target.name]: e.target.value })
   }
 
   return (
@@ -22,12 +24,13 @@ const Register = () => {
         <Link to="/auth/login">
         <span>Do you have an account?</span>
         </Link>
-        <input onChange={handleChange} name="username" type="text" placeholder="Username" />
-        <input onChange={handleChange} name="email" type="email" placeholder="Email" />
-        <input onChange={handleChange} name="password" type="password" placeholder="Password" />
-        <input onChange={handleChange} name="repassword" type="password" placeholder="Repassword" />
+        <input ref={usernameRef} type="text" placeholder="Username" />
+        <input ref={emailRef} style={emailError ? {border: "2px solid #D84646"} : {border: "none"}} type="email" placeholder="Email" />
+        <input ref={passwordRef} style={emailError ? {border: "2px solid #D84646"} : {border: "none"}} type="password" placeholder="Password" />
+        <input ref={rePasswordRef} type="password" placeholder="Repassword" />
         <button disabled={registerMutation.isLoading} onClick={() => handleClick()}>{registerMutation.isLoading ? <Loader /> :  "Register"}</button>
-        {error && <p className="err">{error}</p>}
+        {emailError && <p className="err">{emailError}</p>}
+        {passwordError && <p className="err">{passwordError}</p>}
         {currentUser && <Navigate to="/" replace={true} />}
 
       </div>

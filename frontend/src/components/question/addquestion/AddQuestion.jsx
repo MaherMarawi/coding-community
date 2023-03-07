@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import "./addQuestion.scss"
 import { AuthContext } from "../../../context/authContext"
 import { addQuestion } from "../../../api/questionsApi";
@@ -11,52 +11,41 @@ const AddQuestion = () => {
 
     const queryClient = useQueryClient()
     const { currentUser } = useContext(AuthContext)
-    const [newQuestion, setNewQuestion] = useState({
-        title: "",
-        description: "",
-        userCode: ""
-    })
+    const titleRef = useRef()
+    const descriptionRef = useRef()
+    const userCodeRef = useRef()
     const addQuestionMutation = useMutation({
         mutationFn: question => addQuestion(question),
         onSuccess: (data) => {
             queryClient.setQueryData(["questions"], prevData => [data, ...prevData])
-            setNewQuestion(({
-                title: "",
-                description: "",
-                userCode: ""
-            }))
+            titleRef.current.value = ""
+            descriptionRef.current.value = ""
+            userCodeRef.current.value = ""
         },
         onError: err => {
-            console.log("err")
+            console.log(err)
         }
     })
-    const handleChange = (e) => {
-        setNewQuestion({ ...newQuestion, [e.target.name]: e.target.value })
-    }
     const handleClick = () => {
-        const domiQuestion = newQuestion
-        if (currentUser) {
-            domiQuestion.user_id = currentUser.id
-            domiQuestion.user_name = currentUser.username
-        }
-        setNewQuestion(domiQuestion)
-        if(newQuestion.title && newQuestion.description) addQuestionMutation.mutate(newQuestion)
+        let domiQuestion = {}
+        if (currentUser) domiQuestion = { ... domiQuestion, user_id: currentUser.id, user_name: currentUser.username}
+        domiQuestion = {... domiQuestion, title: titleRef.current.value, description : descriptionRef.current.value, userCode : userCodeRef.current.value }
+        if(domiQuestion.title && domiQuestion.description) addQuestionMutation.mutate(domiQuestion)
         else alert("please write a title and description")
         
     }
-
     return (
         <div className="add-question">
             <div className="container">
                 <div className="title-button">
-                    <input value={newQuestion?.title} onChange={handleChange} name="title" placeholder="Title" />
+                    <input ref={titleRef} placeholder="Title" />
                     <div onClick={() => handleClick()} disabled={addQuestionMutation.isLoading} >{addQuestionMutation.isLoading ? <Loader /> : <Tooltip describeChild title="Does not add if it already exists.">
                         <Button>Add</Button>
                     </Tooltip>}</div>
                 </div>
                 <div className="desc-code">
-                    <input value={newQuestion?.description} onChange={handleChange} name="description" placeholder="Description" />
-                    <textarea value={newQuestion?.userCode} type="textarea" className="textarea" onChange={handleChange} name="userCode" placeholder="Code" />
+                    <textarea ref={descriptionRef} className="textarea-code" placeholder="Description" />
+                    <textarea ref={userCodeRef} datatype="wmd" type="textarea" className="textarea-code" placeholder="Code" />
                 </div>
             </div>
         </div>

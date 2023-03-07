@@ -7,7 +7,9 @@ export const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
-    const [error, setError] = useState("")
+    const [emailError, setEmailError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    // const [rePasswordError, setRePasswordError] = useState("")
     
     const loginMutation = useMutation({
         mutationFn: (cred) => authLogin(cred),
@@ -36,22 +38,22 @@ export const AuthContextProvider = ({ children }) => {
         }
     })
     const dataSet = (data) => {
-        setError("")
         setCurrentUser(data.user)
         localStorage.setItem("user", JSON.stringify(data.user))
         localStorage.setItem("token", data.accessToken)
     }
     const errorSet = (err) => {
-        let er = ""
-        if (err.email) er = setError(err.email)
-        else setError(err.password)
+        if (err.email) setEmailError(err.email)
+        else setPasswordError(err.password)
         setTimeout(() => {
-            setError("")
+            setEmailError("")
+            setPasswordError("")
+            // setRePasswordError("")
         }, 3000);
     }
     
     return (
-        <AuthContext.Provider value={{ currentUser, error, loginMutation, registerMutation, logoutMutation }}>
+        <AuthContext.Provider value={{ currentUser, emailError, passwordError, loginMutation, registerMutation, logoutMutation }}>
             {children}
         </AuthContext.Provider>
     )

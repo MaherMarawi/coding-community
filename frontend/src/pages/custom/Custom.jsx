@@ -13,7 +13,7 @@ const Custom = () => {
   const { value, handleSubmit } = useContext(SearchContext)
   const { key } = useParams();
 
-  useEffect(() => {
+  const getQuestions = () => {
     if (questions?.data) {
       if (key == "ratedQuestions") {
         const rq = questions?.data?.sort(
@@ -24,10 +24,11 @@ const Custom = () => {
       }
       if (key == "solvedQuestions") {
         const sq = questions?.data?.filter(q => q.comment_id)
-        const rsq = sq.sort(
-          (q1, q2) => (q1.updatedAt < q2.updatedAt) ? 1
-            : (q1.updatedAt > q2.updatedAt) ? -1
-              : 0)
+        const rsq = sq.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.updatedAt) - new Date(a.updatedAt);
+        })
         setResults(rsq)
       }
       if (key == "search") {
@@ -37,12 +38,15 @@ const Custom = () => {
         setResults(seq)
       }
     }
-    else return <LinearLoader />
+  }
+  useEffect(() => {
+    getQuestions()
+    // else return <LinearLoader />
   }, [questions.data, value, key]);
 
   return (
     <div className="custom">
-      {(questions.isLoading || results?.length == 0) ? <LinearLoader />
+      {(questions?.isLoading || results?.length == 0) ? <LinearLoader />
         :
         <>
           <div className="questions">
@@ -58,3 +62,4 @@ const Custom = () => {
 
 
 export default Custom
+

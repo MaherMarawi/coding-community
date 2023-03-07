@@ -1,21 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Loader from "../../components/microcomponents/loader/Loader";
 import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 
 const Login = () => {
-  const { loginMutation, currentUser, error } = useContext(AuthContext);
-  const [cred, setCred] = useState()
+  const { loginMutation, currentUser, emailError, passwordError } = useContext(AuthContext);
+  const emailRef = useRef()
+  const passwordRef = useRef()
 
   const handleLogin = () => {
+    const cred = { email: emailRef.current.value, password: passwordRef.current.value }
     loginMutation.mutate(cred)
   };
 
-  const handleChange = (e) => {
-    e.preventDefault();
-    setCred({ ...cred, [e.target.name]: e.target.value })
-  }
   return (
     <div className="login">
       <div className="container">
@@ -23,10 +21,11 @@ const Login = () => {
         <Link to="/auth/register">
           <span>Don't you have an account?</span>
         </Link>
-        <input type="text" onChange={handleChange} placeholder="Email" name="email" />
-        <input type="password" onChange={handleChange} placeholder="Password" name="password" />
+        <input type="text" ref={emailRef} placeholder="Email"  style={emailError ? {border: "2px solid #D84646"} : {border: "none"}} />
+        <input type="password" ref={passwordRef} placeholder="Password" style={passwordError ? {border: "2px solid #D84646"} : {border: "none"}} />
         <button disabled={loginMutation.isLoading} onClick={() => handleLogin()}>{loginMutation.isLoading ? <Loader /> : "Login"}</button>
-        {error && <p className="err">{error}</p>}
+        {emailError && <p className="err">{emailError}</p>}
+        {passwordError && <p className="err">{passwordError}</p>}
         {currentUser && <Navigate to="/" replace={true} />}
       </div>
     </div>

@@ -17,18 +17,10 @@ const MobileMenu = ({
 
   return (
     <div className="navbar-items-mobile" style={{ top: menuMobilePosition }}>
-      <Link to="/about">
-        <a onClick={toggleMenuMobile}>About</a>
-      </Link>
-      <Link to="/contact">
-        <a onClick={toggleMenuMobile} >Contact</a>
-      </Link>
-      <Link to="/custom/ratedQuestions" >
-        <a onClick={toggleMenuMobile}  >Most rated questions</a>
-      </Link>
-      <Link to="/custom/solvedQuestions" >
-        <a onClick={toggleMenuMobile}  >Recent solved questions</a>
-      </Link>
+      <Link to="/about" onClick={toggleMenuMobile}>About</Link>
+      <Link to="/contact" onClick={toggleMenuMobile}>Contact</Link>
+      <Link to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most rated questions</Link>
+      <Link to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent solved questions</Link>
       <div className="user">
         {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
         {currentUser &&

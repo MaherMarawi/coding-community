@@ -6,6 +6,7 @@
         border-radius: 5px;
         max-height: 300px;
         overflow-y: scroll;
+        position: relative;
         
         .code-block {
             font-size: 12px !important;
@@ -42,6 +43,15 @@
         /* Handle on hover */
         &::-webkit-scrollbar-thumb:hover {
             background: themed('textColor');
+        }
+        .copy-to-clipboard{
+            // font-size: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: none;
+            margin: 2px;
+
         }
     }
 }
