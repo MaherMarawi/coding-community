@@ -6,6 +6,6 @@ const commentController = require('../controllers/commentController')
 router.get('/api/getComments/:id', commentController.GetComments)
 router.post('/api/postComment/:id', commentController.NewComment)
 router.delete('/api/deleteComment/:id',  commentController.DeleteComment)
-router.put('/api/updateComment/:id', requireAuth, commentController.ChangeComment)
+router.put('/api/updateComment/:id', commentController.ChangeComment)
 
 module.exports = router

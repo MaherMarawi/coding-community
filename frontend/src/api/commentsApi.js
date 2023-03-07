@@ -15,5 +15,5 @@ export const deleteComment = async (id) => {
     return await makeRequest.delete(`deleteComment/${id}`).then(res => res.data)
 } 
 export const updateComment = async (id, commrnt) => {
-    return await makeRequest.update(`updateComment/${id}`, commrnt).then(res => res.data)
+    return await makeRequest.put(`updateComment/${id}`, commrnt).then(res => res.data)
 } 
