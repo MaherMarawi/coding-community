@@ -13,7 +13,7 @@ const Register = () => {
   const rePasswordRef = useRef()
 
   const handleClick = () => {
-    const cred = {username: usernameRef.current.value, email: emailRef.current.value, password: passwordRef.current.value, rePassword: rePasswordRef.current.value}
+    const cred = {username: usernameRef.current.value, email: emailRef.current.value, password: passwordRef.current.value, repassword: rePasswordRef.current.value}
     registerMutation.mutate(cred)
   }
 
@@ -32,7 +32,6 @@ const Register = () => {
         {emailError && <p className="err">{emailError}</p>}
         {passwordError && <p className="err">{passwordError}</p>}
         {currentUser && <Navigate to="/" replace={true} />}
-
       </div>
     </div>
   );

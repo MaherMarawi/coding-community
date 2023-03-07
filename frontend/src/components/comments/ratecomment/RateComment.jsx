@@ -19,19 +19,22 @@ const RateComment = ({ comment }) => {
     })
 
     const handleClick = () => {
-        if (rated == false) {
-            comment.rate.push(currentUser.id)
-            setRated(true)
+        if (!currentUser) alert("you have to login")
+        else {
+            if (rated == false) {
+                comment.rate.push(currentUser.id)
+                setRated(true)
+            }
+            if (rated == true) {
+                comment.rate.splice(comment.rate.indexOf(currentUser.id), 1)
+                setRated(false)
+            }
+            rateCommentMutation.mutate(comment)
         }
-        if (rated == true) {
-            comment.rate.splice(comment.rate.indexOf(currentUser.id), 1)
-            setRated(false)
-        }
-        rateCommentMutation.mutate(comment)
     }
 
     return (
-        <div style={{display: "flex", alignItems: "center", gap: "5px"}}>
+        <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
             {rateCommentMutation.isLoading ? <Loader /> : <>
                 {rated == false ? <StarBorderOutlinedIcon onClick={() => handleClick()} className="icons" /> : <StarOutlinedIcon onClick={() => handleClick()} className="icons" />}
                 {comment.rate?.length}

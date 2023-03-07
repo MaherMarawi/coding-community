@@ -1,0 +1,13 @@
+@import "../../../style.scss";
+
+.popup{
+    @include themify($themes) {
+
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 9999999999999999999;
+
+    }
+}

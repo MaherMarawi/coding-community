@@ -58,7 +58,7 @@ const RatedQuestions = () => {
                 :
                 <div className="question">
                     <div className="questionInfo">
-                        <LinearLoader />
+                        <Loader />
                     </div>
                 </div>
             }

@@ -27,6 +27,16 @@ const LeftBar = () => {
               <span>About</span>
             </Link>
           </div>
+          {currentUser && currentUser.role == "admin" ?
+            <>
+              <div className="item">
+                <Link to="/users" >
+                  <span>Users</span>
+                </Link>
+              </div>
+            </>
+            :
+            <></>}
         </div>
         <hr />
       </div>

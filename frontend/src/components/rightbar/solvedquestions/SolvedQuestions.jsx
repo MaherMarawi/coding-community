@@ -60,7 +60,7 @@ const SolvedQuestions = () => {
         :
         <div className="question">
           <div className="questionInfo">
-            <LinearLoader />
+            <Loader />
           </div>
         </div>
       }

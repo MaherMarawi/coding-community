@@ -21,6 +21,11 @@ const MobileMenu = ({
       <Link to="/contact" onClick={toggleMenuMobile}>Contact</Link>
       <Link to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most rated questions</Link>
       <Link to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent solved questions</Link>
+      {currentUser && currentUser.role == "admin" ?
+        <><Link to="/users" onClick={toggleMenuMobile} >Users</Link></>
+        :
+        <></>
+      }
       <div className="user">
         {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
         {currentUser &&

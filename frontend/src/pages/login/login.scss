@@ -29,6 +29,9 @@
             @include mobile {
                 width: 80%;
             }
+            @include tablet {
+                width: 60%;
+              }
 
             button {
                 border: none;

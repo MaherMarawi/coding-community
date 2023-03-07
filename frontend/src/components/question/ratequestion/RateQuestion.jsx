@@ -20,15 +20,18 @@ const RateQuestion = ({ question }) => {
     })
 
     const handleClick = () => {
-        if (rated == false) {
-            question.rate.push(currentUser.id)
-            setRated(true)
+        if(!currentUser) alert("you have to login")
+        else {
+            if (rated == false) {
+                question.rate.push(currentUser.id)
+                setRated(true)
+            }
+            if (rated == true) {
+                question.rate.splice(question.rate.indexOf(currentUser.id), 1)
+                setRated(false)
+            }
+            rateQuestionMutation.mutate(question)
         }
-        if (rated == true) {
-            question.rate.splice(question.rate.indexOf(currentUser.id), 1)
-            setRated(false)
-        }
-        rateQuestionMutation.mutate(question)
     }
 
     return (

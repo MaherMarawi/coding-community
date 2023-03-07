@@ -17,6 +17,7 @@ import { DarkModeContext } from './context/darkModeContext';
 import { AuthContext } from './context/authContext';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
+import Users from './pages/users/Users';
 function App() {
 
   // const { currentUser } = useContext(AuthContext)
@@ -76,6 +77,10 @@ function App() {
         {
           path: "/about",
           element: <About />,
+        },
+        {
+          path: "/users",
+          element: <Users />,
         },
 
       ],

@@ -10,7 +10,7 @@ const CodeBlock = ({ children }) => {
 
   const darkMode = useContext(DarkModeContext)
   const [color, setColor] = useState()
-  const [ isCopied, setIsCopied ] = useState("copy")
+  const [isCopied, setIsCopied] = useState("copy")
 
   const handleCopy = () => {
     navigator.clipboard.writeText(children)
@@ -26,6 +26,7 @@ const CodeBlock = ({ children }) => {
   }, []);
   return (
     <div className="code-block-container">
+      <button className="copy-to-clipboard" onClick={() => handleCopy()}>{isCopied}</button>
       <SyntaxHighlighter
         className="code-block"
         language="js"
@@ -34,7 +35,6 @@ const CodeBlock = ({ children }) => {
       >
         {children}
       </SyntaxHighlighter>
-      <button className="copy-to-clipboard" onClick={() => handleCopy()}>{isCopied}</button>
     </div>
 
 

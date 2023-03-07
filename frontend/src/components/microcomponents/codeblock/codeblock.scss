@@ -4,10 +4,9 @@
     @include themify($themes) {
         margin: 5px 0;
         border-radius: 5px;
-        max-height: 300px;
-        overflow-y: scroll;
-        position: relative;
         
+        
+        position: relative;
         .code-block {
             font-size: 12px !important;
             background-color: themed("bgSoft") !important;
@@ -15,42 +14,50 @@
             font-weight: 500;
             padding: 15px !important;
             border: 1px solid themed("border");
-            
-        }
-
-        &::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        @include mobile {
-            width: 310px;
+            overflow-y: scroll;
+            max-height: 300px;
 
             &::-webkit-scrollbar {
-                width: 3px;
+                width: 8px;
+            }
+    
+            @include mobile {
+                width: 310px;
+    
+                &::-webkit-scrollbar {
+                    width: 3px;
+                }
+            }
+    
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: themed("bgSoft");
+            }
+    
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: themed("border");
+            }
+    
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: themed('textColor');
             }
         }
 
-        /* Track */
-        &::-webkit-scrollbar-track {
-            background: themed("bgSoft");
-        }
 
-        /* Handle */
-        &::-webkit-scrollbar-thumb {
-            background: themed("border");
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-            background: themed('textColor');
-        }
-        .copy-to-clipboard{
+        .copy-to-clipboard {
             // font-size: 20px;
             position: absolute;
-            top: 0;
-            right: 0;
+            top: 0px;
+            right: 0px;
+            height: 30px;
             border: none;
-            margin: 2px;
+            margin: 1px 10px;
+            padding: 5px;
+            background-color: themed("bg");
+            border-radius: 5px;
+            color: themed("textColor");
 
         }
     }

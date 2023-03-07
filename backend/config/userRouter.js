@@ -9,5 +9,8 @@ router.post('/api/Login', controller.SignIn)
 router.get('/api/Logout', controller.SignOut)
 router.get('/api/getUsers', controller.Users)
 router.get('/api/getUser/:id', controller.oneUser)
+
+router.delete('/api/deleteUser/:id', controller.DeleteUser)
+
 router.put('/api/updateUser/:id', controller.updateUser)
 module.exports = router
