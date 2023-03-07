@@ -16,7 +16,7 @@
         }
 
         @include tablet {
-            display: block;
+            display: none;
             // z-index: 100000;
         }
 
@@ -38,10 +38,6 @@
             display: none;
         }
 
-        @include tablet {
-            display: none;
-        }
-
 
         &::-webkit-scrollbar {
             display: none;
@@ -52,6 +48,18 @@
         .container {
             padding: 20px;
 
+            .tab-item{
+                display: none;
+                text-decoration: none;
+                @include tablet{
+                    display: block;
+                }
+                span{
+                    color: themed("textColorSoft");
+                    font-weight: 550;
+                    text-align: center;
+                }
+            }
             .item {
                 -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
                 -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);

@@ -6,6 +6,7 @@ import ActiveUsers from "./activeusers/ActiveUsers"
 import { useState, useEffect, useContext } from "react"
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MobileMenu from "../navbar/MobileMenu"
+import { Link } from "react-router-dom"
 
 const RightBar = () => {
 
@@ -26,6 +27,8 @@ const RightBar = () => {
           <RatedQuestions />
           <SolvedQuestions />
           {/* <ActiveUsers /> */}
+          <div className="item tab-item"><Link to="/about"><span>about</span></Link></div>
+          <div className="item tab-item"><Link to="/contact"><span>contact</span></Link></div>
         </div>
       </div>
     </>
