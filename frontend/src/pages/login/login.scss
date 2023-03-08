@@ -7,6 +7,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
         .container {
             width: 30%;
             box-sizing: border-box;
@@ -22,16 +23,19 @@
             gap: 35px;
             margin: 20px 0px;
             padding: 20px;
-            a{
+
+            a {
                 text-decoration: none;
                 color: themed("textColor");
             }
-            @include mobile {
+
+            @include tablet{
+                width: 60%;
+            }
+            @include mobile{
                 width: 80%;
             }
-            @include tablet {
-                width: 60%;
-              }
+
 
             button {
                 border: none;
@@ -51,6 +55,7 @@
                 background-color: themed("bgSoft");
                 color: themed("textColor");
             }
+
             .err {
                 background-color: #D84646;
                 padding: 10px;

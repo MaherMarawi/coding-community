@@ -7,11 +7,11 @@
         color: themed("textColor");
 
         
-        @include tablet {
+        @include tablet{
             display: none;
             // z-index: 100000;
         }
-        @include mobile {
+        @include mobile{
             display: block;
             position: fixed;
             top: 8px;
@@ -33,13 +33,14 @@
         height: calc(100vh - 50px);
         overflow: scroll;
 
-
-        @include mobile {
+        @include tablet{
+        }
+        @include mobile{
             display: none;
         }
 
 
-        &::-webkit-scrollbar {
+        &::-webkit-scrollbar{
             display: none;
         }
 

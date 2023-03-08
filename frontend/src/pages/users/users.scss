@@ -2,7 +2,7 @@
 
 .users {
     @include themify($themes) {
-        padding: 30px 70px;
+        padding: 30px;
         background-color: themed("bgSoft");
         min-height: 100vh;
         display: flex;
@@ -10,14 +10,14 @@
         gap: 20px;
         // box-sizing: border-box;
 
+        @include tablet {
+            padding: 20px;
+        }
 
-        // @include mobile {
-        //     padding: 10px;
-        // }
+        @include mobile {
+            padding: 10px;
+        }
 
-        // @include tablet {
-        //     padding: 20px;
-        // }
 
         .container {
             padding: 20px 20px;
@@ -29,8 +29,8 @@
             color: themed("textColor");
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            box-sizing: border-box;
+            gap: 20px;
+            // box-sizing: border-box;
         }
     }
 }

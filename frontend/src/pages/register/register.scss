@@ -29,11 +29,11 @@
         color: themed("textColor");
       }
 
-      @include mobile {
-        width: 80%;
-      }
-      @include tablet {
+      @include tablet{
         width: 60%;
+      }
+      @include mobile{
+        width: 80%;
       }
 
       button {
