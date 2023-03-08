@@ -1,27 +1,6 @@
 @import "../../style.scss";
 
-.mobile-menu {
-    @include themify($themes) {
 
-        display: none;
-        color: themed("textColor");
-
-        
-        @include tablet{
-            display: none;
-            // z-index: 100000;
-        }
-        @include mobile{
-            display: block;
-            position: fixed;
-            top: 8px;
-            // height: 10px;
-            right: 25px;
-            z-index: 100000;
-        }
-
-    }
-}
 
 
 

@@ -13,14 +13,11 @@
 }
 .questions {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-direction: column;
     gap: 20px;
     margin: 20px 0px;
-    box-sizing: border-box;
     
-    @include themify($themes) {
+    @include themify($themes){
 
         .loading{
             text-align: center;
@@ -29,9 +26,5 @@
         @include tablet{
             gap: 20px;
         }
-
-
-
-
     }
 }

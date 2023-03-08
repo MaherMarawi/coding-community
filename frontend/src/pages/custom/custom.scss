@@ -6,13 +6,13 @@
     padding: 10px 70px;
     background-color: themed("bgSoft");
     min-height: 100vh;
-    box-sizing: border-box;
+    // box-sizing: border-box;
 
     
     @include tablet{
       padding: 20px;
     }
-    
+
     @include mobile{
       padding: 10px;
     }

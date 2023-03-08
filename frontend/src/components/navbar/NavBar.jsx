@@ -10,7 +10,8 @@ import Loader from "../microcomponents/loader/Loader";
 import { SearchContext } from "../../context/searchContext";
 import { useNavigate } from 'react-router-dom'
 import SearchMobile from "./searchmobile/SearchMobile";
-
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import MobileMenu from "../navbar/MobileMenu"
 const NavBar = () => {
 
   const navigate = useNavigate();
@@ -20,8 +21,9 @@ const NavBar = () => {
   const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
   const [sv, setSv] = useState()
 
+ 
   const toggleMenuMobile = () => {
-    setMenuMobilePosition(menuMobilePosition === -300 ? 40 : -300)
+    setMenuMobilePosition(menuMobilePosition === -280 ? 40 : -280)
   }
   const handleChange = (e) => {
     setSv(e.target.value)
@@ -36,7 +38,7 @@ const NavBar = () => {
   const onclick = () => {
     setIsOpen(isOpen == -90 ? 44 : -90)
   }
-  
+
   return (
     <div className="navbar">
       <div className="left">
@@ -68,6 +70,11 @@ const NavBar = () => {
         </div>
       </div>
       <SearchMobile />
+      <div className="mobile-menu-trigger" onClick={toggleMenuMobile}><MenuOutlinedIcon /></div>
+      <MobileMenu
+        toggleMenuMobile={toggleMenuMobile}
+        menuMobilePosition={menuMobilePosition}
+      />
     </div>
   )
 }

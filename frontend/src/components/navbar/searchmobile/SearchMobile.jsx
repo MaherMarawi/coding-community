@@ -16,7 +16,7 @@ const SearchMobile = () => {
     handleSubmit(sv)
     navigate(`/custom/search`);
     setSv("")
-    setIsOpen(-90)
+    setIsOpen(-70)
   }
   return (
     <div className="search-mobile" style={{top: isOpen}} >

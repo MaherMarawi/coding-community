@@ -20,13 +20,11 @@
             -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
             box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            border-radius: 10px;
+            border-radius: 5px;
             color: themed("textColor");
-            transition: .3s;
+            transition: .1s !important;
             display: flex;
-            // flex-direction: column;
             gap: 10px;
-            box-sizing: border-box;
             input{
                 border: 1px solid themed("border");
                 background-color: themed("bgSoft");
