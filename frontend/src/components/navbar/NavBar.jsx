@@ -18,12 +18,12 @@ const NavBar = () => {
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
-  const [menuMobilePosition, setMenuMobilePosition] = useState(-300)
+  const [menuMobilePosition, setMenuMobilePosition] = useState(-310)
   const [sv, setSv] = useState()
 
  
   const toggleMenuMobile = () => {
-    setMenuMobilePosition(menuMobilePosition === -280 ? 40 : -280)
+    setMenuMobilePosition(menuMobilePosition === -310 ? 40 : -310)
   }
   const handleChange = (e) => {
     setSv(e.target.value)
@@ -35,8 +35,8 @@ const NavBar = () => {
       setSv("")
     }
   }
-  const onclick = () => {
-    setIsOpen(isOpen == -90 ? 44 : -90)
+  const handleSearchMobile = () => {
+    setIsOpen(isOpen == -70 ? 44 : -70)
   }
 
   return (
@@ -56,7 +56,7 @@ const NavBar = () => {
           <SearchOutlinedIcon />
           <input value={sv} onChange={handleChange} onKeyUp={handleKey} placeholder="Search..."></input>
         </div>
-        <SearchOutlinedIcon onClick={() => onclick()} className="search-button" />
+        <SearchOutlinedIcon onClick={() => handleSearchMobile()} className="search-button" />
       </div>
       <div className="right">
         <div className="user">
