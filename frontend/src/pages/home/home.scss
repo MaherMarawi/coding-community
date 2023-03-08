@@ -1,7 +1,7 @@
 @import "../../style.scss";
 
 .home{
-  @include themify($themes) {
+  @include themify($themes){
     padding: 10px 70px;
     background-color: themed("bgSoft");
     min-height: 100vh;
