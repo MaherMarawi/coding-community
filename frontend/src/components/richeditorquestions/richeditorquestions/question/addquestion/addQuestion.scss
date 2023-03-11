@@ -1,0 +1,67 @@
+@import "../../../../../style.scss";
+
+.new-question {
+  @include themify($themes) {
+    // width: 100%;
+
+    .container {
+      -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      border-radius: 10px;
+      background-color: themed("bg");
+      color: themed("textColor");
+      
+      gap: 10px;
+      padding: 2.5%;
+      height: 30vh;
+      position: relative;
+      @include tablet{
+        height: 25vh;
+      }
+      @include mobile{
+        height: 30vh;
+      }
+      .text {
+        position: absolute;
+        width: 95%;
+        .ql-editor {
+          height: 24vh;
+          @include tablet{
+            height: 19vh;
+          }
+          @include mobile{
+            height: 22vh;
+          }
+
+          &::-webkit-scrollbar {
+            width: 8px;
+          }
+
+          @include mobile {
+            &::-webkit-scrollbar {
+              width: 3px;
+            }
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: themed("bgSoft");
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: themed("border");
+          }
+
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: themed('textColor');
+          }
+
+        }
+
+      }
+    }
+  }
+}

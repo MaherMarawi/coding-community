@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Loader from "../../microcomponents/loader/Loader"
-import { useGetQueryQuestions } from "../../microcomponents/useGetQueryQuestions"
+import { SetQueryQuestions } from "../../microcomponents/setqueryquestions/SetQueryQuestions"
 import LinearLoader from "../../microcomponents/linearloader/LinearLoader"
 
 const RatedQuestions = () => {
-    const questions = useGetQueryQuestions()
+    const questions = SetQueryQuestions()
     const [ratedQuestions, setRatedQuestions] = useState()
 
     useEffect(() => {
+        console.log("render")
         if (questions?.data?.length > 0) {
             const rq = questions.data.sort(
                 (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
@@ -47,9 +48,9 @@ const RatedQuestions = () => {
                     </div>
                     <div className="rated-question">
                         <div className="questionInfo">
-                            <span>
+                            <span className="link">
                                 <Link to="/custom/ratedQuestions" >
-                                    see more
+                                    see more . . .
                                 </Link>
                             </span>
                         </div>

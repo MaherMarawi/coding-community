@@ -18,6 +18,16 @@ const LeftBar = () => {
             <span>{currentUser?.name}</span>
           </div>
           <div className="item">
+            <Link to="/" >
+              <span>Questions</span>
+            </Link>
+          </div>
+          <div className="item">
+            <Link to="/richEditor" >
+              <span>Rich Editor Questions</span>
+            </Link>
+          </div>
+          <div className="item">
             <Link to="/contact" >
               <span>Contact</span>
             </Link>

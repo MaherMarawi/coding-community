@@ -1,12 +1,13 @@
 import Loader from "../../microcomponents/loader/Loader"
 import Time from "../../microcomponents/time/Time"
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { useGetQueryQuestions } from "../../microcomponents/useGetQueryQuestions"
+import { useState, useEffect, useMemo } from "react"
+import { SetQueryQuestions } from "../../microcomponents/setqueryquestions/SetQueryQuestions"
 import LinearLoader from "../../microcomponents/linearloader/LinearLoader"
 const SolvedQuestions = () => {
 
-  const questions = useGetQueryQuestions()
+  const questions = SetQueryQuestions()
+
   const [solvedQuestions, setSolvedQuestions] = useState()
 
   useEffect(() => {
@@ -49,9 +50,9 @@ const SolvedQuestions = () => {
         </div>
         <div className="solved-question">
           <div className="questionInfo">
-            <span>
+            <span className="link">
               <Link to="/custom/solvedQuestions" >
-                see more
+                see more . . .
               </Link>
             </span>
           </div>

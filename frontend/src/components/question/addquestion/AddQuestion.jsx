@@ -6,6 +6,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Loader from "../../microcomponents/loader/Loader";
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import TextEditor from "../../microcomponents/texteditor/TextEditor";
 
 const AddQuestion = () => {
 
@@ -32,7 +35,6 @@ const AddQuestion = () => {
         domiQuestion = {... domiQuestion, title: titleRef.current.value, description : descriptionRef.current.value, userCode : userCodeRef.current.value }
         if(domiQuestion.title && domiQuestion.description) addQuestionMutation.mutate(domiQuestion)
         else alert("please write a title and description")
-        
     }
     return (
         <div className="add-question">
@@ -46,6 +48,8 @@ const AddQuestion = () => {
                 <div className="desc-code">
                     <textarea ref={descriptionRef} className="textarea-code" placeholder="Description" />
                     <textarea ref={userCodeRef} datatype="wmd" type="textarea" className="textarea-code" placeholder="Code" />
+                    {/* <ReactQuill ref={descriptionRef} /> */}
+                    {/* <ReactQuill theme="snow" ref={userCodeRef} /> */}
                 </div>
             </div>
         </div>

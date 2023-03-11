@@ -1,5 +1,5 @@
 import "./question.scss"
-import { useContext, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import Comments from "../../comments/comment/Comments"
 import CodeBlock from "../../microcomponents/codeblock/CodeBlock";
@@ -8,6 +8,9 @@ import DeleteQuestion from "../deletequestion/DeleteQuestion";
 import { AuthContext } from "../../../context/authContext";
 import RateQuestion from "../ratequestion/RateQuestion";
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import { modules } from "../../microcomponents/texteditor/modules";
 
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
@@ -16,6 +19,7 @@ function Question({ question }) {
     if (commentOpen == id) setCommentOpen("")
     else setCommentOpen(id)
   }
+  
   return (
     <div className="question">
       <div className="container">
@@ -30,6 +34,10 @@ function Question({ question }) {
           <div className="content">
             <p>{question.description}</p>
             {question?.userCode && <CodeBlock >{question.userCode}</CodeBlock>}
+            {/*
+            //? need style
+            <ReactQuill theme="snow" readOnly={true} modules={modules} value={question?.userCode && question?.userCode} ></ReactQuill>
+             */}
           </div>
           <hr />
           <div className="info">
@@ -55,3 +63,4 @@ function Question({ question }) {
 }
 
 export default Question
+

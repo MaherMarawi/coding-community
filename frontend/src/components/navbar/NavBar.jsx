@@ -1,6 +1,6 @@
 import "./navBar.scss"
 import { Link } from "react-router-dom"
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import { DarkModeContext } from '../../context/darkModeContext';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -18,13 +18,31 @@ const NavBar = () => {
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
-  const [menuMobilePosition, setMenuMobilePosition] = useState(-310)
+  const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
+  const menuMobilePosition = useMemo(() => {
+    return {
+      width: mobileMenuOpen ? "150px" :  "0px",
+      padding: mobileMenuOpen ? "20px" :  "0px",
+      opacity: mobileMenuOpen ? "90%" :  "0%",
+    }
+  },[mobileMenuOpen])
+  
+  const toggleMenuMobile = () => {
+    setMobileMenuOpen(prev => !prev)
+  }
+  const [ mobileSearchOpen, setMobileSearchOpen ] = useState(false)
+  const MobileSearchPosition = useMemo(() => {
+    return {
+      top: mobileSearchOpen ? "44px" :  "-90px"
+    }
+  },[mobileSearchOpen])
+
+  const toggleSearchMobile = () => {
+    setMobileSearchOpen(prev => !prev)
+  }
+
   const [sv, setSv] = useState()
 
- 
-  const toggleMenuMobile = () => {
-    setMenuMobilePosition(menuMobilePosition === -310 ? 40 : -310)
-  }
   const handleChange = (e) => {
     setSv(e.target.value)
   }
@@ -35,9 +53,10 @@ const NavBar = () => {
       setSv("")
     }
   }
-  const handleSearchMobile = () => {
-    setIsOpen(isOpen == -70 ? 44 : -70)
-  }
+
+  // const handleDarkMode = useCallback(() => {
+  //   toggle()
+  // },[])
 
   return (
     <div className="navbar">
@@ -56,7 +75,7 @@ const NavBar = () => {
           <SearchOutlinedIcon />
           <input value={sv} onChange={handleChange} onKeyUp={handleKey} placeholder="Search..."></input>
         </div>
-        <SearchOutlinedIcon onClick={() => handleSearchMobile()} className="search-button" />
+        <SearchOutlinedIcon onClick={() => toggleSearchMobile()} className="search-button" />
       </div>
       <div className="right">
         <div className="user">
@@ -69,8 +88,11 @@ const NavBar = () => {
           <span>{currentUser?.username}</span>
         </div>
       </div>
-      <SearchMobile />
-      <div className="mobile-menu-trigger" onClick={toggleMenuMobile}><MenuOutlinedIcon /></div>
+      <SearchMobile 
+      toggleSearchMobile={toggleSearchMobile}
+      MobileSearchPosition={MobileSearchPosition}
+      />
+      <div className="mobile-menu-trigger" onClick={() => toggleMenuMobile()}><MenuOutlinedIcon /></div>
       <MobileMenu
         toggleMenuMobile={toggleMenuMobile}
         menuMobilePosition={menuMobilePosition}

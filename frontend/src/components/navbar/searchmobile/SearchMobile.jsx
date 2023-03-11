@@ -1,9 +1,13 @@
 import { SearchContext } from "../../../context/searchContext";
-import { useContext, useState } from 'react';
+import { useContext, useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom'
 import "./searchMobile.scss"
 
-const SearchMobile = () => {
+const SearchMobile = ({
+  toggleSearchMobile,
+  MobileSearchPosition
+}) => {
+
 
   const navigate = useNavigate();
   const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
@@ -16,10 +20,10 @@ const SearchMobile = () => {
     handleSubmit(sv)
     navigate(`/custom/search`);
     setSv("")
-    setIsOpen(-70)
+    toggleSearchMobile()
   }
   return (
-    <div className="search-mobile" style={{top: isOpen}} >
+    <div className="search-mobile" style={MobileSearchPosition} >
       <div className="container">
         <input value={sv} onChange={handleChange} />
         <button onClick={() => handleClick()}>Search</button>

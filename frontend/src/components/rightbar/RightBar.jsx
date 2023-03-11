@@ -22,10 +22,12 @@ const RightBar = () => {
           <RatedQuestions />
           <SolvedQuestions />
           {/* <ActiveUsers /> */}
-          <div className="item tab-item"><Link to="/about"><span>about</span></Link></div>
-          <div className="item tab-item"><Link to="/contact"><span>contact</span></Link></div>
+          <div className="item tab-item"><Link to="/"><span>Questions</span></Link></div>
+          <div className="item tab-item"><Link to="/richEditor"><span>Rich Editor Questions</span></Link></div>
+          <div className="item tab-item"><Link to="/about"><span>About</span></Link></div>
+          <div className="item tab-item"><Link to="/contact"><span>Contact</span></Link></div>
           {currentUser && currentUser.role == "admin" ?
-            <><div className="item tab-item"><Link to="/users"><span>users</span></Link></div></>
+            <><div className="item tab-item"><Link to="/users"><span>Users</span></Link></div></>
             :
             <></>
           }

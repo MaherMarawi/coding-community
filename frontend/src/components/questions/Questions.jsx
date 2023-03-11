@@ -4,13 +4,13 @@ import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import AddQuestion from "../question/addquestion/AddQuestion";
 import { useContext, useEffect, useState } from "react"
-import { useGetQueryQuestions } from "../microcomponents/useGetQueryQuestions";
+import { SetQueryQuestions } from "../microcomponents/setqueryquestions/SetQueryQuestions";
 import { SearchContext } from "../../context/searchContext";
 
 export default function Questions() {
 
   const { value } = useContext(SearchContext)
-  const questions = useGetQueryQuestions()
+  const questions = SetQueryQuestions()
 
   if (questions.isLoading)
     return <Box className="linear-loader">

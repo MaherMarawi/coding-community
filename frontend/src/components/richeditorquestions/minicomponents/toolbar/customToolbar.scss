@@ -1,0 +1,23 @@
+@import "../../../../style.scss";
+
+#toolbar {
+    @include themify($themes) {
+        position: sticky;
+        height: 50px;
+        width: 100%;
+        z-index: 99999 !important;
+        border: none;
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            span{
+                font-size: 10px;
+            }
+            .details {
+            }
+        }
+    }
+}

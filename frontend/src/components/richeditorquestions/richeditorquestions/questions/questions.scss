@@ -1,0 +1,30 @@
+@import "../../../../style.scss";
+
+
+.linear-loader{
+    position: absolute;
+    top: 67px;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    @include mobile{
+        top: 37px;
+    }
+}
+.questions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0px;
+    
+    @include themify($themes){
+
+        .loading{
+            text-align: center;
+        }
+
+        @include tablet{
+            gap: 20px;
+        }
+    }
+}

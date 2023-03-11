@@ -4,17 +4,17 @@
     @include themify($themes) {
         display: flex;
         flex-direction: column;
-        padding: 20px;
+        // padding: 20px;
         border-radius: 5px 0 0 5px;
         gap: 20px;
         background-color: themed("logo");
         position: fixed;
-        top: -190px;
+        top: 40px;
         right: 0px;
-        width: 150px;
+        // width: 150px;
         font-weight: 600;
         transition: .3s;
-        z-index: 2;
+        
 
         a {
             text-decoration: none;

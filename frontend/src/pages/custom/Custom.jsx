@@ -2,13 +2,13 @@ import "./custom.scss";
 import { useLocation, useParams } from "react-router-dom";
 import Question from "../../components/question/question/Question"
 import { useEffect, useState, useContext } from "react";
-import { useGetQueryQuestions } from "../../components/microcomponents/useGetQueryQuestions";
+import { SetQueryQuestions } from "../../components/microcomponents/setqueryquestions/SetQueryQuestions";
 import LinearLoader from "../../components/microcomponents/linearloader/LinearLoader";
 import { SearchContext } from "../../context/searchContext";
 
 const Custom = () => {
 
-  const questions = useGetQueryQuestions()
+  const questions = SetQueryQuestions()
   const [results, setResults] = useState()
   const { value, handleSubmit } = useContext(SearchContext)
   const { key } = useParams();

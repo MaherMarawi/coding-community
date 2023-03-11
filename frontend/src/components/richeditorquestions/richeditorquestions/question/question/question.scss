@@ -1,0 +1,104 @@
+@import "../../../../../style.scss";
+
+.rich-editor-question {
+    @include themify($themes) {
+
+        // width: 100%;
+        // 
+        .container {
+            // box-sizing: border-box;
+            padding: 5px 15px;
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 10px;
+            background-color: themed("bg");
+            color: themed("textColor");
+            // height: 450px;
+            // display: flex;
+            // flex-direction: column;
+            // gap: 10px;
+
+
+
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                // box-sizing: border-box;
+                gap: 10px;
+                position: relative;
+
+
+                .text {
+                    .ql-editor{
+                        height: 300px;
+                        &::-webkit-scrollbar {
+                            width: 8px;
+                        }
+
+                        @include mobile {
+                            &::-webkit-scrollbar {
+                                width: 3px;
+                            }
+                        }
+
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background: themed("bgSoft");
+                        }
+
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background: themed("border");
+                        }
+
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background: themed('textColor');
+                        }
+
+                    }
+                }
+
+                hr {
+                    margin: 10px 0px;
+                    background-color: themed("border");
+                    border: none;
+                    height: 0.5px;
+                }
+
+                span {
+                    font-size: 12px;
+                }
+
+                .info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 20px;
+
+                    .items {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        cursor: pointer;
+                        font-size: 10px;
+
+                        .item {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            cursor: pointer;
+                            font-size: 10px;
+
+                            .icons {
+                                width: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

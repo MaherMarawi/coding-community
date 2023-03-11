@@ -16,11 +16,13 @@ const MobileMenu = ({
   const { currentUser, logoutMutation } = useContext(AuthContext)
 
   return (
-    <div className="navbar-items-mobile" style={{ top: menuMobilePosition }}>
+    <div className="navbar-items-mobile" style={menuMobilePosition}>
+      <Link to="/" onClick={toggleMenuMobile}>Questions</Link>
+      <Link to="/richEditor" onClick={toggleMenuMobile}>Rich Editor Questions</Link>
+      <Link to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most Rated Questions</Link>
+      <Link to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent Solved Questions</Link>
       <Link to="/about" onClick={toggleMenuMobile}>About</Link>
       <Link to="/contact" onClick={toggleMenuMobile}>Contact</Link>
-      <Link to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most rated questions</Link>
-      <Link to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent solved questions</Link>
       {currentUser && currentUser.role == "admin" ?
         <><Link to="/users" onClick={toggleMenuMobile} >Users</Link></>
         :

@@ -17,6 +17,7 @@ import { DarkModeContext } from './context/darkModeContext';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
 import Users from './pages/users/Users';
+import RichEditorPage from './pages/richeditor/RichEditorPage';
 function App() {
 
   // const { currentUser } = useContext(AuthContext)
@@ -64,6 +65,10 @@ function App() {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/richEditor",
+          element: <RichEditorPage />,
         },
         {
           path: "/custom/:key",
