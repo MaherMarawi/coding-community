@@ -5,33 +5,41 @@
     // width: 100%;
 
     .container {
-      -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-      -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-      box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-      border-radius: 10px;
-      background-color: themed("bg");
-      color: themed("textColor");
-      
+      // -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // border-radius: 10px;
+      // background-color: themed("bg");
+      // color: themed("textColor");
+
       gap: 10px;
       padding: 2.5%;
       height: 30vh;
       position: relative;
-      @include tablet{
+
+      @include tablet {
         height: 25vh;
       }
-      @include mobile{
+
+      @include mobile {
         height: 30vh;
       }
+
       .text {
         position: absolute;
         width: 95%;
+
         .ql-editor {
+          background-color: themed("bg");
+          color: themed("textColor");
           height: 24vh;
-          @include tablet{
+
+          @include tablet {
             height: 19vh;
           }
-          @include mobile{
-            height: 22vh;
+
+          @include mobile {
+            height: 21vh;
           }
 
           &::-webkit-scrollbar {

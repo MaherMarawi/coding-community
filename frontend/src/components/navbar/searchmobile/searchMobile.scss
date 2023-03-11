@@ -2,49 +2,27 @@
 
 .search-mobile {
     position: absolute;
-    top: -90px;
+    top: 45px;
     transition: .3s;
-    @include themify($themes) {
-
+    left: 0;
+    @include themify($themes){
         display: flex;
-        flex-direction: column;
-        padding: 0px 20px;
-        border-radius: 10px;
-        // gap: 20px;
-        background-color: themed("bg");
         transition: .3s;
-        width: 80%;
-        
-        .container {
-            padding: 5px 20px;
-            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-            border-radius: 5px;
+        width: 99%;
+        margin: 0 .5px;
+        input {
+            border: none;
+            width: 64%;
+            background-color: themed("bgSoft");
             color: themed("textColor");
-            transition: .1s !important;
-            display: flex;
-            gap: 10px;
-            input{
-                border: 1px solid themed("border");
-                background-color: themed("bgSoft");
-                color: themed("textColor");
-                flex: 2;
-            }
-            button {
-                flex: 1;
-                border: none;
-                background-color: #5271ff;
-                color: white;
-                // padding: 10px;
-                cursor: pointer;
-                border-radius: 3px;
-            }
         }
-        
-        
-
-
+        button {
+            width: 35%;
+            border: none;
+            background-color: #5271ff;
+            color: white;
+            transition: .1s ;
+            cursor: pointer;
+        }
     }
-
 }

@@ -18,24 +18,34 @@ const NavBar = () => {
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
-  const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const menuMobilePosition = useMemo(() => {
     return {
-      width: mobileMenuOpen ? "150px" :  "0px",
-      padding: mobileMenuOpen ? "20px" :  "0px",
-      opacity: mobileMenuOpen ? "90%" :  "0%",
+      width: mobileMenuOpen ? "150px" : "0px",
+      padding: mobileMenuOpen ? "20px" : "0px",
     }
-  },[mobileMenuOpen])
-  
+  }, [mobileMenuOpen])
+  const statusMobilePosition = useMemo(() => {
+    return {
+      display: mobileMenuOpen ? "flex" : "none"
+    }
+  }, [mobileMenuOpen])
+
   const toggleMenuMobile = () => {
     setMobileMenuOpen(prev => !prev)
   }
-  const [ mobileSearchOpen, setMobileSearchOpen ] = useState(false)
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
   const MobileSearchPosition = useMemo(() => {
     return {
-      top: mobileSearchOpen ? "44px" :  "-90px"
+      height: mobileSearchOpen ? "30px" : "0px",
+      border: mobileSearchOpen ? "1px solid black" : "none"
     }
-  },[mobileSearchOpen])
+  }, [mobileSearchOpen])
+  const buttonSearchPosition = useMemo(() => {
+    return {
+      display: mobileSearchOpen ? "block" : "none"
+    }
+  }, [mobileSearchOpen])
 
   const toggleSearchMobile = () => {
     setMobileSearchOpen(prev => !prev)
@@ -53,10 +63,6 @@ const NavBar = () => {
       setSv("")
     }
   }
-
-  // const handleDarkMode = useCallback(() => {
-  //   toggle()
-  // },[])
 
   return (
     <div className="navbar">
@@ -88,12 +94,14 @@ const NavBar = () => {
           <span>{currentUser?.username}</span>
         </div>
       </div>
-      <SearchMobile 
-      toggleSearchMobile={toggleSearchMobile}
-      MobileSearchPosition={MobileSearchPosition}
+      <SearchMobile
+        toggleSearchMobile={toggleSearchMobile}
+        MobileSearchPosition={MobileSearchPosition}
+        buttonSearchPosition={buttonSearchPosition}
       />
       <div className="mobile-menu-trigger" onClick={() => toggleMenuMobile()}><MenuOutlinedIcon /></div>
       <MobileMenu
+        statusMobilePosition={statusMobilePosition}
         toggleMenuMobile={toggleMenuMobile}
         menuMobilePosition={menuMobilePosition}
       />

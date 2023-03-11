@@ -9,26 +9,28 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 
 const MobileMenu = ({
   menuMobilePosition,
-  toggleMenuMobile
+  toggleMenuMobile,
+  statusMobilePosition
 }) => {
+  
 
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
 
   return (
     <div className="navbar-items-mobile" style={menuMobilePosition}>
-      <Link to="/" onClick={toggleMenuMobile}>Questions</Link>
-      <Link to="/richEditor" onClick={toggleMenuMobile}>Rich Editor Questions</Link>
-      <Link to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most Rated Questions</Link>
-      <Link to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent Solved Questions</Link>
-      <Link to="/about" onClick={toggleMenuMobile}>About</Link>
-      <Link to="/contact" onClick={toggleMenuMobile}>Contact</Link>
+      <Link style={statusMobilePosition} to="/" onClick={toggleMenuMobile}>Questions</Link>
+      <Link style={statusMobilePosition} to="/richEditor" onClick={toggleMenuMobile}>Rich Editor Questions</Link>
+      <Link style={statusMobilePosition} to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most Rated Questions</Link>
+      <Link style={statusMobilePosition} to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent Solved Questions</Link>
+      <Link style={statusMobilePosition} to="/about" onClick={toggleMenuMobile}>About</Link>
+      <Link style={statusMobilePosition} to="/contact" onClick={toggleMenuMobile}>Contact</Link>
       {currentUser && currentUser.role == "admin" ?
-        <><Link to="/users" onClick={toggleMenuMobile} >Users</Link></>
+        <><Link style={statusMobilePosition} to="/users" onClick={toggleMenuMobile} >Users</Link></>
         :
         <></>
       }
-      <div className="user">
+      <div className="user" style={statusMobilePosition}>
         {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
         {currentUser &&
           <div>

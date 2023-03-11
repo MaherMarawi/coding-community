@@ -6,7 +6,7 @@ export const SearchContext = createContext()
 export const SearchContextProvider = ({children}) => {
 
     const [ value, setValue ] = useState()
-    const [ isOpen, setIsOpen ] = useState(-70)
+    const [ isOpen, setIsOpen ] = useState(0)
 
 
     const handleSubmit = (e) => {
