@@ -10,7 +10,7 @@
   @include themify($themes) {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    // gap: 5px;
     color: themed("textColor");
     position: relative;
 

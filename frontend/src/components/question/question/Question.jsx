@@ -8,9 +8,6 @@ import DeleteQuestion from "../deletequestion/DeleteQuestion";
 import { AuthContext } from "../../../context/authContext";
 import RateQuestion from "../ratequestion/RateQuestion";
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import { modules } from "../../microcomponents/texteditor/modules";
 
 function Question({ question }) {
   const { currentUser } = useContext(AuthContext)
@@ -34,10 +31,7 @@ function Question({ question }) {
           <div className="content">
             <p>{question.description}</p>
             {question?.userCode && <CodeBlock >{question.userCode}</CodeBlock>}
-            {/*
-            //? need style
-            <ReactQuill theme="snow" readOnly={true} modules={modules} value={question?.userCode && question?.userCode} ></ReactQuill>
-             */}
+            
           </div>
           <hr />
           <div className="info">

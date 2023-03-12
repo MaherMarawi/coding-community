@@ -6,9 +6,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Loader from "../../microcomponents/loader/Loader";
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import TextEditor from "../../microcomponents/texteditor/TextEditor";
 
 const AddQuestion = () => {
 

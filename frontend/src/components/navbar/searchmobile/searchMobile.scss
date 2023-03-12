@@ -4,25 +4,38 @@
     position: absolute;
     top: 45px;
     transition: .3s;
-    left: 0;
-    @include themify($themes){
-        display: flex;
-        transition: .3s;
-        width: 99%;
-        margin: 0 .5px;
-        input {
-            border: none;
-            width: 64%;
-            background-color: themed("bgSoft");
-            color: themed("textColor");
-        }
-        button {
-            width: 35%;
-            border: none;
-            background-color: #5271ff;
-            color: white;
-            transition: .1s ;
-            cursor: pointer;
+    left: 9;
+
+    width: 90%;
+    @include themify($themes) {
+        .container {
+
+            display: flex;
+            transition: .3s;
+            padding: 5px ;
+            box-sizing: border-box;
+
+            input {
+                border: none;
+                // width: 64%;
+                background-color: themed("bgSoft");
+                color: themed("textColor");
+                flex: 2;
+            }
+            input:focus{
+                border: none;
+                outline: none;
+            }
+
+            button {
+                // width: 35%;
+                border: none;
+                background-color: #5271ff;
+                color: white;
+                transition: .1s;
+                cursor: pointer;
+                flex: 1;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ import DeleteComment from "../deletecomment/DeleteComment";
 import RateComment from "../ratecomment/RateComment";
 import SolveComment from "../solvecomment/SolveComment";
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import { modules } from "../../../../microcomponents/texteditor/modules";
+import { modules } from "../../../minicomponents/toolbaraddquestions/modules";
 import ReactQuill from 'react-quill';
 import AddQuestion from "../../../richeditorquestions/question/addquestion/AddQuestion";
 import { CustomToolbar } from "../../../minicomponents/toolbar/CustomToolbar";
@@ -35,17 +35,11 @@ function Comments({ question, setCommentOpen }) {
           <div className="comment" key={comment._id}>
 
 
-            <div className="info">
-              {/* <span>{comment.user_name ? comment.user_name : "unknown"}</span> */}
-              {/* <label><Time time={comment.createdAt} /></label> */}
-            </div>
-
-
             <div className="content">
-              <p> {(question.comment_id && question.comment_id == comment._id) ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : ""}</p>
+
               <CustomToolbar
                 user_name={comment.user_name ? comment.user_name : "unknown"}
-                solved={question.comment_id ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : ""}
+                solved={question.comment_id == comment._id ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : <></>}
                 date={comment.createdAt}
               />
               <ReactQuill

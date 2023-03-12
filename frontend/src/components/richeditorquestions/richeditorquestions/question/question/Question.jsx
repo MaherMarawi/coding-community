@@ -8,7 +8,6 @@ import RateQuestion from "../ratequestion/RateQuestion";
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { modules } from "../../../../microcomponents/texteditor/modules";
 import { CustomToolbar } from "../../../minicomponents/toolbar/CustomToolbar";
 
 function Question({ question }) {
@@ -34,7 +33,7 @@ function Question({ question }) {
               date={question.createdAt}
             />
             <ReactQuill
-              theme="snow" 
+              theme="snow"
               readOnly={true}
               modules={Question.modules}
               value={question?.text && question?.text} >

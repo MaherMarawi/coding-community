@@ -3,30 +3,38 @@
 .new-comment {
   @include themify($themes) {
     // width: 100%;
-    gap: 10px;
+    
+    .editor-container {
+      gap: 10px;
       padding-left: 0;
-      height: 24vh;
+      height: 25vh;
       position: relative;
+      @include tablet {
+        height: 27vh;
+      }
+      @include mobile {
+        height: 28vh;
+      }
+        // -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        // -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        // box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        // border-radius: 10px;
+        // background-color: themed("bg");
+        // color: themed("textColor");
 
-   
-    //   -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    //   -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    //   box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-    //   border-radius: 10px;
-    //   background-color: themed("bg");
-    //   color: themed("textColor");
-      
-      
+
 
       .text {
         position: absolute;
         width: 100%;
+
         .ql-editor {
-            height: 20vh !important;
-          @include tablet{
+          height: 20vh !important;
+          @include tablet {
             height: 15vh;
           }
-          @include mobile{
+
+          @include mobile {
             height: 18vh;
           }
 
@@ -57,7 +65,8 @@
 
         }
 
-      
+
+      }
     }
   }
 }

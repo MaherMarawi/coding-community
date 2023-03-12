@@ -11,11 +11,16 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            
-            span{
+
+            span {
                 font-size: 10px;
             }
+
             .details {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                justify-content: space-between;
             }
         }
     }

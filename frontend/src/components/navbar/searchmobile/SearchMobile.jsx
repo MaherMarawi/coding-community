@@ -25,8 +25,11 @@ const SearchMobile = ({
   }
   return (
     <div className="search-mobile" style={MobileSearchPosition} >
-        <input style={MobileSearchPosition} value={sv} onChange={handleChange} />
-        <button style={MobileSearchPosition} onClick={() => handleClick()} value="Search" ><span style={buttonSearchPosition}>Search</span></button>
+      <div className="container" style={MobileSearchPosition}>
+
+        <input  value={sv} onChange={handleChange} />
+        <button  onClick={() => handleClick()} value="Search" ><span style={buttonSearchPosition}>Search</span></button>
+      </div>
     </div>
   )
 }

@@ -6,7 +6,8 @@ import { AuthContext } from "../../../../../context/authContext";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { CustomToolbarAdd } from "../../../minicomponents/toolbaraddquestions/CustomToolbarAdd";
-
+import { CustomToolbar } from "../../../minicomponents/toolbar/CustomToolbar";
+import { modules } from "../../../minicomponents/toolbaraddquestions/modules";
 
 const AddComment = ({ question }) => {
 
@@ -31,19 +32,21 @@ const AddComment = ({ question }) => {
     }
     return (
         <div className="new-comment">
-            {/* <div className="container"> */}
+            <div className="editor-container">
                 <div className="text">
-                    <CustomToolbarAdd
+                    {/* <CustomToolbarAdd
                         handleClick={handleClick}
                         loading={addCommentMutation.isLoading}
-                    />
+                    /> */}
                     <ReactQuill
                         defaultValue=""
-                        modules={AddComment.modules}
+                        modules={modules}
                         className="text-input"
-                        ref={textRef} />
+                        ref={textRef}
+                        theme="snow"
+                    />
                 </div>
-            {/* </div> */}
+            </div>
         </div>
     )
 }

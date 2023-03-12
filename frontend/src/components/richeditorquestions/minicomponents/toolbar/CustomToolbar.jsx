@@ -2,8 +2,8 @@ import "./customToolbar.scss"
 import Time from "../../../microcomponents/time/Time";
 
 export const CustomToolbar = ({ user_name, solved, date }) => (
-    <div id="toolbar">
-        {/* <select
+  <div id="toolbar">
+    {/* <select
         className="ql-header"
         defaultValue={''}
         onChange={(e) => e.persist()}
@@ -23,13 +23,13 @@ export const CustomToolbar = ({ user_name, solved, date }) => (
         <option value="#d0d1d2"></option>
         <option selected></option>
       </select> */
-      }
-        <div className="info">
-            <div className="details">
-                <span>{user_name}</span>
-                <span>{solved}</span>
-            </div>
-            <span><Time time={date} /></span>
-        </div>
+    }
+    <div className="info">
+      <span>{user_name}</span>
+      <div className="details">
+        <span>{solved}</span>
+        <span><Time time={date} /></span>
+      </div>
     </div>
+  </div>
 );
