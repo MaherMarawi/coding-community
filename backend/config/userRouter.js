@@ -13,4 +13,6 @@ router.get('/api/getUser/:id', controller.oneUser)
 router.delete('/api/deleteUser/:id', controller.DeleteUser)
 
 router.put('/api/updateUser/:id', controller.updateUser)
+router.put('/api/setRole/:id', controller.setUserRole)
+
 module.exports = router

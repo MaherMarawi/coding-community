@@ -1,0 +1,80 @@
+@import "../../style.scss";
+
+.users {
+    @include themify($themes) {
+        padding: 20px;
+        background-color: themed("bgSoft");
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        // box-sizing: border-box;
+
+        @include tablet {
+            padding: 20px;
+        }
+
+        @include mobile {
+            padding: 10px;
+        }
+
+
+        .container {
+            padding: 10px 10px;
+            -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+            border-radius: 10px;
+            background-color: themed("bg");
+            color: themed("textColor");
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            // box-sizing: border-box;
+            .user {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 30px;
+                @include mobile{
+                    font-size: 12px;
+                }
+                
+                .btns {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 10px;
+                    @include mobile{
+                        font-size: 10px;
+                    }
+                    .update-btn{
+                        border: 1px solid themed("bg");
+                        background-color: themed("border");
+                        color: whitesmoke;
+                        padding: 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        @include mobile{
+                            padding: 5px;
+                        }
+                    }
+                    
+                    .delete-btn{
+                        border: 1px solid themed("bg");
+                        background-color: crimson;
+                        color: whitesmoke;
+                        padding: 10px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        @include mobile{
+                            padding: 5px;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}

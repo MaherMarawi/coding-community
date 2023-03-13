@@ -16,7 +16,7 @@ import { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext';
 import Contact from './pages/contact/Contact';
 import About from './pages/about/About';
-import Users from './pages/users/Users';
+import Users from './pages/accounts/Accounts';
 import RichEditorPage from './pages/richeditor/RichEditorPage';
 function App() {
 

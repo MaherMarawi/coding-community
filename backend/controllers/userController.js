@@ -98,9 +98,17 @@ const oneUser = (req, res) => {
 }
 
 const updateUser = (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body)
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true})
         .then(response => { res.status(200).send(response) })
         .catch(err => console.log(err))
+}
+
+const setUserRole = (req, res) => {
+    User.updateOne( { _id: req.params.id }, req.body )
+        .then(user => {
+            res.status(200).send(user)
+        })
+        .catch(err => res.status(404).send(err))
 }
 
 const DeleteUser = (req, res) => {
@@ -135,7 +143,8 @@ module.exports = {
     oneUser,
     updateUser,
     checkedUser,
-    DeleteUser
+    DeleteUser,
+    setUserRole
 }
 
 

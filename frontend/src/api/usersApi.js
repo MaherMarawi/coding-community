@@ -14,3 +14,6 @@ export const deleteUser = async (id) => {
 export const updateUser = async (id, user) => {
     return await makeRequest.put(`/updateUser/${id}`, user).then(res => res.data)
 } 
+export const setRole = async (id, role) => {
+    return await makeRequest.put(`/setRole/${id}`, role).then(res => res.data)
+} 

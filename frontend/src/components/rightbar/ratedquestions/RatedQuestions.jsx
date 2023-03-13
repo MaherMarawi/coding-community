@@ -9,7 +9,6 @@ const RatedQuestions = () => {
     const [ratedQuestions, setRatedQuestions] = useState()
 
     useEffect(() => {
-        console.log("render")
         if (questions?.data?.length > 0) {
             const rq = questions.data.sort(
                 (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
