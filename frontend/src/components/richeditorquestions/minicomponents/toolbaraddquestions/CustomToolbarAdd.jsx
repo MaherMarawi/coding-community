@@ -31,6 +31,6 @@ export const CustomToolbarAdd = ({ handleClick, loading }) => (
     <button className="ql-list" value="ordered"></button>
     <button className="ql-list" value="bullet"></button>
     <button className="ql-image"></button>
-    <button onClick={() => handleClick()} className="add-btn">{loading ? <Loader /> : "ADD"}</button>
+    <button onClick={() => handleClick()} className="add-btn">{loading ? <Loader /> : "POST"}</button>
   </div>
 );

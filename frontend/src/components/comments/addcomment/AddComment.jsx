@@ -32,7 +32,7 @@ const AddComment = ({ question }) => {
         <div className="write">
             <div className="comment-button">
                 <input type="text" ref={commentRef} placeholder="Write a comment" />
-                <button disabled={addCommentMutation.isLoading} onClick={() => handleClick(question)}>{addCommentMutation.isLoading ? <Loader /> : "Add"}</button>
+                <button disabled={addCommentMutation.isLoading} onClick={() => handleClick(question)}>{addCommentMutation.isLoading ? <Loader /> : "POST"}</button>
             </div>
             <textarea ref={userCodeRef} type="textarea" placeholder="Code" />
         </div>

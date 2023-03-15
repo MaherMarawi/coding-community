@@ -3,24 +3,27 @@
 .new-comment {
   @include themify($themes) {
     // width: 100%;
-    
+
     .editor-container {
       gap: 10px;
       padding-left: 0;
       height: 25vh;
       position: relative;
+
       @include tablet {
         height: 27vh;
       }
+
       @include mobile {
         height: 28vh;
       }
-        // -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        // -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        // box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-        // border-radius: 10px;
-        // background-color: themed("bg");
-        // color: themed("textColor");
+
+      // -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+      // border-radius: 10px;
+      // background-color: themed("bg");
+      // color: themed("textColor");
 
 
 
@@ -30,6 +33,7 @@
 
         .ql-editor {
           height: 20vh !important;
+
           @include tablet {
             height: 15vh;
           }
@@ -66,6 +70,30 @@
         }
 
 
+      }
+
+      .add-btn {
+        position: absolute;
+        right: 20px;
+        top: 12px;
+        border: none;
+        color: themed("textColor");
+        background-color: themed("bg");
+        font-weight: bold;
+        cursor: pointer;
+
+        @include tablet {
+          top: 35px;
+          right: 20%;
+        }
+
+        @include mobile {
+          top: 35px;
+          right: 50%;
+        }
+      }
+      .add-btn:hover{
+        color: rgb(0, 166, 255);
       }
     }
   }

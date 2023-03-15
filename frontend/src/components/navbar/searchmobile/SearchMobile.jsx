@@ -5,7 +5,7 @@ import "./searchMobile.scss"
 
 const SearchMobile = ({
   toggleSearchMobile,
-  MobileSearchPosition,
+  mobileSearchPosition,
   buttonSearchPosition
 }) => {
 
@@ -24,8 +24,8 @@ const SearchMobile = ({
     toggleSearchMobile()
   }
   return (
-    <div className="search-mobile" style={MobileSearchPosition} >
-      <div className="container" style={MobileSearchPosition}>
+    <div className="search-mobile" style={mobileSearchPosition} >
+      <div className="container" style={mobileSearchPosition}>
 
         <input  value={sv} onChange={handleChange} />
         <button  onClick={() => handleClick()} value="Search" ><span style={buttonSearchPosition}>Search</span></button>

@@ -22,12 +22,13 @@ const NavBar = () => {
   const menuMobilePosition = useMemo(() => {
     return {
       width: mobileMenuOpen ? "150px" : "0px",
-      padding: mobileMenuOpen ? "20px" : "0px",
+      padding: mobileMenuOpen ? "10px 20px" : "10px 0px",
+      
     }
   }, [mobileMenuOpen])
   const statusMobilePosition = useMemo(() => {
     return {
-      display: mobileMenuOpen ? "flex" : "none"
+      fontSize: mobileMenuOpen ? "12px": "0"
     }
   }, [mobileMenuOpen])
 
@@ -35,7 +36,7 @@ const NavBar = () => {
     setMobileMenuOpen(prev => !prev)
   }
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
-  const MobileSearchPosition = useMemo(() => {
+  const mobileSearchPosition = useMemo(() => {
     return {
       height: mobileSearchOpen ? "30px" : "0px",
       border: mobileSearchOpen ? "1px solid black" : "none"
@@ -96,7 +97,7 @@ const NavBar = () => {
       </div>
       <SearchMobile
         toggleSearchMobile={toggleSearchMobile}
-        MobileSearchPosition={MobileSearchPosition}
+        mobileSearchPosition={mobileSearchPosition}
         buttonSearchPosition={buttonSearchPosition}
       />
       <div className="mobile-menu-trigger" onClick={() => toggleMenuMobile()}><MenuOutlinedIcon /></div>

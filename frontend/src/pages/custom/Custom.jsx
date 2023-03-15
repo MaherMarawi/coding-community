@@ -9,50 +9,50 @@ import { SearchContext } from "../../context/searchContext";
 const Custom = () => {
 
   const questions = SetQueryQuestions()
-  const [results, setResults] = useState()
   const { value, handleSubmit } = useContext(SearchContext)
   const { key } = useParams();
 
-  const getQuestions = () => {
-    if (questions?.data) {
-      if (key == "ratedQuestions") {
-        const rq = questions?.data?.sort(
-          (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-            : (q1.rate?.length > q2.rate?.length) ? -1
-              : 0)
-        setResults(rq)
-      }
-      if (key == "solvedQuestions") {
-        const sq = questions?.data?.filter(q => q.comment_id)
-        const rsq = sq.sort(function(a,b){
-          // Turn your strings into dates, and then subtract them
-          // to get a value that is either negative, positive, or zero.
-          return new Date(b.updatedAt) - new Date(a.updatedAt);
+  let content
+  switch (key) {
+    case "ratedQuestions":
+      content = questions?.data?.sort(
+        (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
+          : (q1.rate?.length > q2.rate?.length) ? -1
+            : 0)
+        .slice(0, 2)
+        .map(q => {
+          return (
+            <Question question={q} key={q._id} />
+          )
         })
-        setResults(rsq)
-      }
-      if (key == "search") {
-        const seq = questions?.data?.filter(q => (q.title.toLowerCase().includes(value.toLowerCase()) || (q.description.toLowerCase().includes(value.toLowerCase()))
-          || (q.userCode.toLowerCase().includes(value.toLowerCase()))
-        ))
-        setResults(seq)
-      }
-    }
+      break;
+    case "solvedQuestions":
+      content = questions?.data?.filter(ques => ques.comment_id).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+        .slice(0, 3)
+        .map(q => {
+          return (
+            <Question question={q} key={q._id} />
+          )
+        })
+      break;
+    case "search":
+      content = questions?.data?.filter(ques => (ques.title.toLowerCase().includes(value.toLowerCase()) || (ques.description.toLowerCase().includes(value.toLowerCase()))
+      || (ques.userCode.toLowerCase().includes(value.toLowerCase())))).map(q => {
+        return (
+          <Question question={q} key={q._id} />
+        )
+      })
+      break;
   }
-  useEffect(() => {
-    getQuestions()
-    // else return <LinearLoader />
-  }, [questions.data, value, key]);
+
 
   return (
     <div className="custom">
-      {(questions?.isLoading || results?.length == 0) ? <LinearLoader />
+      {(questions?.isLoading) ? <LinearLoader />
         :
         <>
           <div className="questions">
-            {results && results.map(q => (
-              <Question question={q} key={q._id} />
-            ))}
+            {content}
           </div>
         </>
       }

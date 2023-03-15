@@ -12,32 +12,45 @@ const MobileMenu = ({
   toggleMenuMobile,
   statusMobilePosition
 }) => {
-  
+
 
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
 
   return (
     <div className="navbar-items-mobile" style={menuMobilePosition}>
-      <Link style={statusMobilePosition} to="/" onClick={toggleMenuMobile}>Questions</Link>
-      <Link style={statusMobilePosition} to="/richEditor" onClick={toggleMenuMobile}>Rich Editor Questions</Link>
-      <Link style={statusMobilePosition} to="/custom/ratedQuestions" onClick={toggleMenuMobile} >Most Rated Questions</Link>
-      <Link style={statusMobilePosition} to="/custom/solvedQuestions" onClick={toggleMenuMobile} >Recent Solved Questions</Link>
-      <Link style={statusMobilePosition} to="/about" onClick={toggleMenuMobile}>About</Link>
-      <Link style={statusMobilePosition} to="/contact" onClick={toggleMenuMobile}>Contact</Link>
+      <Link  to="/" onClick={toggleMenuMobile}><span>Questions</span></Link>
+      <Link  to="/richEditor" onClick={toggleMenuMobile}><span>Rich Editor Questions</span></Link>
+      <Link  to="/custom/ratedQuestions" onClick={toggleMenuMobile}><span>Most Rated Questions</span></Link>
+      <Link  to="/custom/solvedQuestions" onClick={toggleMenuMobile}><span>Recent Solved Questions</span></Link>
+      <Link  to="/about" onClick={toggleMenuMobile}><span>About</span></Link>
+      <Link  to="/contact" onClick={toggleMenuMobile}><span>Contact</span></Link>
       {currentUser && currentUser.role == "admin" ?
-        <><Link style={statusMobilePosition} to="/users" onClick={toggleMenuMobile} >Users</Link></>
+        <><Link  to="/users" onClick={toggleMenuMobile}><span>Users</span></Link></>
         :
         <></>
       }
-      <div className="user" style={statusMobilePosition}>
-        {currentUser?.username ? "" : <button className="login-button"><Link to="/auth/login">login</Link></button>}
-        {currentUser &&
-          <div>
+      <div className="user"  >
+        {currentUser?.username
+          ?
+          <div className="user-details">
+            <span>{currentUser?.username}</span>
             {currentUser?.role == "admin" ? <div className="admin-sign">admin</div> : ""}
-            <button disabled={logoutMutation.isLoading} onClick={() => logoutMutation.mutate()}>{logoutMutation.isLoading ? <Loader /> : "logout"}</button>
-          </div>}
-        <span>{currentUser?.username}</span>
+            <button
+              // style={statusMobilePosition}
+              disabled={logoutMutation.isLoading}
+              onClick={() => logoutMutation.mutate()}>
+              {logoutMutation.isLoading
+                ?
+                <Loader />
+                :
+                "logout"
+              }
+            </button>
+          </div>
+          :
+          <button className="login-button"><Link to="/auth/login">login</Link></button>
+        }
       </div>
       {
         darkMode

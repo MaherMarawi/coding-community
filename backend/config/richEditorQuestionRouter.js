@@ -8,6 +8,7 @@ const { requireAuth } = require('../middlware/authMiddlware')
 //get
 
 router.get('/api/richEditor/getQuestions', controller.AllQuestions)
+router.get('/api/richEditor/getUserQuestions/:id', controller.allUserQuestions)
 router.get('/api/richEditor/getQuestion/:id', controller.OneQuestion)
 
 //post

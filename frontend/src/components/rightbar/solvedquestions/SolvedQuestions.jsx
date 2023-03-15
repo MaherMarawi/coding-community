@@ -8,30 +8,37 @@ const SolvedQuestions = () => {
 
   const questions = SetQueryQuestions()
 
-  const [solvedQuestions, setSolvedQuestions] = useState()
-
-  useEffect(() => {
-    if (questions?.data?.length > 0) {
-      const sq = questions.data.filter(q => q.comment_id)
-      const rsq = sq.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
-        return new Date(b.updatedAt) - new Date(a.updatedAt);
+  let content = questions?.data?.filter(ques => ques.comment_id).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))
+      .slice(0, 3)
+      .map(q => {
+        return (
+          <div className="solved-question">
+            <div className="questionInfo">
+              <p><span>{q && q?.title}</span></p>
+            </div>
+            <span className="time-solved"><span> has been solved</span><Time time={q && q?.updatedAt} /></span>
+          </div>
+        )
       })
-      setSolvedQuestions(rsq)
-    }
-  }, [questions.data]);
+
 
   if (questions?.isLoading) return (
     <div className="item">
       <Loader />
     </div>
   )
+  if (questions?.isError) return (
+    <div className="item">
+        <h3>something went wrong</h3>
+    </div>
+)
   return (
     <div className="item">
       <span className="title">Recent solved</span>
-      {solvedQuestions?.length > 0 ? <>
-        <div className="solved-question">
+      {questions?.data?.length > 0 ?
+        <>
+          {content}
+          {/* <div className="solved-question">
           <div className="questionInfo">
             <p><span>{solvedQuestions[0]?.title}</span></p>
           </div>
@@ -47,17 +54,17 @@ const SolvedQuestions = () => {
             <p><span>{solvedQuestions[2] && solvedQuestions[2]?.title}</span></p>
           </div>
           <span className="time-solved"><span> has been solved</span><Time time={solvedQuestions[2] && solvedQuestions[2]?.updatedAt} /></span>
-        </div>
-        <div className="solved-question">
-          <div className="questionInfo">
-            <span className="link">
-              <Link to="/custom/solvedQuestions" >
-                see more . . .
-              </Link>
-            </span>
+        </div> */}
+          <div className="solved-question">
+            <div className="questionInfo">
+              <span className="link">
+                <Link to="/custom/solvedQuestions" >
+                  see more . . .
+                </Link>
+              </span>
+            </div>
           </div>
-        </div>
-      </>
+        </>
         :
         <div className="question">
           <div className="questionInfo">

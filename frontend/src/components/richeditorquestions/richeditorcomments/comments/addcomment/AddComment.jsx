@@ -8,6 +8,7 @@ import 'react-quill/dist/quill.snow.css';
 import { CustomToolbarAdd } from "../../../minicomponents/toolbaraddquestions/CustomToolbarAdd";
 import { CustomToolbar } from "../../../minicomponents/toolbar/CustomToolbar";
 import { modules } from "../../../minicomponents/toolbaraddquestions/modules";
+import Loader from "../../../../microcomponents/loader/Loader";
 
 const AddComment = ({ question }) => {
 
@@ -27,7 +28,7 @@ const AddComment = ({ question }) => {
         let domiComment = {}
         if (currentUser) domiComment = { ...domiComment, user_name: currentUser.username, user_id: currentUser.id }
         domiComment = { ...domiComment, question_id: question._id, text: textRef.current.value }
-        if (domiComment.comment !== "") addCommentMutation.mutate(domiComment)
+        if (domiComment.text !== "") addCommentMutation.mutate(domiComment)
         else alert("please write a comment")
     }
     return (
@@ -46,6 +47,12 @@ const AddComment = ({ question }) => {
                         theme="snow"
                     />
                 </div>
+                <button
+                    className="add-btn"
+                    disabled={addCommentMutation.isLoading}
+                    onClick={() => handleClick()}>
+                    {addCommentMutation.isLoading ? <Loader /> : "POST"}
+                </button>
             </div>
         </div>
     )

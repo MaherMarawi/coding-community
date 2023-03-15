@@ -8,22 +8,14 @@ const UpdateUser = ({ user }) => {
     const [userRole, setUserRole] = useState({ role: user.role })
 
     const updateUserMutation = useMutation({
-        mutationFn: id => setRole(id, userRole),
-        onSuccess: data => {
-            user = data
-            console.log(data)
-        }
+        mutationFn: user => setRole(user._id, {role: user.role})
     })
-    useEffect(() => {
-        setUserRole({ role: user.role })
-        console.log(user.username, userRole.role)
-    }, []);
 
     const handleClick = () => {
-        if (userRole.role == "admin") setUserRole({ role: "no role" })
-        else setUserRole({ role: "admin" })
-        console.log(userRole.role)
-        // updateUserMutation.mutate(user._id)
+        if (user.role == "admin") user.role = "no role"
+        else user.role = "admin"
+        console.log(user.role)
+        updateUserMutation.mutate(user)
     }
     return (
         <>

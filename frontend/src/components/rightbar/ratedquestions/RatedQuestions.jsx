@@ -6,45 +6,42 @@ import LinearLoader from "../../microcomponents/linearloader/LinearLoader"
 
 const RatedQuestions = () => {
     const questions = SetQueryQuestions()
-    const [ratedQuestions, setRatedQuestions] = useState()
 
-    useEffect(() => {
-        if (questions?.data?.length > 0) {
-            const rq = questions.data.sort(
-                (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
-                    : (q1.rate?.length > q2.rate?.length) ? -1
-                        : 0)
-            setRatedQuestions(rq)
-        }
-    }, [questions.data]);
+    let content = questions?.data?.sort(
+            (q1, q2) => (q1.rate?.length < q2.rate?.length) ? 1
+                : (q1.rate?.length > q2.rate?.length) ? -1
+                    : 0)
+                    .slice(0,2)
+                    .map(q => {
+                        return (
+                            <div className="rated-question">
+                                <div className="questionInfo">
+                                    <span>{q?.title}</span>
+                                </div>
+                                <div className="result">
+                                    <span className="rate">{q?.rate.length}</span>
+                                </div>
+                            </div>
+                        )
+                    })
 
     if (questions?.isLoading) return (
         <div className="item">
             <Loader />
         </div>
     )
+    if (questions?.isError) return (
+        <div className="item">
+            <h3>something went wrong</h3>
+        </div>
+    )
 
     return (
         <div className="item">
             <span className="title">Most rated</span>
-            {ratedQuestions?.length > 0 ?
+            {questions?.data?.length > 0 ?
                 <>
-                    <div className="rated-question">
-                        <div className="questionInfo">
-                            <span>{ratedQuestions[0]?.title}</span>
-                        </div>
-                        <div className="result">
-                            <span className="rate">{ratedQuestions[0]?.rate.length}</span>
-                        </div>
-                    </div>
-                    <div className="rated-question">
-                        <div className="questionInfo">
-                            <span>{ratedQuestions[1]?.title}</span>
-                        </div>
-                        <div className="result">
-                            <span className="rate">{ratedQuestions[1]?.rate.length}</span>
-                        </div>
-                    </div>
+                    {content}
                     <div className="rated-question">
                         <div className="questionInfo">
                             <span className="link">

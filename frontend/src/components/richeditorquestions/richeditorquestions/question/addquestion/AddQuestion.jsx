@@ -24,7 +24,6 @@ const AddQuestion = () => {
         }
     })
 
-    useEffect(() => { console.log("render") }, [render])
     const handleClick = () => {
         let domiQuestion = {}
         if (currentUser) domiQuestion = { ...domiQuestion, user_id: currentUser.id, user_name: currentUser.username }

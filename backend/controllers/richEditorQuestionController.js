@@ -32,6 +32,12 @@ const AllQuestions = (req, res) => {
         })
         .catch(err => res.send(err))
 }
+const allUserQuestions = (req, res) => {
+    RichEditorQuestion.find({ user_id: req.params.id }).sort({ createdAt: -1 })
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(404).send(err))
+
+}
 
  // get question
 
@@ -84,5 +90,6 @@ module.exports = {
     NewQuestion,
     DeleteQuestion,
     ChangeQuestion,
-    rateQuestion
+    rateQuestion,
+    allUserQuestions
 }

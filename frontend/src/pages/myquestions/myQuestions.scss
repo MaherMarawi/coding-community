@@ -1,0 +1,19 @@
+@import "../../style.scss";
+
+.my-questions{
+  @include themify($themes){
+    padding: 30px 70px;
+    background-color: themed("bgSoft");
+    min-height: 100vh;
+    transition: .2s;
+
+    
+    @include tablet{
+      padding: 20px;
+    }
+    @include mobile{
+      padding: 20px 10px;
+    }
+
+  }
+ }

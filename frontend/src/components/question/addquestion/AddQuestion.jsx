@@ -39,7 +39,7 @@ const AddQuestion = () => {
                 <div className="title-button">
                     <input ref={titleRef} placeholder="Title" />
                     <div onClick={() => handleClick()} disabled={addQuestionMutation.isLoading} >{addQuestionMutation.isLoading ? <Loader /> : <Tooltip describeChild title="Does not add if it already exists.">
-                        <Button>Add</Button>
+                        <Button>POST</Button>
                     </Tooltip>}</div>
                 </div>
                 <div className="desc-code">
