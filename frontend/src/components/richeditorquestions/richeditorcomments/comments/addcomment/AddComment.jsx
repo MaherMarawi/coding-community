@@ -21,7 +21,6 @@ const AddComment = ({ question }) => {
         onSuccess: data => {
             queryClient.setQueryData(["comments", question._id], old => [data, ...old])
             question.comments_count = question.comments_count + 1;
-            textRef.current.value = ""
         }
     })
     const handleClick = () => {
