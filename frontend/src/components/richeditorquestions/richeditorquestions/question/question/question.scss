@@ -21,7 +21,11 @@
                 position: relative;
 
 
-                .text {
+                .text-question {
+                    .ql-container{
+
+                        border: none ;
+                    }
                     .ql-editor{
                         height: 300px;
                         &::-webkit-scrollbar {

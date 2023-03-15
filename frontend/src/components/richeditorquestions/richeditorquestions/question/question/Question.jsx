@@ -26,7 +26,7 @@ function Question({ question }) {
         <div className="content">
 
 
-          <div className="text">
+          <div className="text-question">
             <CustomToolbar
               user_name={question.user_name ? question.user_name : "unknown"}
               solved={question.comment_id ? <TaskAltIcon sx={{ color: "green", width: "15px" }} /> : ""}

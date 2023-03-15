@@ -35,7 +35,7 @@ function Comments({ question, setCommentOpen }) {
           <div className="comment" key={comment._id}>
 
 
-            <div className="content">
+            <div className="content-comment">
 
               <CustomToolbar
                 user_name={comment.user_name ? comment.user_name : "unknown"}
