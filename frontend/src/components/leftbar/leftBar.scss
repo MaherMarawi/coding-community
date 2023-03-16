@@ -74,16 +74,16 @@
                 }
 
                 .active{
-                    background-color: themed("bgSoft");
-                    padding: 10px 5px;
+                    // background-color: themed("bgSoft");
                     a {
                         text-decoration: none;
-                        color: themed("textColorSoft");
+                        color: themed("logo");
                     }
     
                     span {
-                        font-size: 14px;
-    
+                        font-size: 16px;
+                        transition: .2s;
+                        
                     }
                 }
                 .item {
@@ -91,9 +91,10 @@
                         text-decoration: none;
                         color: themed("textColor");
                     }
-
+                    
                     span {
                         font-size: 14px;
+                        transition: .2s;
 
                     }
                 }

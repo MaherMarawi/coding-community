@@ -12,16 +12,21 @@ export default function Questions() {
   const { value } = useContext(SearchContext)
   const questions = SetQueryQuestions()
 
+  const content = <>
+    <AddQuestion />
+    {questions && questions.data?.map(question => (
+      <Question question={question} key={question._id} />
+    ))}
+  </>
+
   if (questions.isLoading)
     return <Box className="linear-loader">
       <LinearProgress />
     </Box>
+
   return (
     <div className="questions">
-      <AddQuestion />
-      {questions && questions.data?.map(question => (
-        <Question question={question} key={question._id} />
-      ))}
+      {content}
     </div>
   )
 }

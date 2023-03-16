@@ -21,24 +21,26 @@
 
             span {
                 text-decoration: none;
-                font-size: 12px;
+                font-size: 14px;
                 cursor: pointer;
                 color: themed("border");
                 display: inline-block;
                 // word-wrap: unset;
                 // word-break: keep-all;
                 white-space: nowrap;
+                transition: .2s;
             }
         }
         .active-tab{
-
+            
             span {
                 text-decoration: none;
-                font-size: 12px;
+                font-size: 15px;
                 cursor: pointer;
                 color: themed("unlogo");
                 display: inline-block;
                 white-space: nowrap;
+                transition: .2s;
             }
         }
 
@@ -151,6 +153,9 @@
                         display: none;
                     }
 
+                }
+                input:focus{
+                    outline: none;
                 }
             }
 
