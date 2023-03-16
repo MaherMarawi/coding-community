@@ -12,12 +12,15 @@ import { useNavigate } from 'react-router-dom'
 import SearchMobile from "./searchmobile/SearchMobile";
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MobileMenu from "../navbar/MobileMenu"
+import { NavigatorContext } from "../../context/navContext";
 const NavBar = () => {
 
   const navigate = useNavigate();
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
   const { value, handleSubmit, setIsOpen, isOpen } = useContext(SearchContext)
+  const { activeTab, handleActiveTab } = useContext(NavigatorContext)
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const menuMobilePosition = useMemo(() => {
     return {
@@ -67,9 +70,9 @@ const NavBar = () => {
 
   return (
     <div className="navbar">
-      <div className="left">
+      <div className="left" onClick={handleActiveTab}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span>coding community</span>
+          <span name="/">coding community</span>
         </Link>
         {
           darkMode
