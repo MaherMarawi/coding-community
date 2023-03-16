@@ -4,7 +4,7 @@ export const NavigatorContext = createContext()
 
 export const NavigatorContextProvider = ({children}) => {
 
-    const [ activeTab, setActiveTab ] = useState()
+    const [ activeTab, setActiveTab ] = useState("/")
     // const [ isOpen, setIsOpen ] = useState(0)
 
     const handleActiveTab = (e) => {
