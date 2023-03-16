@@ -12,7 +12,7 @@ const SolvedQuestions = () => {
       .slice(0, 3)
       .map(q => {
         return (
-          <div className="solved-question">
+          <div className="solved-question" key={q._id}>
             <div className="questionInfo">
               <p><span>{q && q?.title}</span></p>
             </div>

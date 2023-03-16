@@ -2,7 +2,7 @@
 
 .linear-loader{
     @include themify($themes) {
-        position: absolute;
+        position: fixed;
         top: 67px;
         width: 100%;
         left: 0;

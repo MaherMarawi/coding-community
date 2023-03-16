@@ -14,7 +14,7 @@ const RatedQuestions = () => {
                     .slice(0,2)
                     .map(q => {
                         return (
-                            <div className="rated-question">
+                            <div className="rated-question" key={q._id}>
                                 <div className="questionInfo">
                                     <span>{q?.title}</span>
                                 </div>

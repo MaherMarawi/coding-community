@@ -3,10 +3,31 @@
 #toolbar-add {
     @include themify($themes) {
         -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-          -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-          box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
-          background-color: themed("bg");
-          color: themed("textColor");
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        background-color: themed("bg");
+        .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill{
+            color: themed("textColor") !important;
+
+        }
+        button{
+            svg{
+
+                color: themed("textColor") !important;
+            }
+            .ql-fill{
+                color: themed("textColor") !important;
+
+            }
+            .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill{
+                color: themed("textColor") !important;
+
+            }
+        }
+        select{
+            color: themed("textColor");
+
+        }
         .add-btn {
             color: themed("textColorSoft");
             font-size: 12px;
@@ -17,8 +38,9 @@
                 padding-left: 5px;
             }
         }
-        .add-btn:hover{
+
+        .add-btn:hover {
             color: rgb(0, 166, 255);
-          }
+        }
     }
 }

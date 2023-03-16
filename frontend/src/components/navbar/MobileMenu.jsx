@@ -6,6 +6,7 @@ import "./navBar.scss"
 import { DarkModeContext } from "../../context/darkModeContext"
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { NavigatorContext } from "../../context/navContext"
 
 const MobileMenu = ({
   menuMobilePosition,
@@ -16,17 +17,19 @@ const MobileMenu = ({
 
   const { darkMode, toggle } = useContext(DarkModeContext)
   const { currentUser, logoutMutation } = useContext(AuthContext)
+  const { activeTab, handleActiveTab } = useContext(NavigatorContext)
 
   return (
     <div className="navbar-items-mobile" style={menuMobilePosition}>
-      <Link  to="/" onClick={toggleMenuMobile}><span>Questions</span></Link>
-      <Link  to="/richEditor" onClick={toggleMenuMobile}><span>Rich Editor Questions</span></Link>
-      <Link  to="/custom/ratedQuestions" onClick={toggleMenuMobile}><span>Most Rated Questions</span></Link>
-      <Link  to="/custom/solvedQuestions" onClick={toggleMenuMobile}><span>Recent Solved Questions</span></Link>
-      <Link  to="/about" onClick={toggleMenuMobile}><span>About</span></Link>
-      <Link  to="/contact" onClick={toggleMenuMobile}><span>Contact</span></Link>
+     <div onClick={handleActiveTab} className={activeTab == "/" ? "active-tab" : "normal-tab"}><Link  to="/" onClick={toggleMenuMobile}><span name="/">Questions</span></Link></div> 
+      <div onClick={handleActiveTab} className={activeTab == "/richEditor" ? "active-tab" : "normal-tab"}><Link  to="/richEditor" onClick={toggleMenuMobile}><span name="/richEditor" >Rich Editor Questions</span></Link></div>
+      <div onClick={handleActiveTab} className={activeTab == "/custom/ratedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/ratedQuestions" onClick={toggleMenuMobile}><span name="/custom/ratedQuestions" >Most Rated Questions</span></Link></div>
+      <div onClick={handleActiveTab} className={activeTab == "/custom/solvedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/solvedQuestions" onClick={toggleMenuMobile}><span name="/custom/solvedQuestions" >Recent Solved Questions</span></Link></div>
+      <div onClick={handleActiveTab} className={activeTab == "/about" ? "active-tab" : "normal-tab"}><Link  to="/about" onClick={toggleMenuMobile}><span name="/about" >About</span></Link></div>
+      <div onClick={handleActiveTab} className={activeTab == "/contact" ? "active-tab" : "normal-tab"}><Link  to="/contact" onClick={toggleMenuMobile}><span name="/contact" >Contact</span></Link></div>
+
       {currentUser && currentUser.role == "admin" ?
-        <><Link  to="/users" onClick={toggleMenuMobile}><span>Users</span></Link></>
+        <><div onClick={handleActiveTab} className={activeTab == "/users" ? "active-tab" : "normal-tab"}><Link  to="/users" onClick={toggleMenuMobile}><span name="/users" >Users</span></Link></div></>
         :
         <></>
       }

@@ -17,16 +17,29 @@
         opacity: 90%;
         // height: 350px;
         
+        .normal-tab{
 
-        span {
-            text-decoration: none;
-            font-size: 12px;
-            cursor: pointer;
-            color: themed("border");
-            display: inline-block;
-            // word-wrap: unset;
-            // word-break: keep-all;
-            white-space: nowrap;
+            span {
+                text-decoration: none;
+                font-size: 12px;
+                cursor: pointer;
+                color: themed("border");
+                display: inline-block;
+                // word-wrap: unset;
+                // word-break: keep-all;
+                white-space: nowrap;
+            }
+        }
+        .active-tab{
+
+            span {
+                text-decoration: none;
+                font-size: 12px;
+                cursor: pointer;
+                color: themed("unlogo");
+                display: inline-block;
+                white-space: nowrap;
+            }
         }
 
         .user {

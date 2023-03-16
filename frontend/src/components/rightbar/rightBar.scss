@@ -43,6 +43,18 @@
                     text-align: center;
                 }
             }
+            .tab-active{
+                display: none;
+                background-color: themed("bgSoft") !important;
+                @include tablet{
+                    display: block;
+                }
+                span{
+                    color: themed("textColor");
+                    font-weight: 550;
+                    text-align: center;
+                }
+            }
             .item {
                 -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
                 -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);

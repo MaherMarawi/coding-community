@@ -11,7 +11,7 @@ export const CustomToolbarAdd = ({ handleClick, loading }) => (
     >
       <option value="1"></option>
       <option value="2"></option>
-      <option selected></option>
+      <option defaultValue=""></option>
     </select>
     <button className="ql-bold"></button>
     <button className="ql-italic"></button>
@@ -31,6 +31,10 @@ export const CustomToolbarAdd = ({ handleClick, loading }) => (
     <button className="ql-list" value="ordered"></button>
     <button className="ql-list" value="bullet"></button>
     <button className="ql-image"></button>
-    <button onClick={() => handleClick()} className="add-btn">{loading ? <Loader /> : "POST"}</button>
+    <button
+      onClick={() => handleClick()}
+      className="add-btn">
+      {loading ? <Loader /> : "POST"}
+    </button>
   </div>
 );

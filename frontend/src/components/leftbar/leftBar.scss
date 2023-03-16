@@ -73,18 +73,23 @@
 
                 }
 
+                .active{
+                    background-color: themed("bgSoft");
+                    padding: 10px 5px;
+                    a {
+                        text-decoration: none;
+                        color: themed("textColorSoft");
+                    }
+    
+                    span {
+                        font-size: 14px;
+    
+                    }
+                }
                 .item {
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-
                     a {
                         text-decoration: none;
                         color: themed("textColor");
-                    }
-
-                    img {
-                        width: 30px;
                     }
 
                     span {
