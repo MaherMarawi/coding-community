@@ -24,8 +24,7 @@ const NavBar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const menuMobilePosition = useMemo(() => {
     return {
-      width: mobileMenuOpen ? "150px" : "0px",
-      padding: mobileMenuOpen ? "10px 20px" : "10px 0px",
+      width: mobileMenuOpen ? "200px" : "0px"
       
     }
   }, [mobileMenuOpen])

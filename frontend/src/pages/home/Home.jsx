@@ -1,4 +1,4 @@
-import SearchMobile from "../../components/navbar/searchmobile/SearchMobile"
+
 import Questions from "../../components/questions/Questions"
 import "./home.scss"
 

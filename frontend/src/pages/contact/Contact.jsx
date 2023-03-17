@@ -1,6 +1,6 @@
-import { DarkModeContext } from "../../context/darkModeContext";
+
 import "./contact.scss"
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import emailjs from '@emailjs/browser';
 import Loader from "../../components/microcomponents/loader/Loader";
 
@@ -11,10 +11,7 @@ const Contact = () => {
   const [colorStyle, setColorStyle] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const { darkMode } = useContext(DarkModeContext)
 
-  const timer = setTimeout(() => {
-  }, 1000);
   const onChange = (e) => {
       setCheck('We always like to hear a suggestion')
       setColorStyle('')

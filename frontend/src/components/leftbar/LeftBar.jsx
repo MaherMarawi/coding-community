@@ -18,31 +18,31 @@ const LeftBar = () => {
           {/* <div className="user">
             <span>{currentUser?.name}</span>
           </div> */}
-          <div className={activeTab == "/" ? "active" : "item"} onClick={handleActiveTab}>
+          <div className={activeTab == "/" ? "active" : "item"} >
             <Link to="/" >
-              <span name="/">Questions</span>
+              <span name="/" onClick={handleActiveTab}>Questions</span>
             </Link>
           </div>
-          <div className={activeTab == "/richEditor" ? "active" : "item"} onClick={handleActiveTab}>
+          <div className={activeTab == "/richEditor" ? "active" : "item"} >
             <Link to="/richEditor" >
-              <span name="/richEditor">Rich Editor Questions</span>
+              <span name="/richEditor" onClick={handleActiveTab}>R-E Questions</span>
             </Link>
           </div>
-          <div className={activeTab == "/contact" ? "active" : "item"} onClick={handleActiveTab}>
+          <div className={activeTab == "/contact" ? "active" : "item"} >
             <Link to="/contact" >
-              <span name="/contact">Contact</span>
+              <span name="/contact" onClick={handleActiveTab}>Contact</span>
             </Link>
           </div>
-          <div className={activeTab == "/about" ? "active" : "item"} onClick={handleActiveTab}>
+          <div className={activeTab == "/about" ? "active" : "item"} >
             <Link to="/about" >
-              <span name="/about">About</span>
+              <span name="/about" onClick={handleActiveTab}>About</span>
             </Link>
           </div>
           {currentUser && currentUser.role == "admin" ?
             <>
-              <div className={activeTab == "/users" ? "active" : "item"} onClick={handleActiveTab}>
+              <div className={activeTab == "/users" ? "active" : "item"} >
                 <Link to="/users" >
-                  <span name="/users">Users</span>
+                  <span name="/users" onClick={handleActiveTab}>Users</span>
                 </Link>
               </div>
             </>

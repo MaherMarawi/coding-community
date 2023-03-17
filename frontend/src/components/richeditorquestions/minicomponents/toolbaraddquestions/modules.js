@@ -7,7 +7,8 @@ export const  modules = {
       [{'color': ["red", "green", "blue", "orange", "violet", "#d0d1d2"]}],
       ['bold', 'italic', 'underline','strike', 'blockquote'],
       [{'list': 'ordered'}, {'list': 'bullet'}],
-      ['link', 'image']
+      ['link', 'image'],
+      [{ 'align': [] }],,
     ],
   }
 

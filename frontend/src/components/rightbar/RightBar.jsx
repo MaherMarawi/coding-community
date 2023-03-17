@@ -23,12 +23,12 @@ const RightBar = () => {
           <RatedQuestions />
           <SolvedQuestions />
           {/* <ActiveUsers /> */}
-          <div onClick={handleActiveTab} className={activeTab == "/" ? "item tab-active" : "item tab-item"}><Link to="/"><span name="/" > Questions</span></Link></div>
-          <div onClick={handleActiveTab} className={activeTab == "/richEditor" ? "item tab-active" : "item tab-item"}><Link to="/richEditor"><span name="/richEditor" > Rich Editor Questions</span></Link></div>
-          <div onClick={handleActiveTab} className={activeTab == "/about" ? "item tab-active" : "item tab-item"}><Link to="/about"><span name="/about" > About</span></Link></div>
-          <div onClick={handleActiveTab} className={activeTab == "/contact" ? "item tab-active" : "item tab-item"}><Link to="/contact"><span name="/contact" > Contact</span></Link></div>
+          <div className={activeTab == "/" ? "item tab-active" : "item tab-item"}><Link to="/"><span name="/"  onClick={handleActiveTab} > Questions</span></Link></div>
+          <div className={activeTab == "/richEditor" ? "item tab-active" : "item tab-item"}><Link to="/richEditor"><span name="/richEditor"  onClick={handleActiveTab} > Rich Editor Questions</span></Link></div>
+          <div className={activeTab == "/about" ? "item tab-active" : "item tab-item"}><Link to="/about"><span name="/about"  onClick={handleActiveTab} > About</span></Link></div>
+          <div className={activeTab == "/contact" ? "item tab-active" : "item tab-item"}><Link to="/contact"><span name="/contact"  onClick={handleActiveTab} > Contact</span></Link></div>
           {currentUser && currentUser.role == "admin" ?
-            <><div onClick={handleActiveTab} className={activeTab == "/users" ? "item tab-active" : "item tab-item"}><Link to="/users"><span name="/users" > Users</span></Link></div></>
+            <><div className={activeTab == "/users" ? "item tab-active" : "item tab-item"}><Link to="/users"><span name="/users"  onClick={handleActiveTab} > Users</span></Link></div></>
             :
             <></>
           }

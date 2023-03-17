@@ -9,7 +9,6 @@ import { SearchContext } from "../../context/searchContext";
 
 export default function Questions() {
 
-  const { value } = useContext(SearchContext)
   const questions = SetQueryQuestions()
 
   const content = <>

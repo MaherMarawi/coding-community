@@ -11,6 +11,8 @@
       padding: 2.5%;
       height: 30vh;
       position: relative;
+      display: flex;
+      justify-content: center;
 
       @include tablet {
         height: 25vh;
@@ -22,7 +24,7 @@
 
       .text {
         position: absolute;
-        width: 95%;
+        width: 100%;
         
         .ql-editor {
           -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
@@ -30,7 +32,7 @@
           box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
           background-color: themed("bg");
           color: themed("textColor");
-          height: 24vh;
+          height: 23vh;
 
           @include tablet {
             height: 19vh;

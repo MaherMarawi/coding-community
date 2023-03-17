@@ -1,7 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { createContext, useState, useEffect } from "react"
+import { useContext } from "react";
+import { createContext, useState } from "react"
 import { authLogin, authLogout, authRegiser } from "../api/authApi";
-import { Navigate } from "react-router-dom";
+import { NavigatorContext } from "./navContext";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -9,6 +10,7 @@ export const AuthContextProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
     const [emailError, setEmailError] = useState("")
     const [passwordError, setPasswordError] = useState("")
+    const { setActiveTab } = useContext(NavigatorContext)
     // const [rePasswordError, setRePasswordError] = useState("")
     
     const loginMutation = useMutation({
@@ -41,6 +43,7 @@ export const AuthContextProvider = ({ children }) => {
         setCurrentUser(data.user)
         localStorage.setItem("user", JSON.stringify(data.user))
         localStorage.setItem("token", data.accessToken)
+        setActiveTab("/")
     }
     const errorSet = (err) => {
         if (err.email) setEmailError(err.email)

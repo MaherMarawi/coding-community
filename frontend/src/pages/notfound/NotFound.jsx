@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Navigate, useParams, useLocation, Link } from "react-router-dom";
+
 
 const NotFound = () => {
 

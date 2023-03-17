@@ -28,6 +28,7 @@ export const CustomToolbarAdd = ({ handleClick, loading }) => (
       <option value="violet"></option>
       <option value="#d0d1d2"></option>
     </select>
+    <select className="ql-align"></select>
     <button className="ql-list" value="ordered"></button>
     <button className="ql-list" value="bullet"></button>
     <button className="ql-image"></button>

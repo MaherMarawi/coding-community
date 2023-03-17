@@ -3,7 +3,7 @@ import Question from "../question/question/Question"
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import AddQuestion from "../question/addquestion/AddQuestion";
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { SetQueryQuestions } from "../../minicomponents/setqueryquestions/SetQueryQuestions";
 import { SearchContext } from "../../../../context/searchContext";
 

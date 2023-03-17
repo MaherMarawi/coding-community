@@ -21,15 +21,15 @@ const MobileMenu = ({
 
   return (
     <div className="navbar-items-mobile" style={menuMobilePosition}>
-     <div onClick={handleActiveTab} className={activeTab == "/" ? "active-tab" : "normal-tab"}><Link  to="/" onClick={toggleMenuMobile}><span name="/">Questions</span></Link></div> 
-      <div onClick={handleActiveTab} className={activeTab == "/richEditor" ? "active-tab" : "normal-tab"}><Link  to="/richEditor" onClick={toggleMenuMobile}><span name="/richEditor" >Rich Editor Questions</span></Link></div>
-      <div onClick={handleActiveTab} className={activeTab == "/custom/ratedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/ratedQuestions" onClick={toggleMenuMobile}><span name="/custom/ratedQuestions" >Most Rated Questions</span></Link></div>
-      <div onClick={handleActiveTab} className={activeTab == "/custom/solvedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/solvedQuestions" onClick={toggleMenuMobile}><span name="/custom/solvedQuestions" >Recent Solved Questions</span></Link></div>
-      <div onClick={handleActiveTab} className={activeTab == "/about" ? "active-tab" : "normal-tab"}><Link  to="/about" onClick={toggleMenuMobile}><span name="/about" >About</span></Link></div>
-      <div onClick={handleActiveTab} className={activeTab == "/contact" ? "active-tab" : "normal-tab"}><Link  to="/contact" onClick={toggleMenuMobile}><span name="/contact" >Contact</span></Link></div>
+     <div className={activeTab == "/" ? "active-tab" : "normal-tab"}><Link  to="/" onClick={toggleMenuMobile}><span name="/" onClick={handleActiveTab}>Questions</span></Link></div> 
+      <div className={activeTab == "/richEditor" ? "active-tab" : "normal-tab"}><Link  to="/richEditor" onClick={toggleMenuMobile}><span name="/richEditor" onClick={handleActiveTab} >Rich Editor Questions</span></Link></div>
+      <div className={activeTab == "/custom/ratedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/ratedQuestions" onClick={toggleMenuMobile}><span name="/custom/ratedQuestions" onClick={handleActiveTab} >Most Rated Questions</span></Link></div>
+      <div className={activeTab == "/custom/solvedQuestions" ? "active-tab" : "normal-tab"}><Link  to="/custom/solvedQuestions" onClick={toggleMenuMobile}><span name="/custom/solvedQuestions" onClick={handleActiveTab} >Recent Solved Questions</span></Link></div>
+      <div className={activeTab == "/about" ? "active-tab" : "normal-tab"}><Link  to="/about" onClick={toggleMenuMobile}><span name="/about" onClick={handleActiveTab} >About</span></Link></div>
+      <div className={activeTab == "/contact" ? "active-tab" : "normal-tab"}><Link  to="/contact" onClick={toggleMenuMobile}><span name="/contact" onClick={handleActiveTab} >Contact</span></Link></div>
 
       {currentUser && currentUser.role == "admin" ?
-        <><div onClick={handleActiveTab} className={activeTab == "/users" ? "active-tab" : "normal-tab"}><Link  to="/users" onClick={toggleMenuMobile}><span name="/users" >Users</span></Link></div></>
+        <><div onClick={handleActiveTab} className={activeTab == "/users" ? "active-tab" : "normal-tab"}><Link  to="/users" onClick={toggleMenuMobile}><span name="/users" onClick={handleActiveTab} >Users</span></Link></div></>
         :
         <></>
       }
