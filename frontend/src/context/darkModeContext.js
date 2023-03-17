@@ -11,7 +11,6 @@ export const DarkModeContextProvider = ({ children }) => {
 
     const toggle = () => {
         setDarkMode(!darkMode)
-        console.log(localStorage.getItem("nav"))
     }
 
     useEffect(() => {
